@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechReviewBlog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #0d0d0d;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        .nav-animated {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            background: #111;
+        }
+
+            .nav-animated h1 {
+                font-size: 3rem;
+                color: #00f0ff;
+            }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            background: #0f0f0f;
+            padding: 1rem 0;
+        }
+
+            .nav-links a {
+                color: #00f0ff;
+                text-decoration: none;
+                font-size: 1.2rem;
+            }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background: #00f0ff;
+            border: none;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        #games {
+            display: flex;
+            justify-content: flex-start;
+            padding: 3rem;
+            background: #111;
+        }
+
+        #game {
+            width: 300px;
+            background-color: #222;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .tetris-canvas {
+            width: 100%;
+            height: auto;
+            background-color: #000;
+            border: 2px solid #00f0ff;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .game-start-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #00f0ff;
+            color: black;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+
+            .game-start-btn:hover {
+                background-color: #00bccc;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="nav-animated">
+        <h1>TechReviewBlog</h1>
+        <p>Stay ahead with the future of technology</p>
+    </div>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover the Latest Tech Trends</h1>
+            <p>Honest reviews and insights on today's top tech.</p>
+            <a href="#blog" class="cta-button">Go to Blog</a>
+        </div>
+    </section>
+
+    <section id="games">
+        <div id="game">
+            <canvas id="tetrisCanvas" class="tetris-canvas" width="300" height="600"></canvas>
+            <button class="game-start-btn" onclick="startGame()">Start Game</button>
+        </div>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('tetrisCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const rows = 20;
+        const cols = 10;
+        const blockSize = 30;
+
+        let board;
+        let currentPiece;
+        let gameInterval;
+
+        const pieceColors = ['#00f0ff', '#00ff99', '#ff00ff', '#ff6600', '#ffff00', '#ff3333', '#66ccff'];
+
+        const pieces = [
+            [[1, 1, 1], [0, 1, 0]],
+            [[1, 1], [1, 1]],
+            [[0, 1, 1], [1, 1, 0]],
+            [[1, 1, 0], [0, 1, 1]],
+            [[1, 1, 1, 1]],
+            [[1, 0], [1, 0], [1, 1]],
+            [[0, 1], [0, 1], [1, 1]]
+        ];
+
+        function startGame() {
+            board = Array.from({ length: rows }, () => Array(cols).fill(0));
+            currentPiece = getRandomPiece();
+            clearInterval(gameInterval);
+            gameInterval = setInterval(updateGame, 500);
+        }
+
+        function getRandomPiece() {
+            const index = Math.floor(Math.random() * pieces.length);
+            const shape = pieces[index];
+            const color = pieceColors[index];
+            return { shape, x: Math.floor(cols / 2) - 1, y: 0, color };
+        }
+
+        function updateGame() {
+            if (!canMove(currentPiece, 0, 1)) {
+                merge(currentPiece);
+                currentPiece = getRandomPiece();
+                if (!canMove(currentPiece, 0, 0)) {
+                    startGame(); // Restart automatically
+                    return;
+                }
+            } else {
+                currentPiece.y++;
+            }
+
+            draw();
+        }
+
+        function merge(piece) {
+            piece.shape.forEach((row, y) =>
+                row.forEach((val, x) => {
+                    if (val) {
+                        board[piece.y + y][piece.x + x] = piece.color;
+                    }
+                })
+            );
+        }
+
+        function canMove(piece, dx, dy) {
+            return piece.shape.every((row, y) =>
+                row.every((val, x) => {
+                    if (!val) return true;
+                    const newX = piece.x + x + dx;
+                    const newY = piece.y + y + dy;
+                    return newX >= 0 && newX < cols && newY < rows && !board[newY][newX];
+                })
+            );
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < cols; x++) {
+                    if (board[y][x]) {
+                        drawBlock(x, y, board[y][x]);
+                    }
+                }
+            }
+
+            currentPiece.shape.forEach((row, y) =>
+                row.forEach((val, x) => {
+                    if (val) {
+                        drawBlock(currentPiece.x + x, currentPiece.y + y, currentPiece.color);
+                    }
+                })
+            );
+        }
+
+        function drawBlock(x, y, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x * blockSize, y * blockSize, blockSize - 1, blockSize - 1);
+        }
+
+        document.addEventListener('keydown', e => {
+            if (!currentPiece) return;
+            if (e.key === 'ArrowLeft' && canMove(currentPiece, -1, 0)) currentPiece.x--;
+            else if (e.key === 'ArrowRight' && canMove(currentPiece, 1, 0)) currentPiece.x++;
+            else if (e.key === 'ArrowDown' && canMove(currentPiece, 0, 1)) currentPiece.y++;
+            else if (e.key === 'r') rotatePiece();
+
+            draw();
+        });
+
+        function rotatePiece() {
+            const rotated = currentPiece.shape[0].map((_, i) =>
+                currentPiece.shape.map(row => row[i]).reverse()
+            );
+
+            const testPiece = { ...currentPiece, shape: rotated };
+            if (canMove(testPiece, 0, 0)) {
+                currentPiece.shape = rotated;
+            }
+        }
+    </script>
+</body>
+</html>
