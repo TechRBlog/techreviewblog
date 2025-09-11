@@ -1,22 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechReviewBlog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Review Blog - Latest Technology Reviews & Product Comparisons</title>
+    <meta name="description" content="Get expert tech reviews, product comparisons, and buying guides for smartphones, laptops, gadgets, and emerging technology. Honest, in-depth analysis to help you make informed decisions.">
+    <meta name="keywords" content="tech reviews, product reviews, smartphone reviews, laptop reviews, gadget reviews, technology news, tech comparisons, buying guides">
+    <meta name="author" content="Tech Review Blog">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techrblog.github.io/techreviewblog/">
+    <meta property="og:title" content="Tech Review Blog - Latest Technology Reviews & Product Comparisons">
+    <meta property="og:description" content="Get expert tech reviews, product comparisons, and buying guides for smartphones, laptops, gadgets, and emerging technology.">
+    <meta property="og:image" content="https://techrblog.github.io/techreviewblog/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://techrblog.github.io/techreviewblog/">
+    <meta property="twitter:title" content="Tech Review Blog - Latest Technology Reviews & Product Comparisons">
+    <meta property="twitter:description" content="Get expert tech reviews, product comparisons, and buying guides for smartphones, laptops, gadgets, and emerging technology.">
+    <meta property="twitter:image" content="https://techrblog.github.io/techreviewblog/assets/og-image.jpg">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Tech Review Blog",
+        "url": "https://techrblog.github.io/techreviewblog/",
+        "description": "Expert technology reviews, product comparisons, and buying guides",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://techrblog.github.io/techreviewblog/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <link rel="canonical" href="https://techrblog.github.io/techreviewblog/">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-primary: #0d0d0d;
-            --bg-secondary: #111;
-            --bg-tertiary: #0f0f0f;
-            --bg-card: #222;
-            --text-primary: #fff;
-            --text-secondary: #ccc;
-            --accent: #00f0ff;
-            --accent-hover: #00bccc;
-            --border: #333;
-            --shadow: rgba(0, 240, 255, 0.1);
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a3a;
+            --bg-tertiary: #252545;
+            --bg-card: #2a2a4a;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8d1;
+            --accent: #00d4ff;
+            --accent-hover: #00b8e6;
+            --accent-secondary: #7c3aed;
+            --border: #3a3a5c;
+            --shadow: rgba(0, 212, 255, 0.1);
+            --gradient: linear-gradient(135deg, var(--accent), var(--accent-secondary));
         }
 
         [data-theme="light"] {
@@ -24,12 +63,13 @@
             --bg-secondary: #f8f9fa;
             --bg-tertiary: #e9ecef;
             --bg-card: #ffffff;
-            --text-primary: #212529;
+            --text-primary: #1a1a1a;
             --text-secondary: #6c757d;
-            --accent: #007bff;
-            --accent-hover: #0056b3;
+            --accent: #0066cc;
+            --accent-hover: #0052a3;
+            --accent-secondary: #6f42c1;
             --border: #dee2e6;
-            --shadow: rgba(0, 123, 255, 0.1);
+            --shadow: rgba(0, 102, 204, 0.1);
         }
 
         * {
@@ -72,225 +112,363 @@
             border-color: var(--accent);
         }
 
-        .nav-animated {
-            text-align: center;
-            padding: 3rem 1rem 2rem;
+        header {
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border);
-            position: relative;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .nav-animated h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, var(--accent), #6c5ce7);
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-animated p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            background: var(--bg-tertiary);
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-links a {
-            color: var(--accent);
             text-decoration: none;
-            font-size: 1.1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
             font-weight: 500;
+            transition: all 0.3s ease;
             padding: 0.5rem 1rem;
             border-radius: 25px;
-            transition: all 0.3s ease;
         }
 
-        .nav-links a:hover {
-            background: var(--accent);
-            color: var(--bg-primary);
-            transform: translateY(-2px);
+        nav a:hover, nav a.active {
+            color: var(--accent);
+            background: var(--bg-tertiary);
         }
 
         .hero {
-            text-align: center;
-            padding: 5rem 1rem;
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero-subtitle {
+            font-size: 1.4rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .cta-button {
-            padding: 1rem 2.5rem;
-            background: var(--accent);
-            border: none;
-            color: var(--bg-primary);
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow);
-        }
-
-        .cta-button:hover {
-            background: var(--accent-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--shadow);
-        }
-
-        #games {
-            display: flex;
-            justify-content: center;
-            padding: 4rem 2rem;
-            background: var(--bg-secondary);
-        }
-
-        #game {
-            width: 350px;
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .game-title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .tetris-canvas {
-            width: 100%;
-            height: auto;
-            background-color: var(--bg-primary);
-            border: 3px solid var(--accent);
-            border-radius: 12px;
-            display: block;
-            box-shadow: inset 0 0 20px var(--shadow);
-        }
-
-        .game-start-btn {
-            display: block;
-            margin: 25px auto 0;
-            padding: 12px 25px;
-            background: var(--accent);
-            color: var(--bg-primary);
-            font-weight: 600;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow);
-        }
-
-        .game-start-btn:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--shadow);
-        }
-
-        .features {
+        .product-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-bottom: 4rem;
         }
 
-        .feature-card {
+        .category-card {
             background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 15px;
             border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px var(--shadow);
+            cursor: pointer;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px var(--shadow);
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--shadow);
+            border-color: var(--accent);
         }
 
-        .feature-icon {
+        .category-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
             display: block;
         }
 
-        .feature-card h3 {
-            font-size: 1.3rem;
+        .category-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
             margin-bottom: 1rem;
             color: var(--accent);
-            font-weight: 600;
         }
 
-        .feature-card p {
+        .category-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .category-cta {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature p {
             color: var(--text-secondary);
         }
 
+        .newsletter {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .newsletter h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .newsletter p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
-            .nav-animated h1 {
-                font-size: 2.5rem;
-            }
-            
-            .nav-links {
+            .header-content {
                 flex-direction: column;
                 gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
                 align-items: center;
             }
-            
-            .hero h1 {
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
                 font-size: 2rem;
             }
-            
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
             .theme-toggle {
                 top: 10px;
                 right: 10px;
                 padding: 8px 12px;
                 font-size: 12px;
-            }
-
-            #games {
-                padding: 2rem 1rem;
-            }
-
-            #game {
-                width: 100%;
-                max-width: 350px;
             }
         }
     </style>
@@ -301,174 +479,150 @@
         <span class="theme-text">Dark</span>
     </button>
 
-    <div class="nav-animated">
-        <h1>TechReviewBlog</h1>
-        <p>Stay ahead with the future of technology</p>
-    </div>
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">TechReviewBlog</a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#guides">Buying Guides</a></li>
+                    <li><a href="#news">Tech News</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
-    </div>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Expert Tech Reviews You Can Trust</h1>
+                <p class="hero-subtitle">Get honest, in-depth reviews and comparisons of the latest smartphones, laptops, gadgets, and emerging technology to make informed purchasing decisions.</p>
+                <div class="cta-buttons">
+                    <a href="#reviews" class="btn btn-primary">Browse Latest Reviews</a>
+                    <a href="#guides" class="btn btn-secondary">Buying Guides</a>
+                </div>
+            </div>
+        </section>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Discover the Latest Tech Trends</h1>
-            <p>Honest reviews and insights on today's top tech products, innovations, and industry developments.</p>
-            <a href="#blog" class="cta-button">Explore Reviews</a>
-        </div>
-    </section>
+        <section id="categories" class="section">
+            <h2 class="section-title">Popular Product Categories</h2>
+            <p class="section-subtitle">Explore our comprehensive reviews across all major tech categories</p>
+            
+            <div class="product-categories">
+                <div class="category-card">
+                    <span class="category-icon">📱</span>
+                    <h3>Smartphones</h3>
+                    <p>Latest iPhone, Samsung, Google Pixel, and Android device reviews with camera tests, performance benchmarks, and real-world usage.</p>
+                    <a href="#smartphones" class="category-cta">View Smartphone Reviews →</a>
+                </div>
 
-    <section class="features">
-        <div class="feature-card">
-            <span class="feature-icon">📱</span>
-            <h3>Device Reviews</h3>
-            <p>In-depth analysis of smartphones, laptops, tablets, and emerging tech gadgets with real-world performance testing.</p>
-        </div>
-        
-        <div class="feature-card">
-            <span class="feature-icon">🔬</span>
-            <h3>Tech Analysis</h3>
-            <p>Deep dives into technology trends, industry insights, and predictions for the future of innovation.</p>
-        </div>
-        
-        <div class="feature-card">
-            <span class="feature-icon">⚡</span>
-            <h3>Quick Takes</h3>
-            <p>Fast, focused reviews and first impressions of the latest tech releases and updates.</p>
-        </div>
-    </section>
+                <div class="category-card">
+                    <span class="category-icon">💻</span>
+                    <h3>Laptops & Computers</h3>
+                    <p>MacBooks, Windows laptops, gaming PCs, and workstations reviewed for performance, battery life, and value for money.</p>
+                    <a href="#laptops" class="category-cta">View Laptop Reviews →</a>
+                </div>
 
-    <section id="games">
-        <div id="game">
-            <div class="game-title">Mini Tetris</div>
-            <canvas id="tetrisCanvas" class="tetris-canvas" width="300" height="600"></canvas>
-            <button class="game-start-btn" onclick="startGame()">Start Game</button>
+                <div class="category-card">
+                    <span class="category-icon">🎮</span>
+                    <h3>Gaming & Entertainment</h3>
+                    <p>Gaming consoles, graphics cards, monitors, headphones, and entertainment devices tested by gaming enthusiasts.</p>
+                    <a href="#gaming" class="category-cta">View Gaming Reviews →</a>
+                </div>
+
+                <div class="category-card">
+                    <span class="category-icon">🏠</span>
+                    <h3>Smart Home</h3>
+                    <p>Smart speakers, security cameras, thermostats, and IoT devices reviewed for functionality and privacy.</p>
+                    <a href="#smarthome" class="category-cta">View Smart Home Reviews →</a>
+                </div>
+
+                <div class="category-card">
+                    <span class="category-icon">⌚</span>
+                    <h3>Wearables</h3>
+                    <p>Smartwatches, fitness trackers, earbuds, and health monitoring devices tested for accuracy and usability.</p>
+                    <a href="#wearables" class="category-cta">View Wearable Reviews →</a>
+                </div>
+
+                <div class="category-card">
+                    <span class="category-icon">🚗</span>
+                    <h3>Auto Tech</h3>
+                    <p>Electric vehicles, car tech, dash cams, and automotive gadgets reviewed for innovation and practicality.</p>
+                    <a href="#autotech" class="category-cta">View Auto Tech Reviews →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Why Choose TechReviewBlog?</h2>
+            <p class="section-subtitle">Our commitment to honest, thorough, and unbiased technology reviews</p>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🔬</div>
+                    <h3>In-Depth Testing</h3>
+                    <p>We thoroughly test every product with real-world scenarios, benchmarks, and long-term usage to give you the complete picture.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Unbiased Reviews</h3>
+                    <p>Our reviews are completely independent with no affiliate influence on our ratings. We tell you what we really think.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Latest Updates</h3>
+                    <p>Stay current with the newest tech releases, software updates, and industry trends as they happen.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">💡</div>
+                    <h3>Expert Analysis</h3>
+                    <p>Our team of tech experts provides professional insights and recommendations based on years of industry experience.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Detailed Comparisons</h3>
+                    <p>Side-by-side comparisons help you choose between similar products with clear pros and cons analysis.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🛒</div>
+                    <h3>Buying Guides</h3>
+                    <p>Comprehensive guides help you understand what to look for and find the best deals on the products you need.</p>
+                </div>
+            </div>
+
+            <div class="newsletter">
+                <h3>Stay Updated with Latest Reviews</h3>
+                <p>Get notified when we publish new reviews and buying guides for the products you're interested in.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#advertise">Advertise</a>
+                <a href="#sitemap">Sitemap</a>
+            </div>
+            <p class="copyright">&copy; 2024 TechReviewBlog. All rights reserved. Independent technology reviews and analysis.</p>
         </div>
-    </section>
+    </footer>
 
     <script>
-        const canvas = document.getElementById('tetrisCanvas');
-        const ctx = canvas.getContext('2d');
-
-        const rows = 20;
-        const cols = 10;
-        const blockSize = 30;
-
-        let board;
-        let currentPiece;
-        let gameInterval;
-
-        const pieceColors = ['#00f0ff', '#00ff99', '#ff00ff', '#ff6600', '#ffff00', '#ff3333', '#66ccff'];
-
-        const pieces = [
-            [[1, 1, 1], [0, 1, 0]],
-            [[1, 1], [1, 1]],
-            [[0, 1, 1], [1, 1, 0]],
-            [[1, 1, 0], [0, 1, 1]],
-            [[1, 1, 1, 1]],
-            [[1, 0], [1, 0], [1, 1]],
-            [[0, 1], [0, 1], [1, 1]]
-        ];
-
-        function startGame() {
-            board = Array.from({ length: rows }, () => Array(cols).fill(0));
-            currentPiece = getRandomPiece();
-            clearInterval(gameInterval);
-            gameInterval = setInterval(updateGame, 500);
-        }
-
-        function getRandomPiece() {
-            const index = Math.floor(Math.random() * pieces.length);
-            const shape = pieces[index];
-            const color = pieceColors[index];
-            return { shape, x: Math.floor(cols / 2) - 1, y: 0, color };
-        }
-
-        function updateGame() {
-            if (!canMove(currentPiece, 0, 1)) {
-                merge(currentPiece);
-                currentPiece = getRandomPiece();
-                if (!canMove(currentPiece, 0, 0)) {
-                    startGame(); // Restart automatically
-                    return;
-                }
-            } else {
-                currentPiece.y++;
-            }
-
-            draw();
-        }
-
-        function merge(piece) {
-            piece.shape.forEach((row, y) =>
-                row.forEach((val, x) => {
-                    if (val) {
-                        board[piece.y + y][piece.x + x] = piece.color;
-                    }
-                })
-            );
-        }
-
-        function canMove(piece, dx, dy) {
-            return piece.shape.every((row, y) =>
-                row.every((val, x) => {
-                    if (!val) return true;
-                    const newX = piece.x + x + dx;
-                    const newY = piece.y + y + dy;
-                    return newX >= 0 && newX < cols && newY < rows && !board[newY][newX];
-                })
-            );
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            for (let y = 0; y < rows; y++) {
-                for (let x = 0; x < cols; x++) {
-                    if (board[y][x]) {
-                        drawBlock(x, y, board[y][x]);
-                    }
-                }
-            }
-
-            currentPiece.shape.forEach((row, y) =>
-                row.forEach((val, x) => {
-                    if (val) {
-                        drawBlock(currentPiece.x + x, currentPiece.y + y, currentPiece.color);
-                    }
-                })
-            );
-        }
-
-        function drawBlock(x, y, color) {
-            ctx.fillStyle = color;
-            ctx.fillRect(x * blockSize, y * blockSize, blockSize - 1, blockSize - 1);
-        }
-
-        document.addEventListener('keydown', e => {
-            if (!currentPiece) return;
-            if (e.key === 'ArrowLeft' && canMove(currentPiece, -1, 0)) currentPiece.x--;
-            else if (e.key === 'ArrowRight' && canMove(currentPiece, 1, 0)) currentPiece.x++;
-            else if (e.key === 'ArrowDown' && canMove(currentPiece, 0, 1)) currentPiece.y++;
-            else if (e.key === 'r') rotatePiece();
-
-            draw();
-        });
-
-        function rotatePiece() {
-            const rotated = currentPiece.shape[0].map((_, i) =>
-                currentPiece.shape.map(row => row[i]).reverse()
-            );
-
-            const testPiece = { ...currentPiece, shape: rotated };
-            if (canMove(testPiece, 0, 0)) {
-                currentPiece.shape = rotated;
-            }
-        }
-
         // Theme toggle functionality
         function toggleTheme() {
             const body = document.body;
@@ -498,6 +652,42 @@
                 document.body.setAttribute('data-theme', 'light');
                 themeIcon.textContent = '☀️';
                 themeText.textContent = 'Light';
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Newsletter form handling
+            document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('.newsletter-input').value;
+                if (email) {
+                    alert('Thank you for subscribing! We\'ll keep you updated with the latest tech reviews.');
+                    this.querySelector('.newsletter-input').value = '';
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 58, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--bg-secondary)';
+                header.style.backdropFilter = 'none';
             }
         });
     </script>
