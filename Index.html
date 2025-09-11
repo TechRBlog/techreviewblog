@@ -1,102 +1,305 @@
-﻿<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechReviewBlog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Orbitron', sans-serif;
-            background-color: #0d0d0d;
+        :root {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #111;
+            --bg-tertiary: #0f0f0f;
+            --bg-card: #222;
+            --text-primary: #fff;
+            --text-secondary: #ccc;
+            --accent: #00f0ff;
+            --accent-hover: #00bccc;
+            --border: #333;
+            --shadow: rgba(0, 240, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --bg-card: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #007bff;
+            --accent-hover: #0056b3;
+            --border: #dee2e6;
+            --shadow: rgba(0, 123, 255, 0.1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            color: #fff;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow);
+            border-color: var(--accent);
         }
 
         .nav-animated {
             text-align: center;
-            padding: 2rem 1rem 1rem;
-            background: #111;
+            padding: 3rem 1rem 2rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            position: relative;
         }
 
-            .nav-animated h1 {
-                font-size: 3rem;
-                color: #00f0ff;
-            }
+        .nav-animated h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), #6c5ce7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-animated p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
 
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            background: #0f0f0f;
-            padding: 1rem 0;
+            gap: 3rem;
+            background: var(--bg-tertiary);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
         }
 
-            .nav-links a {
-                color: #00f0ff;
-                text-decoration: none;
-                font-size: 1.2rem;
-            }
+        .nav-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
 
         .hero {
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 5rem 1rem;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
-            padding: 1rem 2rem;
-            background: #00f0ff;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
             border: none;
-            color: #000;
-            font-weight: bold;
+            color: var(--bg-primary);
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--shadow);
         }
 
         #games {
             display: flex;
-            justify-content: flex-start;
-            padding: 3rem;
-            background: #111;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: var(--bg-secondary);
         }
 
         #game {
-            width: 300px;
-            background-color: #222;
-            border-radius: 12px;
-            padding: 20px;
+            width: 350px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .game-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
         }
 
         .tetris-canvas {
             width: 100%;
             height: auto;
-            background-color: #000;
-            border: 2px solid #00f0ff;
-            border-radius: 8px;
+            background-color: var(--bg-primary);
+            border: 3px solid var(--accent);
+            border-radius: 12px;
             display: block;
+            box-shadow: inset 0 0 20px var(--shadow);
         }
 
         .game-start-btn {
             display: block;
-            margin: 20px auto 0;
-            padding: 10px 20px;
-            background-color: #00f0ff;
-            color: black;
-            font-weight: bold;
-            border-radius: 8px;
+            margin: 25px auto 0;
+            padding: 12px 25px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            font-weight: 600;
+            border: none;
+            border-radius: 25px;
             cursor: pointer;
+            font-size: 1rem;
             text-transform: uppercase;
-            transition: background 0.3s ease;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow);
         }
 
-            .game-start-btn:hover {
-                background-color: #00bccc;
+        .game-start-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-animated h1 {
+                font-size: 2.5rem;
             }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            #games {
+                padding: 2rem 1rem;
+            }
+
+            #game {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <span class="theme-icon">🌙</span>
+        <span class="theme-text">Dark</span>
+    </button>
 
     <div class="nav-animated">
         <h1>TechReviewBlog</h1>
@@ -113,13 +316,34 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Discover the Latest Tech Trends</h1>
-            <p>Honest reviews and insights on today's top tech.</p>
-            <a href="#blog" class="cta-button">Go to Blog</a>
+            <p>Honest reviews and insights on today's top tech products, innovations, and industry developments.</p>
+            <a href="#blog" class="cta-button">Explore Reviews</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <span class="feature-icon">📱</span>
+            <h3>Device Reviews</h3>
+            <p>In-depth analysis of smartphones, laptops, tablets, and emerging tech gadgets with real-world performance testing.</p>
+        </div>
+        
+        <div class="feature-card">
+            <span class="feature-icon">🔬</span>
+            <h3>Tech Analysis</h3>
+            <p>Deep dives into technology trends, industry insights, and predictions for the future of innovation.</p>
+        </div>
+        
+        <div class="feature-card">
+            <span class="feature-icon">⚡</span>
+            <h3>Quick Takes</h3>
+            <p>Fast, focused reviews and first impressions of the latest tech releases and updates.</p>
         </div>
     </section>
 
     <section id="games">
         <div id="game">
+            <div class="game-title">Mini Tetris</div>
             <canvas id="tetrisCanvas" class="tetris-canvas" width="300" height="600"></canvas>
             <button class="game-start-btn" onclick="startGame()">Start Game</button>
         </div>
@@ -244,6 +468,38 @@
                 currentPiece.shape = rotated;
             }
         }
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-icon');
+            const themeText = document.querySelector('.theme-text');
+            
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.querySelector('.theme-icon');
+            const themeText = document.querySelector('.theme-text');
+            
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+            }
+        });
     </script>
 </body>
 </html>
