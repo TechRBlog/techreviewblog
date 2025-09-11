@@ -3,693 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Review Blog - Latest Technology Reviews & Product Comparisons</title>
-    <meta name="description" content="Get expert tech reviews, product comparisons, and buying guides for smartphones, laptops, gadgets, and emerging technology. Honest, in-depth analysis to help you make informed decisions.">
-    <meta name="keywords" content="tech reviews, product reviews, smartphone reviews, laptop reviews, gadget reviews, technology news, tech comparisons, buying guides">
-    <meta name="author" content="Tech Review Blog">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://techrblog.github.io/techreviewblog/">
-    <meta property="og:title" content="Tech Review Blog - Latest Technology Reviews & Product Comparisons">
-    <meta property="og:description" content="Get expert tech reviews, product comparisons, and buying guides for smartphones, laptops, gadgets, and emerging technology.">
-    <meta property="og:image" content="https://techrblog.github.io/techreviewblog/assets/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://techrblog.github.io/techreviewblog/">
-    <meta property="twitter:title" content="Tech Review Blog - Latest Technology Reviews & Product Comparisons">
-    <meta property="twitter:description" content="Get expert tech reviews, product comparisons, and buying guides for smartphones, laptops, gadgets, and emerging technology.">
-    <meta property="twitter:image" content="https://techrblog.github.io/techreviewblog/assets/og-image.jpg">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Tech Review Blog",
-        "url": "https://techrblog.github.io/techreviewblog/",
-        "description": "Expert technology reviews, product comparisons, and buying guides",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://techrblog.github.io/techreviewblog/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
-
-    <link rel="canonical" href="https://techrblog.github.io/techreviewblog/">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-primary: #0f0f23;
-            --bg-secondary: #1a1a3a;
-            --bg-tertiary: #252545;
-            --bg-card: #2a2a4a;
-            --text-primary: #ffffff;
-            --text-secondary: #b8b8d1;
-            --accent: #00d4ff;
-            --accent-hover: #00b8e6;
-            --accent-secondary: #7c3aed;
-            --border: #3a3a5c;
-            --shadow: rgba(0, 212, 255, 0.1);
-            --gradient: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-tertiary: #e9ecef;
-            --bg-card: #ffffff;
-            --text-primary: #1a1a1a;
-            --text-secondary: #6c757d;
-            --accent: #0066cc;
-            --accent-hover: #0052a3;
-            --accent-secondary: #6f42c1;
-            --border: #dee2e6;
-            --shadow: rgba(0, 102, 204, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            border-radius: 50px;
-            padding: 10px 16px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--shadow);
-            border-color: var(--accent);
-        }
-
-        header {
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--accent);
-            background: var(--bg-tertiary);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 15px var(--shadow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px var(--shadow);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .product-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .category-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .category-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px var(--shadow);
-            border-color: var(--accent);
-        }
-
-        .category-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .category-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .category-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .category-cta {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px var(--shadow);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .feature p {
-            color: var(--text-secondary);
-        }
-
-        .newsletter {
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .newsletter h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .newsletter p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 50px;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-
-        .newsletter-input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem 2rem;
-            margin-top: 5rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .copyright {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .theme-toggle {
-                top: 10px;
-                right: 10px;
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-        }
-    </style>
+    <title>TechReviewBlog - The Future of PC Gaming, Today</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <span class="theme-icon">🌙</span>
-        <span class="theme-text">Dark</span>
-    </button>
-
-    <header>
-        <div class="header-content">
-            <a href="#" class="logo">TechReviewBlog</a>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#categories">Categories</a></li>
-                    <li><a href="#guides">Buying Guides</a></li>
-                    <li><a href="#news">Tech News</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-            </nav>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">TechReviewBlog</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="blogs.html" class="nav-link">Blogs</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                </button>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Expert Tech Reviews You Can Trust</h1>
-                <p class="hero-subtitle">Get honest, in-depth reviews and comparisons of the latest smartphones, laptops, gadgets, and emerging technology to make informed purchasing decisions.</p>
-                <div class="cta-buttons">
-                    <a href="#reviews" class="btn btn-primary">Browse Latest Reviews</a>
-                    <a href="#guides" class="btn btn-secondary">Buying Guides</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">The Future of Tech, Today.</h1>
+            <p class="hero-subtitle">Your Definitive Source for Cutting-Edge Technology.</p>
+            <a href="blogs.html" class="cta-button">Explore Tech</a>
+        </div>
+    </section>
+
+    <!-- Main Content with Sidebar -->
+    <section class="main-content-wrapper">
+        <div class="container">
+            <div class="content-sidebar-grid">
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Coming Soon Section -->
+                    <section class="featured-content">
+                        <h2 class="section-title">Coming Soon</h2>
+                        <div class="coming-soon-content">
+                            <div class="coming-soon-message">
+                                <h3>Tech Reviews & Content In Development</h3>
+                                <p>I'm currently working on creating authentic, hands-on reviews and setting up affiliate partnerships to bring you the best tech recommendations. Check back soon for in-depth reviews, buying guides, and the latest tech insights!</p>
+                                <div class="coming-soon-features">
+                                    <div class="feature-item">
+                                        <h4>🎯 In-Depth Reviews</h4>
+                                        <p>Comprehensive testing and honest opinions on the latest tech</p>
+                                    </div>
+                                    <div class="feature-item">
+                                        <h4>💡 Buying Guides</h4>
+                                        <p>Help you choose the perfect tech for your needs and budget</p>
+                                    </div>
+                                    <div class="feature-item">
+                                        <h4>📈 Performance Analysis</h4>
+                                        <p>Real-world testing with benchmarks and practical use cases</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Newest Releases</h3>
+                        <p class="sidebar-subtitle">September 2025</p>
+                        <div class="release-list">
+                            <div class="release-item">
+                                <h4 class="release-name">RTX 6070 Ti Super</h4>
+                                <p class="release-description">NVIDIA's mid-range powerhouse with 16GB GDDR7 and AI-enhanced ray tracing.</p>
+                                <span class="release-date">Sep 28, 2025</span>
+                            </div>
+                            <div class="release-item">
+                                <h4 class="release-name">iPhone 17 Pro Max</h4>
+                                <p class="release-description">Apple's flagship with titanium body, periscope zoom, and A19 Bionic chip.</p>
+                                <span class="release-date">Sep 24, 2025</span>
+                            </div>
+                            <div class="release-item">
+                                <h4 class="release-name">AMD Ryzen 9 8950X</h4>
+                                <p class="release-description">20-core beast built on 3nm process with integrated NPU for AI workloads.</p>
+                                <span class="release-date">Sep 20, 2025</span>
+                            </div>
+                            <div class="release-item">
+                                <h4 class="release-name">Samsung Galaxy S26 Ultra</h4>
+                                <p class="release-description">Revolutionary holographic display with 200MP camera and S Pen Pro.</p>
+                                <span class="release-date">Sep 18, 2025</span>
+                            </div>
+                            <div class="release-item">
+                                <h4 class="release-name">MacBook Pro M5</h4>
+                                <p class="release-description">Next-gen Apple Silicon with 3nm architecture and 64GB unified memory.</p>
+                                <span class="release-date">Sep 15, 2025</span>
+                            </div>
+                            <div class="release-item">
+                                <h4 class="release-name">PlayStation 6 Dev Kit</h4>
+                                <p class="release-description">Early development hardware featuring 8K gaming and neural upscaling.</p>
+                                <span class="release-date">Sep 12, 2025</span>
+                            </div>
+                            <div class="release-item">
+                                <h4 class="release-name">DDR6-8400 Modules</h4>
+                                <p class="release-description">First consumer DDR6 memory with unprecedented speed and efficiency.</p>
+                                <span class="release-date">Sep 8, 2025</span>
+                            </div>
+                            <div class="release-item">
+                                <h4 class="release-name">Meta Quest 4 Pro</h4>
+                                <p class="release-description">Professional VR headset with 8K per eye and haptic feedback suit.</p>
+                                <span class="release-date">Sep 5, 2025</span>
+                            </div>
+                        </div>
+                        <a href="#" class="sidebar-view-all">View All Releases →</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>TechReviewBlog</h3>
                 </div>
             </div>
-        </section>
-
-        <section id="categories" class="section">
-            <h2 class="section-title">Popular Product Categories</h2>
-            <p class="section-subtitle">Explore our comprehensive reviews across all major tech categories</p>
-            
-            <div class="product-categories">
-                <div class="category-card">
-                    <span class="category-icon">📱</span>
-                    <h3>Smartphones</h3>
-                    <p>Latest iPhone, Samsung, Google Pixel, and Android device reviews with camera tests, performance benchmarks, and real-world usage.</p>
-                    <a href="#smartphones" class="category-cta">View Smartphone Reviews →</a>
-                </div>
-
-                <div class="category-card">
-                    <span class="category-icon">💻</span>
-                    <h3>Laptops & Computers</h3>
-                    <p>MacBooks, Windows laptops, gaming PCs, and workstations reviewed for performance, battery life, and value for money.</p>
-                    <a href="#laptops" class="category-cta">View Laptop Reviews →</a>
-                </div>
-
-                <div class="category-card">
-                    <span class="category-icon">🎮</span>
-                    <h3>Gaming & Entertainment</h3>
-                    <p>Gaming consoles, graphics cards, monitors, headphones, and entertainment devices tested by gaming enthusiasts.</p>
-                    <a href="#gaming" class="category-cta">View Gaming Reviews →</a>
-                </div>
-
-                <div class="category-card">
-                    <span class="category-icon">🏠</span>
-                    <h3>Smart Home</h3>
-                    <p>Smart speakers, security cameras, thermostats, and IoT devices reviewed for functionality and privacy.</p>
-                    <a href="#smarthome" class="category-cta">View Smart Home Reviews →</a>
-                </div>
-
-                <div class="category-card">
-                    <span class="category-icon">⌚</span>
-                    <h3>Wearables</h3>
-                    <p>Smartwatches, fitness trackers, earbuds, and health monitoring devices tested for accuracy and usability.</p>
-                    <a href="#wearables" class="category-cta">View Wearable Reviews →</a>
-                </div>
-
-                <div class="category-card">
-                    <span class="category-icon">🚗</span>
-                    <h3>Auto Tech</h3>
-                    <p>Electric vehicles, car tech, dash cams, and automotive gadgets reviewed for innovation and practicality.</p>
-                    <a href="#autotech" class="category-cta">View Auto Tech Reviews →</a>
-                </div>
+            <div class="footer-disclaimer">
+                <p>© 2025 TechReviewBlog. This site contains affiliate links. We may earn a commission from purchases made through these links.</p>
             </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Why Choose TechReviewBlog?</h2>
-            <p class="section-subtitle">Our commitment to honest, thorough, and unbiased technology reviews</p>
-            
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🔬</div>
-                    <h3>In-Depth Testing</h3>
-                    <p>We thoroughly test every product with real-world scenarios, benchmarks, and long-term usage to give you the complete picture.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Unbiased Reviews</h3>
-                    <p>Our reviews are completely independent with no affiliate influence on our ratings. We tell you what we really think.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Latest Updates</h3>
-                    <p>Stay current with the newest tech releases, software updates, and industry trends as they happen.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">💡</div>
-                    <h3>Expert Analysis</h3>
-                    <p>Our team of tech experts provides professional insights and recommendations based on years of industry experience.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">📊</div>
-                    <h3>Detailed Comparisons</h3>
-                    <p>Side-by-side comparisons help you choose between similar products with clear pros and cons analysis.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🛒</div>
-                    <h3>Buying Guides</h3>
-                    <p>Comprehensive guides help you understand what to look for and find the best deals on the products you need.</p>
-                </div>
-            </div>
-
-            <div class="newsletter">
-                <h3>Stay Updated with Latest Reviews</h3>
-                <p>Get notified when we publish new reviews and buying guides for the products you're interested in.</p>
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#privacy">Privacy Policy</a>
-                <a href="#terms">Terms of Service</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#advertise">Advertise</a>
-                <a href="#sitemap">Sitemap</a>
-            </div>
-            <p class="copyright">&copy; 2024 TechReviewBlog. All rights reserved. Independent technology reviews and analysis.</p>
         </div>
     </footer>
 
-    <script>
-        // Theme toggle functionality
-        function toggleTheme() {
-            const body = document.body;
-            const themeIcon = document.querySelector('.theme-icon');
-            const themeText = document.querySelector('.theme-text');
-            
-            if (body.getAttribute('data-theme') === 'light') {
-                body.removeAttribute('data-theme');
-                themeIcon.textContent = '🌙';
-                themeText.textContent = 'Dark';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.setAttribute('data-theme', 'light');
-                themeIcon.textContent = '☀️';
-                themeText.textContent = 'Light';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        // Load saved theme on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme');
-            const themeIcon = document.querySelector('.theme-icon');
-            const themeText = document.querySelector('.theme-text');
-            
-            if (savedTheme === 'light') {
-                document.body.setAttribute('data-theme', 'light');
-                themeIcon.textContent = '☀️';
-                themeText.textContent = 'Light';
-            }
-
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Newsletter form handling
-            document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('.newsletter-input').value;
-                if (email) {
-                    alert('Thank you for subscribing! We\'ll keep you updated with the latest tech reviews.');
-                    this.querySelector('.newsletter-input').value = '';
-                }
-            });
-        });
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(26, 26, 58, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'var(--bg-secondary)';
-                header.style.backdropFilter = 'none';
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
