@@ -354,8 +354,9 @@ body.light-mode .about-subtitle {
 }
 
 body.light-mode .about-intro,
-body.light-mode .about-section p {
-    color: #374151;
+body.light-mode .about-section p,
+body.light-mode .about-list li {
+    color: #1f2937;
 }
 
 body.light-mode .about-content {
@@ -401,8 +402,10 @@ body.light-mode .info-title {
     color: #1e40af;
 }
 
-body.light-mode .form-description {
-    color: #374151;
+body.light-mode .form-description,
+body.light-mode .response-times li,
+body.light-mode .business-info p {
+    color: #1f2937;
 }
 
 body.light-mode .contact-form,
@@ -681,74 +684,74 @@ body.light-mode .blog-image img {
 }
 
 /* Mobile responsiveness for visitor counter */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .visitor-counter {
-        left: -220px;
-        top: 8px;
-        padding: 10px 14px;
-        font-size: 14px;
-        border-radius: 12px;
+        left: -220px !important;
+        top: 8px !important;
+        padding: 10px 14px !important;
+        font-size: 14px !important;
+        border-radius: 12px !important;
     }
 
     .visitor-counter .label {
-        font-size: 10px;
-        margin-bottom: 4px;
-        letter-spacing: 0.5px;
+        font-size: 10px !important;
+        margin-bottom: 4px !important;
+        letter-spacing: 0.5px !important;
     }
 
     .visitor-counter .count {
-        font-size: 18px;
+        font-size: 18px !important;
     }
 
     /* Tablet-sized product link buttons */
     .product-link {
-        padding: 14px 22px;
-        font-size: 1.05rem;
-        min-height: 46px;
-        border-radius: 22px;
-        box-shadow: 0 5px 14px rgba(0, 255, 136, 0.45);
-        font-weight: 750;
+        padding: 14px 22px !important;
+        font-size: 1.05rem !important;
+        min-height: 46px !important;
+        border-radius: 22px !important;
+        box-shadow: 0 5px 14px rgba(0, 255, 136, 0.45) !important;
+        font-weight: 750 !important;
     }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .visitor-counter {
-        left: -180px;
-        top: 5px;
-        padding: 8px 12px;
-        font-size: 12px;
-        border-radius: 10px;
+        left: -180px !important;
+        top: 5px !important;
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        border-radius: 10px !important;
     }
 
     .visitor-counter .label {
-        font-size: 9px;
-        margin-bottom: 3px;
+        font-size: 9px !important;
+        margin-bottom: 3px !important;
     }
 
     .visitor-counter .count {
-        font-size: 16px;
+        font-size: 16px !important;
     }
 
     /* Enhanced mobile product link buttons */
     .product-link {
-        padding: 16px 24px;
-        font-size: 1.1rem;
-        min-height: 48px;
-        border-radius: 24px;
-        box-shadow: 0 6px 16px rgba(0, 255, 136, 0.5);
-        font-weight: 800;
-        z-index: 50;
-        position: relative;
-        margin-top: 8px;
+        padding: 16px 24px !important;
+        font-size: 1.1rem !important;
+        min-height: 48px !important;
+        border-radius: 24px !important;
+        box-shadow: 0 6px 16px rgba(0, 255, 136, 0.5) !important;
+        font-weight: 800 !important;
+        z-index: 50 !important;
+        position: relative !important;
+        margin-top: 8px !important;
     }
 
     .product-link:active {
-        transform: translateY(1px);
-        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.6);
+        transform: translateY(1px) !important;
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.6) !important;
     }
 
     .product-link:hover {
-        transform: translateY(-1px);
+        transform: translateY(-1px) !important;
     }
 }
 
@@ -2066,6 +2069,23 @@ body.light-mode .cta-text a:hover {
     color: #059669;
 }
 
+/* Light Mode - Comprehensive Text Color Overrides */
+body.light-mode .hero-subtitle,
+body.light-mode .card-summary,
+body.light-mode .blog-excerpt,
+body.light-mode .feature-item p,
+body.light-mode .preview-item p,
+body.light-mode .timeline li,
+body.light-mode .cta-text,
+body.light-mode .method-content p,
+body.light-mode .method-content small {
+    color: #1f2937 !important;
+}
+
+body.light-mode .method-content small {
+    color: #6b7280 !important;
+}
+
 /* Light Mode - Professional Blog Post Styles */
 body.light-mode {
     background-color: #f8fafc;
@@ -2414,15 +2434,15 @@ body.light-mode .nav-link::after {
     }
 }
 
-/* Mobile (768px and below) */
-@media (max-width: 768px) {
+/* Mobile (768px and below) - Updated for mobile device compatibility */
+@media screen and (max-width: 768px) {
     .nav-toggle {
-        display: flex;
+        display: flex !important;
     }
 
     .hero {
-        min-height: 70vh;
-        padding: 100px 0 30px;
+        min-height: 70vh !important;
+        padding: 100px 0 30px !important;
     }
 
     .hero-title {
@@ -2539,13 +2559,13 @@ body.light-mode .nav-link::after {
     }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .hero {
-        padding: 120px 0 30px;
+        padding: 120px 0 30px !important;
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: 2rem !important;
     }
 
     .featured-grid {
@@ -3172,26 +3192,26 @@ body.light-mode .nav-link::after {
 }
 
 /* Mobile navigation styles */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .nav-menu {
-        position: fixed;
-        top: 70px;
-        right: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background-color: rgba(0, 0, 0, 0.98);
-        backdrop-filter: blur(15px);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding-top: 50px;
-        transition: right 0.3s ease;
-        z-index: 999;
+        position: fixed !important;
+        top: 70px !important;
+        right: -100% !important;
+        width: 100% !important;
+        height: calc(100vh - 70px) !important;
+        background-color: rgba(0, 0, 0, 0.98) !important;
+        backdrop-filter: blur(15px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding-top: 50px !important;
+        transition: right 0.3s ease !important;
+        z-index: 999 !important;
     }
 
     .nav-menu.active {
-        right: 0;
+        right: 0 !important;
     }
     
     .nav-menu .nav-link {
