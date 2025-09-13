@@ -424,10 +424,8 @@ function shareOnReddit() {
 function initTechCarousel() {
     const carousel = document.getElementById('techCarousel');
     const track = document.getElementById('carouselTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    
-    if (!carousel || !track || !prevBtn || !nextBtn) return;
+
+    if (!carousel || !track) return;
     
     // Carousel state
     let translateX = 0;
@@ -617,9 +615,7 @@ function initTechCarousel() {
         }, 1200);
     };
     
-    // Event listeners
-    nextBtn.addEventListener('click', () => speedBoost('next'));
-    prevBtn.addEventListener('click', () => speedBoost('prev'));
+    // Event listeners (buttons removed - carousel auto-scrolls)
     
     // Mouse drag events
     track.addEventListener('mousedown', handleDragStart);

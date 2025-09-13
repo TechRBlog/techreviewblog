@@ -2405,7 +2405,7 @@ body.light-mode .nav-link::after {
     }
 
     .hero-subtitle {
-        font-size: 1.3rem;
+        font-size: 1.1rem !important;
         margin-bottom: 0.4rem;
     }
 
@@ -2451,7 +2451,7 @@ body.light-mode .nav-link::after {
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem !important;
         margin-bottom: 0.3rem;
     }
 
@@ -3386,39 +3386,25 @@ body.light-mode .nav-link::after {
     background: linear-gradient(135deg, #00ffff 0%, #00ff88 100%);
 }
 
-/* Hero Carousel Navigation */
-.hero-carousel-nav {
+/* Carousel Instructions */
+.carousel-instructions {
     display: flex;
     justify-content: center;
-    gap: 15px;
     margin-top: 15px;
 }
 
-.hero-carousel-btn {
-    width: 35px;
-    height: 35px;
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    background: rgba(17, 34, 64, 0.6);
-    color: #00ff88;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(6px);
-}
-
-.hero-carousel-btn:hover {
-    background: rgba(0, 255, 136, 0.1);
-    border-color: #00ff88;
-    transform: scale(1.1);
-    box-shadow: 0 3px 12px rgba(0, 255, 136, 0.3);
-}
-
-.hero-carousel-btn:active {
-    transform: scale(0.95);
+.carousel-instructions p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    backdrop-filter: blur(10px);
+    user-select: none;
+    text-align: center;
 }
 
 /* Auto-scroll animation indicator */
@@ -3527,15 +3513,16 @@ body.light-mode .nav-link::after {
         margin-top: 25px;
     }
     
-    .carousel-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-    }
 
     /* Mobile carousel performance optimizations */
     .hero-carousel-track {
         will-change: auto !important;
+    }
+
+    /* Mobile instruction text */
+    .carousel-instructions p {
+        font-size: 0.8rem !important;
+        padding: 6px 12px !important;
     }
 }
 
@@ -3559,6 +3546,12 @@ body.light-mode .nav-link::after {
 
     .hero-carousel-track {
         transition: none;
+    }
+
+    /* Smaller instruction text for mobile */
+    .carousel-instructions p {
+        font-size: 0.75rem !important;
+        padding: 5px 10px !important;
     }
     
     .product-content {
@@ -3639,13 +3632,10 @@ body.light-mode .product-badge {
     color: #ffffff;
 }
 
-body.light-mode .carousel-btn {
-    border: 2px solid rgba(59, 130, 246, 0.3);
-    background: rgba(255, 255, 255, 0.8);
-    color: #059669;
+/* Light mode instruction text */
+body.light-mode .carousel-instructions p {
+    color: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
-body.light-mode .carousel-btn:hover {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: #059669;
-}
