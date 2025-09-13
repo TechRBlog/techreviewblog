@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:techrblog.github.io)"
+      "WebFetch(domain:techrblog.github.io)",
+      "Bash(git config:*)"
     ],
     "deny": [],
     "ask": []
