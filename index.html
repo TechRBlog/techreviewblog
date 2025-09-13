@@ -73,7 +73,10 @@
         <div class="hero-content">
             <h1 class="hero-title">The Future of Tech, Today.</h1>
             <p class="hero-subtitle">Your Definitive Source for Cutting-Edge Technology.</p>
-            
+
+            <!-- Trending Products Section -->
+            <h2 class="trending-title">Trending Products!</h2>
+
             <!-- Compact Tech Carousel -->
             <div class="hero-carousel-wrapper">
                 <div class="hero-carousel-container" id="techCarousel">
@@ -82,7 +85,7 @@
                         <!-- Product Card 1 - RTX 5060 Ti -->
                         <article class="tech-product-card" itemscope itemtype="https://schema.org/Product">
                             <div class="product-image-wrapper">
-                                <img src="assets/rtx50.png" alt="GIGABYTE GeForce RTX 5060 Ti WINDFORCE MAX OC 16G" class="product-image" loading="lazy" itemprop="image">
+                                <img src="assets/5060ti.webp" alt="GIGABYTE GeForce RTX 5060 Ti WINDFORCE MAX OC 16G" class="product-image" loading="lazy" itemprop="image">
                                 <span class="product-badge">Best Value</span>
                             </div>
                             <div class="product-content">
@@ -95,7 +98,7 @@
                         <!-- Product Card 2 - RTX 5070 -->
                         <article class="tech-product-card" itemscope itemtype="https://schema.org/Product">
                             <div class="product-image-wrapper">
-                                <img src="assets/rtx50.png" alt="GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF 12G" class="product-image" loading="lazy" itemprop="image">
+                                <img src="assets/5070.webp" alt="GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF 12G" class="product-image" loading="lazy" itemprop="image">
                                 <span class="product-badge">1440p</span>
                             </div>
                             <div class="product-content">
@@ -108,7 +111,7 @@
                         <!-- Product Card 3 - RTX 5070 Ti -->
                         <article class="tech-product-card" itemscope itemtype="https://schema.org/Product">
                             <div class="product-image-wrapper">
-                                <img src="assets/rtx50.png" alt="GIGABYTE GeForce RTX 5070 Ti WINDFORCE OC SFF 16G" class="product-image" loading="lazy" itemprop="image">
+                                <img src="assets/5070ti.jpg" alt="GIGABYTE GeForce RTX 5070 Ti WINDFORCE OC SFF 16G" class="product-image" loading="lazy" itemprop="image">
                                 <span class="product-badge">Popular</span>
                             </div>
                             <div class="product-content">
@@ -121,7 +124,7 @@
                         <!-- Product Card 4 - RTX 5080 -->
                         <article class="tech-product-card" itemscope itemtype="https://schema.org/Product">
                             <div class="product-image-wrapper">
-                                <img src="assets/rtx50.png" alt="GIGABYTE GeForce RTX 5080 Gaming OC 16G" class="product-image" loading="lazy" itemprop="image">
+                                <img src="assets/5080.webp" alt="GIGABYTE GeForce RTX 5080 Gaming OC 16G" class="product-image" loading="lazy" itemprop="image">
                                 <span class="product-badge">4K Gaming</span>
                             </div>
                             <div class="product-content">
@@ -134,7 +137,7 @@
                         <!-- Product Card 5 - RTX 5090 -->
                         <article class="tech-product-card" itemscope itemtype="https://schema.org/Product">
                             <div class="product-image-wrapper">
-                                <img src="assets/rtx50.png" alt="MSI Gaming RTX 5090 32G Gaming Trio OC" class="product-image" loading="lazy" itemprop="image">
+                                <img src="assets/5090.webp" alt="MSI Gaming RTX 5090 32G Gaming Trio OC" class="product-image" loading="lazy" itemprop="image">
                                 <span class="product-badge">Flagship</span>
                             </div>
                             <div class="product-content">
@@ -166,28 +169,21 @@
                         <div class="door"></div>
                         <div class="window"></div>
                         <div class="window"></div>
-                        <div class="store-sign">PC STORE</div>
+                        <div class="store-sign">TECHREVIEWBLOG</div>
                     </div>
                 </div>
-                
-                <!-- Mario-style Platforms -->
-                <div class="platform platform-1"></div>
-                <div class="platform platform-2"></div>
-                <div class="platform platform-3"></div>
-                <div class="platform platform-4"></div>
-                <div class="platform platform-5"></div>
-                <div class="platform platform-6"></div>
-                <div class="platform platform-7"></div>
-                
-                <div class="stick-figure" id="stickFigure">
-                    <div class="head"></div>
-                    <div class="body"></div>
-                    <div class="arm left-arm"></div>
-                    <div class="arm right-arm"></div>
-                    <div class="leg left-leg"></div>
-                    <div class="leg right-leg"></div>
+
+                <!-- Website Visitor Counter -->
+                <div class="visitor-counter">
+                    <span class="label">Live Visitors</span>
+                    <span class="count" id="visitorCount">1</span>
                 </div>
-                <div class="pc-box" id="pcBox">PC</div>
+
+                <!-- Ground line for stick figures to walk on -->
+                <div class="ground-line"></div>
+
+                <!-- Random stick figures - will be populated by JavaScript -->
+                <div id="stickFigureContainer"></div>
             </div>
         </div>
     </section>

@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:techrblog.github.io)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "WebFetch(domain:techreviewblog.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

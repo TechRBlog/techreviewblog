@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initThemeToggle();
     initTechCarousel();
     initBlogsScrollAnimation();
+    // initStickFigureAnimation(); // Disabled - now controlled by visitor counter
+    initVisitorCounter();
 });
 
 // Scroll Animations using Intersection Observer
@@ -726,4 +728,310 @@ function initBlogsScrollAnimation() {
     handleBlogsScroll();
     
     console.log('Blogs scroll animation initialized');
+}
+
+// ===== STICK FIGURE ANIMATION SYSTEM =====
+function initStickFigureAnimation() {
+    const container = document.getElementById('stickFigureContainer');
+    if (!container) return;
+
+    let activeFigures = 0;
+    const maxFigures = 10;
+    let figureCounter = 0;
+
+    // Animation types weighted toward entering store (slower, no standing)
+    const animationTypes = [
+        {
+            name: 'walkToStore',
+            duration: 18000,
+            weight: 40 // High chance to walk to store
+        },
+        {
+            name: 'walkToStore',
+            duration: 20000,
+            weight: 30 // Another chance for walkToStore (different timing)
+        },
+        {
+            name: 'exitLeft',
+            duration: 12000,
+            weight: 15 // Lower chance to just exit
+        },
+        {
+            name: 'exitRight',
+            duration: 12000,
+            weight: 15 // Lower chance to just exit
+        }
+    ];
+
+    function createStickFigure() {
+        if (activeFigures >= maxFigures) return;
+
+        const figure = document.createElement('div');
+        figure.className = 'stick-figure';
+        figure.id = `stick-figure-${figureCounter++}`;
+
+        // Create stick figure body parts
+        figure.innerHTML = `
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arm left-arm"></div>
+            <div class="arm right-arm"></div>
+            <div class="leg left-leg"></div>
+            <div class="leg right-leg"></div>
+        `;
+
+        // Weighted random animation selection
+        const totalWeight = animationTypes.reduce((sum, type) => sum + type.weight, 0);
+        let randomValue = Math.random() * totalWeight;
+        let selectedType = animationTypes[0];
+
+        for (const type of animationTypes) {
+            randomValue -= type.weight;
+            if (randomValue <= 0) {
+                selectedType = type;
+                break;
+            }
+        }
+
+        const startDirection = Math.random() > 0.5 ? 'left' : 'right';
+
+        // Set initial position based on animation type and direction (prevent center spawning)
+        if (selectedType.name === 'walkToStore' && startDirection === 'left') {
+            figure.style.left = '-60px';
+            figure.style.top = '150px';
+        } else if (selectedType.name === 'walkToStore' && startDirection === 'right') {
+            figure.style.right = '-60px';
+            figure.style.top = '150px';
+            figure.style.left = 'auto';
+        } else if (selectedType.name.includes('exit') && startDirection === 'left') {
+            figure.style.left = '400px';
+            figure.style.top = '150px';
+        } else if (selectedType.name.includes('exit') && startDirection === 'right') {
+            figure.style.right = '400px';
+            figure.style.top = '150px';
+            figure.style.left = 'auto';
+        }
+
+        // Make figure initially invisible to prevent flash
+        figure.style.opacity = '0';
+
+        // Apply animation with slower, more varied timing
+        figure.style.animationName = `${selectedType.name}_${startDirection}`;
+        figure.style.animationDuration = `${selectedType.duration + Math.random() * 8000}ms`;
+        figure.style.animationTimingFunction = 'linear';
+        figure.style.animationIterationCount = '1';
+        figure.style.animationFillMode = 'forwards';
+
+        container.appendChild(figure);
+        activeFigures++;
+
+        // Remove figure when animation completes
+        const totalDuration = selectedType.duration + Math.random() * 8000;
+        setTimeout(() => {
+            if (figure && figure.parentNode) {
+                figure.parentNode.removeChild(figure);
+                activeFigures--;
+            }
+        }, totalDuration + 2000);
+    }
+
+    function generateRandomFigures() {
+        // Random interval between 2-8 seconds
+        const nextInterval = 2000 + Math.random() * 6000;
+
+        // Sometimes create multiple people at once
+        const numPeople = Math.random() > 0.7 ? 2 : 1;
+
+        for (let i = 0; i < numPeople && activeFigures < maxFigures; i++) {
+            setTimeout(() => createStickFigure(), i * 1000);
+        }
+
+        setTimeout(generateRandomFigures, nextInterval);
+    }
+
+    // Start the system
+    generateRandomFigures();
+    console.log('Stick figure animation system initialized');
+}
+
+// ===== WEBSITE VISITOR COUNTER =====
+function initVisitorCounter() {
+    const counterElement = document.getElementById('visitorCount');
+    if (!counterElement) return;
+
+    let currentVisitorCount = 1;
+
+    // Weighted random number generator (1-10 common, 11-30 uncommon, 31-50 rare)
+    function getWeightedRandomVisitors() {
+        const random = Math.random() * 100;
+
+        if (random < 70) {
+            // 70% chance: 1-10 visitors (most common)
+            return Math.floor(Math.random() * 10) + 1;
+        } else if (random < 90) {
+            // 20% chance: 11-30 visitors (uncommon)
+            return Math.floor(Math.random() * 20) + 11;
+        } else {
+            // 10% chance: 31-50 visitors (rare)
+            return Math.floor(Math.random() * 20) + 31;
+        }
+    }
+
+    // Function to spawn people when count increases
+    function spawnPeopleEntering(count) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                // Force walkToStore animation (people entering)
+                const container = document.getElementById('stickFigureContainer');
+                if (!container) return;
+
+                const figure = document.createElement('div');
+                figure.className = 'stick-figure';
+                figure.innerHTML = `
+                    <div class="head"></div>
+                    <div class="body"></div>
+                    <div class="arm left-arm"></div>
+                    <div class="arm right-arm"></div>
+                    <div class="leg left-leg"></div>
+                    <div class="leg right-leg"></div>
+                `;
+
+                const startDirection = Math.random() > 0.5 ? 'left' : 'right';
+
+                // Set initial position for entering people
+                if (startDirection === 'left') {
+                    figure.style.left = '-60px';
+                    figure.style.top = '150px';
+                } else {
+                    figure.style.right = '-60px';
+                    figure.style.top = '150px';
+                    figure.style.left = 'auto';
+                }
+
+                figure.style.opacity = '0';
+                figure.style.animationName = `walkToStore_${startDirection}`;
+                figure.style.animationDuration = `${18000 + Math.random() * 8000}ms`;
+                figure.style.animationTimingFunction = 'linear';
+                figure.style.animationIterationCount = '1';
+                figure.style.animationFillMode = 'forwards';
+
+                container.appendChild(figure);
+
+                // Remove after animation
+                setTimeout(() => {
+                    if (figure && figure.parentNode) {
+                        figure.parentNode.removeChild(figure);
+                    }
+                }, 28000);
+
+            }, i * 500); // Stagger spawning
+        }
+    }
+
+    // Function to spawn people leaving when count decreases
+    function spawnPeopleLeaving(count) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                // Force exit animation (people leaving)
+                const container = document.getElementById('stickFigureContainer');
+                if (!container) return;
+
+                const figure = document.createElement('div');
+                figure.className = 'stick-figure';
+                figure.innerHTML = `
+                    <div class="head"></div>
+                    <div class="body"></div>
+                    <div class="arm left-arm"></div>
+                    <div class="arm right-arm"></div>
+                    <div class="leg left-leg"></div>
+                    <div class="leg right-leg"></div>
+                `;
+
+                const exitDirection = Math.random() > 0.5 ? 'left' : 'right';
+
+                // Set initial position for exiting people (start from store)
+                if (exitDirection === 'left') {
+                    figure.style.left = '400px';
+                    figure.style.top = '150px';
+                } else {
+                    figure.style.right = '400px';
+                    figure.style.top = '150px';
+                    figure.style.left = 'auto';
+                }
+
+                figure.style.opacity = '0';
+                figure.style.animationName = `exit${exitDirection === 'left' ? 'Left' : 'Right'}_${exitDirection}`;
+                figure.style.animationDuration = `${12000 + Math.random() * 5000}ms`;
+                figure.style.animationTimingFunction = 'linear';
+                figure.style.animationIterationCount = '1';
+                figure.style.animationFillMode = 'forwards';
+
+                container.appendChild(figure);
+
+                // Remove after animation
+                setTimeout(() => {
+                    if (figure && figure.parentNode) {
+                        figure.parentNode.removeChild(figure);
+                    }
+                }, 18000);
+
+            }, i * 300); // Stagger spawning
+        }
+    }
+
+    function updateVisitorCount() {
+        const previousCount = currentVisitorCount;
+
+        // Only change by 1-3 visitors at a time
+        const change = Math.floor(Math.random() * 3) + 1; // 1, 2, or 3
+        const goUp = Math.random() > 0.3; // 70% chance to go up, 30% to go down
+
+        let newCount;
+        if (goUp) {
+            newCount = currentVisitorCount + change;
+            // Cap at reasonable maximum, allow higher numbers
+            if (newCount > 15) newCount = Math.max(1, currentVisitorCount - change);
+        } else {
+            newCount = currentVisitorCount - change;
+            // Don't go below 1
+            if (newCount < 1) newCount = currentVisitorCount + change;
+        }
+
+        currentVisitorCount = newCount;
+        counterElement.textContent = newCount;
+
+        // Add a subtle animation when count changes
+        counterElement.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            counterElement.style.transform = 'scale(1)';
+        }, 200);
+
+        // Spawn people based on count change
+        const countDifference = newCount - previousCount;
+
+        if (countDifference > 0) {
+            // Count increased - spawn people entering
+            const peopleToSpawn = Math.min(countDifference, 3); // Max 3 at once
+            spawnPeopleEntering(peopleToSpawn);
+        } else if (countDifference < 0) {
+            // Count decreased - spawn people leaving
+            const peopleToSpawn = Math.min(Math.abs(countDifference), 2); // Max 2 leaving at once
+            spawnPeopleLeaving(peopleToSpawn);
+        }
+    }
+
+    // Set initial count
+    counterElement.textContent = currentVisitorCount;
+
+    // Update counter every 4-8 seconds randomly (much more active)
+    function scheduleNextUpdate() {
+        const nextUpdate = 4000 + Math.random() * 4000;
+        setTimeout(() => {
+            updateVisitorCount();
+            scheduleNextUpdate();
+        }, nextUpdate);
+    }
+
+    scheduleNextUpdate();
+    console.log('Visitor counter with synced people spawning initialized');
 }
