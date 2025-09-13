@@ -518,6 +518,11 @@ function initTechCarousel() {
     
     // Drag functionality - move cards during drag, then resume auto-scroll
     const handleDragStart = (e) => {
+        // Don't prevent default if the target is a product link or inside one
+        if (e.target.closest('.product-link')) {
+            return;
+        }
+
         isDragging = true;
         dragStartX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
         dragStartTranslateX = translateX;
@@ -529,6 +534,12 @@ function initTechCarousel() {
     
     const handleDragMove = (e) => {
         if (!isDragging) return;
+
+        // Don't prevent default if the target is a product link
+        if (e.target.closest('.product-link')) {
+            return;
+        }
+
         e.preventDefault();
         
         const currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
