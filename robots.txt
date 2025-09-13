@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://techreviewblog.com/sitemap.xml
+
+# Allow search engines to index all pages
+Allow: /index.html
+Allow: /blogs.html
+Allow: /rtx-50-series-review.html
+Allow: /about.html
+Allow: /contact.html
+
+# Allow indexing of assets
+Allow: /assets/
+Allow: /style.css
+Allow: /script.js
+
+# Crawl delay (optional, be considerate)
+Crawl-delay: 1
+
+# Specific directives for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block any unwanted paths (none currently)
+# Disallow: /private/

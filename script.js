@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initSmoothScrolling();
     initThemeToggle();
+    initTechCarousel();
+    initBlogsScrollAnimation();
 });
 
 // Scroll Animations using Intersection Observer
@@ -414,4 +416,314 @@ function shareOnReddit() {
     const redditUrl = `https://www.reddit.com/submit?title=${shareTitle}&url=${shareUrl}`;
     window.open(redditUrl, '_blank', 'width=600,height=500,scrollbars=yes,resizable=yes');
     return false;
+}
+
+// ===== HERO CAROUSEL FUNCTIONALITY =====
+function initTechCarousel() {
+    const carousel = document.getElementById('techCarousel');
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (!carousel || !track || !prevBtn || !nextBtn) return;
+    
+    // Carousel state
+    let translateX = 0;
+    let baseSpeed = 0.15;
+    let currentSpeed = baseSpeed;
+    let targetSpeed = baseSpeed;
+    let animationId = null;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartTranslateX = 0;
+    let dragVelocity = 0;
+    let lastDragTime = 0;
+    
+    // Get original cards from HTML (5 GPU cards)
+    const getOriginalCards = () => {
+        const allCards = Array.from(track.querySelectorAll('.tech-product-card'));
+        // Take first 5 cards (our GPU cards)
+        return allCards.slice(0, 5);
+    };
+    
+    // Get card width with margins
+    const getCardWidth = () => {
+        const card = track.querySelector('.tech-product-card');
+        if (!card) return 360;
+        const styles = window.getComputedStyle(card);
+        return card.offsetWidth + parseInt(styles.marginLeft) + parseInt(styles.marginRight);
+    };
+    
+    // Create seamless infinite track
+    const createInfiniteTrack = () => {
+        const originalCards = getOriginalCards();
+        const cardWidth = getCardWidth();
+        const screenWidth = window.innerWidth;
+        
+        // Calculate how many complete sets we need to fill screen + buffer
+        const cardsPerScreen = Math.ceil(screenWidth / cardWidth);
+        const totalSetsNeeded = Math.ceil(cardsPerScreen / originalCards.length) + 3; // Extra buffer
+        
+        // Clear and rebuild track
+        track.innerHTML = '';
+        
+        // Add multiple complete sets for seamless scrolling
+        for (let set = 0; set < totalSetsNeeded; set++) {
+            for (let i = 0; i < originalCards.length; i++) {
+                const clonedCard = originalCards[i].cloneNode(true);
+                track.appendChild(clonedCard);
+            }
+        }
+        
+        return originalCards.length * cardWidth; // Width of one complete set
+    };
+    
+    let oneSetWidth = 0;
+    
+    // Continuous infinite loop animation with smooth transitions
+    const infiniteLoop = () => {
+        if (!isDragging) {
+            // Only use targetSpeed transitions when not manually adjusting currentSpeed
+            const speedDiff = targetSpeed - currentSpeed;
+            if (Math.abs(speedDiff) > 0.001 && targetSpeed === baseSpeed) {
+                currentSpeed += speedDiff * 0.06; // Slower, smoother transitions
+            } else if (targetSpeed !== baseSpeed) {
+                // For navigation button speed changes, use targetSpeed directly
+                currentSpeed = targetSpeed;
+            }
+            
+            // Move continuously to the left
+            translateX -= currentSpeed;
+        }
+        
+        // Seamless loop: when we've scrolled one complete set, jump back invisibly
+        if (translateX <= -oneSetWidth) {
+            translateX += oneSetWidth; // Jump forward by one set width
+        }
+        
+        // Apply transform
+        track.style.transform = `translateX(${translateX}px)`;
+        
+        // Continue animation
+        animationId = requestAnimationFrame(infiniteLoop);
+    };
+    
+    // Start the infinite carousel
+    const startCarousel = () => {
+        if (animationId) cancelAnimationFrame(animationId);
+        infiniteLoop();
+    };
+    
+    // Drag functionality - move cards during drag, then resume auto-scroll
+    const handleDragStart = (e) => {
+        isDragging = true;
+        dragStartX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+        dragStartTranslateX = translateX;
+        dragVelocity = 0;
+        lastDragTime = Date.now();
+        track.style.cursor = 'grabbing';
+        e.preventDefault();
+    };
+    
+    const handleDragMove = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        const currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+        const deltaX = currentX - dragStartX;
+        const currentTime = Date.now();
+        
+        // Calculate velocity for momentum
+        if (currentTime - lastDragTime > 0) {
+            dragVelocity = deltaX / (currentTime - lastDragTime);
+        }
+        lastDragTime = currentTime;
+        
+        // Move the carousel by the drag amount
+        translateX = dragStartTranslateX + deltaX;
+        
+        // Keep within bounds using the same loop logic
+        if (translateX <= -oneSetWidth) {
+            translateX += oneSetWidth;
+            dragStartTranslateX += oneSetWidth; // Adjust start position too
+        } else if (translateX > 0) {
+            translateX -= oneSetWidth;
+            dragStartTranslateX -= oneSetWidth; // Adjust start position too
+        }
+    };
+    
+    const handleDragEnd = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        track.style.cursor = 'grab';
+        
+        // Calculate momentum from drag velocity
+        const momentum = dragVelocity * 150; // Momentum multiplier
+        
+        if (Math.abs(momentum) > 3) {
+            // Apply momentum smoothly
+            const momentumSpeed = Math.max(0.05, Math.min(Math.abs(momentum) * 0.008, 2));
+            if (momentum > 0) {
+                // Dragged right, slow down with momentum
+                currentSpeed = Math.max(0.05, baseSpeed - momentumSpeed * 0.4);
+            } else {
+                // Dragged left, speed up with momentum
+                currentSpeed = baseSpeed + momentumSpeed;
+            }
+            
+            // Gradually transition back to base speed over time
+            const smoothReturnToBase = () => {
+                const speedDiff = baseSpeed - currentSpeed;
+                const returnRate = 0.02; // Slow, smooth return rate
+                
+                if (Math.abs(speedDiff) > 0.005) {
+                    currentSpeed += speedDiff * returnRate;
+                    setTimeout(smoothReturnToBase, 16); // ~60fps
+                } else {
+                    currentSpeed = baseSpeed;
+                    targetSpeed = baseSpeed;
+                }
+            };
+            
+            // Start smooth return after brief momentum period
+            setTimeout(smoothReturnToBase, 500);
+        } else {
+            // No significant momentum, smoothly return to base speed
+            targetSpeed = baseSpeed;
+        }
+    };
+    
+    // Navigation buttons add smooth temporary speed boost
+    const speedBoost = (direction) => {
+        const boostAmount = direction === 'next' ? 1.5 : -0.3;
+        targetSpeed = Math.max(0.05, baseSpeed + boostAmount);
+        
+        // Return to base speed smoothly after 1.2 seconds
+        setTimeout(() => {
+            targetSpeed = baseSpeed;
+        }, 1200);
+    };
+    
+    // Event listeners
+    nextBtn.addEventListener('click', () => speedBoost('next'));
+    prevBtn.addEventListener('click', () => speedBoost('prev'));
+    
+    // Mouse drag events
+    track.addEventListener('mousedown', handleDragStart);
+    document.addEventListener('mousemove', handleDragMove);
+    document.addEventListener('mouseup', handleDragEnd);
+    
+    // Touch drag events
+    track.addEventListener('touchstart', handleDragStart, { passive: false });
+    track.addEventListener('touchmove', handleDragMove, { passive: false });
+    track.addEventListener('touchend', handleDragEnd);
+    
+    // Keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            speedBoost('prev');
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            speedBoost('next');
+        }
+    });
+    
+    // Window resize handling
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Recreate infinite track for new screen size
+            oneSetWidth = createInfiniteTrack();
+            translateX = translateX % oneSetWidth;
+        }, 150);
+    });
+    
+    // Initialize infinite carousel
+    track.style.cursor = 'grab';
+    track.style.transition = 'none'; // Remove all transitions for smooth movement
+    
+    // Create infinite track with multiple sets
+    oneSetWidth = createInfiniteTrack();
+    
+    // Start the carousel
+    startCarousel();
+    
+    // Accessibility
+    carousel.setAttribute('tabindex', '0');
+    track.setAttribute('role', 'region');
+    track.setAttribute('aria-label', 'Tech products showcase - continuous slot machine style scrolling');
+    
+    console.log('Tech Carousel: Slot machine style continuous movement initialized');
+}
+
+// Custom Scroll Animation for Blogs Section
+function initBlogsScrollAnimation() {
+    const blogsSection = document.querySelector('.blogs-section');
+    const heroSection = document.querySelector('.hero');
+    
+    if (!blogsSection || !heroSection) return;
+    
+    // Set initial state
+    blogsSection.style.opacity = '0';
+    blogsSection.style.transform = 'translateY(50px)';
+    blogsSection.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    
+    function handleBlogsScroll() {
+        const heroRect = heroSection.getBoundingClientRect();
+        const blogsRect = blogsSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Calculate when hero section is leaving the viewport
+        const heroExitPoint = heroRect.bottom;
+        
+        // Calculate fade trigger points
+        const fadeInStart = windowHeight * 0.8; // Start fading when 80% down viewport
+        const fadeInComplete = windowHeight * 0.5; // Complete fade when 50% down viewport
+        
+        // Determine opacity based on scroll position
+        let opacity = 0;
+        let translateY = 50;
+        
+        if (heroExitPoint <= fadeInStart && heroExitPoint > fadeInComplete) {
+            // Fading in as hero exits
+            const progress = (fadeInStart - heroExitPoint) / (fadeInStart - fadeInComplete);
+            opacity = Math.min(progress, 1);
+            translateY = 50 * (1 - progress);
+        } else if (heroExitPoint <= fadeInComplete) {
+            // Fully visible
+            opacity = 1;
+            translateY = 0;
+        } else if (blogsRect.top > windowHeight) {
+            // Below viewport, hidden
+            opacity = 0;
+            translateY = 50;
+        } else if (blogsRect.bottom < 0) {
+            // Above viewport, hidden
+            opacity = 0;
+            translateY = -20;
+        }
+        
+        // Apply the animation
+        blogsSection.style.opacity = opacity;
+        blogsSection.style.transform = `translateY(${translateY}px)`;
+    }
+    
+    // Throttled scroll handler for better performance
+    let scrollTimeout;
+    function throttledScrollHandler() {
+        if (scrollTimeout) {
+            cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = requestAnimationFrame(handleBlogsScroll);
+    }
+    
+    // Attach scroll listener
+    window.addEventListener('scroll', throttledScrollHandler);
+    
+    // Initial check
+    handleBlogsScroll();
+    
+    console.log('Blogs scroll animation initialized');
 }
