@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:techrblog.github.io)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
