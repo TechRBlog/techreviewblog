@@ -173,20 +173,24 @@ function showFormMessage(message, type) {
     // Create message element
     const messageElement = document.createElement('div');
     messageElement.className = `form-message ${type}`;
-    messageElement.innerHTML = message;
+    messageElement.textContent = message;
     
     // Style the message
-    messageElement.style.cssText = `
-        padding: 15px 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        font-weight: 500;
-        animation: slideInDown 0.3s ease;
-        ${type === 'success' 
-            ? 'background-color: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; color: #00ff88;' 
-            : 'background-color: rgba(255, 0, 0, 0.1); border: 1px solid #ff0000; color: #ff6666;'
-        }
-    `;
+    messageElement.style.padding = '15px 20px';
+    messageElement.style.borderRadius = '10px';
+    messageElement.style.marginBottom = '20px';
+    messageElement.style.fontWeight = '500';
+    messageElement.style.animation = 'slideInDown 0.3s ease';
+    
+    if (type === 'success') {
+        messageElement.style.backgroundColor = 'rgba(0, 255, 136, 0.1)';
+        messageElement.style.border = '1px solid #00ff88';
+        messageElement.style.color = '#00ff88';
+    } else {
+        messageElement.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
+        messageElement.style.border = '1px solid #ff0000';
+        messageElement.style.color = '#ff6666';
+    }
     
     // Insert message at the top of the form
     const contactForm = document.getElementById('contactForm');
@@ -264,75 +268,7 @@ if (document.querySelectorAll('img[data-src]').length > 0) {
     initLazyLoading();
 }
 
-// Add CSS animations keyframes dynamically
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    @keyframes slideOutUp {
-        from {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-    }
-    
-    .nav-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .nav-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .nav-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-    
-    @media (max-width: 768px) {
-        .nav-menu {
-            position: fixed;
-            top: 70px;
-            right: -100%;
-            width: 100%;
-            height: calc(100vh - 70px);
-            background-color: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(15px);
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding-top: 50px;
-            transition: right 0.3s ease;
-        }
-        
-        .nav-menu.active {
-            right: 0;
-        }
-        
-        .nav-menu .nav-link {
-            font-size: 1.2rem;
-            margin: 20px 0;
-        }
-        
-        body.light-mode .nav-menu {
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-        }
-    }
-`;
-document.head.appendChild(style);
+// Note: Dynamic CSS has been moved to the main CSS file to avoid CSP issues
 
 // Add loading animation for page transitions
 window.addEventListener('beforeunload', () => {
