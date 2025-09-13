@@ -686,7 +686,7 @@ body.light-mode .blog-image img {
 /* Mobile responsiveness for visitor counter */
 @media screen and (max-width: 768px) {
     .visitor-counter {
-        left: -280px !important;
+        left: -250px !important;
         top: 8px !important;
         padding: 10px 14px !important;
         font-size: 14px !important;
@@ -716,7 +716,7 @@ body.light-mode .blog-image img {
 
 @media screen and (max-width: 480px) {
     .visitor-counter {
-        left: -240px !important;
+        left: -200px !important;
         top: 5px !important;
         padding: 8px 12px !important;
         font-size: 12px !important;
@@ -757,7 +757,7 @@ body.light-mode .blog-image img {
 
 @media (max-width: 360px) {
     .visitor-counter {
-        left: -200px;
+        left: -170px;
         top: 5px;
         padding: 6px 10px;
         font-size: 11px;
