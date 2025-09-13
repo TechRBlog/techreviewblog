@@ -651,7 +651,7 @@ body.light-mode .blog-image img {
 /* Website Visitor Counter */
 .visitor-counter {
     position: absolute;
-    left: -400px;
+    left: -480px;
     top: 10px;
     background: linear-gradient(135deg, #1a2332 0%, #2a3441 100%);
     border: 2px solid #00d4ff;
@@ -686,7 +686,7 @@ body.light-mode .blog-image img {
 /* Mobile responsiveness for visitor counter */
 @media screen and (max-width: 768px) {
     .visitor-counter {
-        left: -220px !important;
+        left: -280px !important;
         top: 8px !important;
         padding: 10px 14px !important;
         font-size: 14px !important;
@@ -716,7 +716,7 @@ body.light-mode .blog-image img {
 
 @media screen and (max-width: 480px) {
     .visitor-counter {
-        left: -180px !important;
+        left: -240px !important;
         top: 5px !important;
         padding: 8px 12px !important;
         font-size: 12px !important;
@@ -757,7 +757,7 @@ body.light-mode .blog-image img {
 
 @media (max-width: 360px) {
     .visitor-counter {
-        left: -160px;
+        left: -200px;
         top: 5px;
         padding: 6px 10px;
         font-size: 11px;
@@ -2446,7 +2446,7 @@ body.light-mode .nav-link::after {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem !important;
         margin-bottom: 0.6rem;
     }
 
@@ -2565,7 +2565,7 @@ body.light-mode .nav-link::after {
     }
 
     .hero-title {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
     }
 
     .featured-grid {
@@ -3249,6 +3249,8 @@ body.light-mode .nav-link::after {
     cursor: grab;
     user-select: none;
     will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .hero-carousel-track:active {
@@ -3312,6 +3314,8 @@ body.light-mode .nav-link::after {
     border-radius: 8px;
     transition: transform 0.3s ease;
     background: linear-gradient(45deg, #112240, #1a2e54);
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .tech-product-card:hover .product-image {
@@ -3482,6 +3486,18 @@ body.light-mode .nav-link::after {
     .tech-product-card {
         flex: 0 0 260px;
         margin: 15px 15px;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+
+    /* Disable hover effects on mobile to prevent glitching */
+    .tech-product-card:hover {
+        transform: translateZ(0);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .tech-product-card:hover .product-image {
+        transform: none;
     }
     
     .blogs-title {
@@ -3516,12 +3532,33 @@ body.light-mode .nav-link::after {
         height: 45px;
         font-size: 1.3rem;
     }
+
+    /* Mobile carousel performance optimizations */
+    .hero-carousel-track {
+        will-change: auto !important;
+    }
 }
 
 @media (max-width: 480px) {
     .tech-product-card {
         flex: 0 0 240px;
         margin: 15px 10px;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+
+    /* More aggressive mobile optimization */
+    .tech-product-card:hover {
+        transform: translateZ(0);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .tech-product-card:hover .product-image {
+        transform: none;
+    }
+
+    .hero-carousel-track {
+        transition: none;
     }
     
     .product-content {
