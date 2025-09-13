@@ -379,3 +379,39 @@ if (skipLink) {
         }
     });
 }
+
+// Social Media Sharing Functions
+function shareOnTwitter() {
+    const pageTitle = document.title || 'The Best NVIDIA RTX 50 Series GPUs - TechReviewBlog';
+    const pageUrl = window.location.href;
+    const description = 'Discover the top-selling RTX 50 series GPUs and find your perfect gaming upgrade. Performance comparisons, pricing, and buying recommendations included. 🎮';
+    
+    // Create a more engaging tweet with description
+    const shareText = encodeURIComponent(`${pageTitle}\n\n${description}`);
+    const shareUrl = encodeURIComponent(pageUrl);
+    
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+    window.open(twitterUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+    return false;
+}
+
+function shareOnFacebook() {
+    const pageUrl = window.location.href;
+    const shareUrl = encodeURIComponent(pageUrl);
+    
+    // Facebook automatically pulls Open Graph data, so just pass the URL
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+    window.open(facebookUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+    return false;
+}
+
+function shareOnReddit() {
+    const pageTitle = 'The Best NVIDIA RTX 50 Series GPUs - Complete Review & Buying Guide';
+    const pageUrl = window.location.href;
+    const shareTitle = encodeURIComponent(pageTitle);
+    const shareUrl = encodeURIComponent(pageUrl);
+    
+    const redditUrl = `https://www.reddit.com/submit?title=${shareTitle}&url=${shareUrl}`;
+    window.open(redditUrl, '_blank', 'width=600,height=500,scrollbars=yes,resizable=yes');
+    return false;
+}
