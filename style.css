@@ -3223,6 +3223,15 @@ body.light-mode .nav-link::after {
         background-color: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(15px);
     }
+
+    body.light-mode .nav-menu .nav-link {
+        color: #1f2937 !important;
+    }
+
+    body.light-mode .nav-menu .nav-link:hover,
+    body.light-mode .nav-menu .nav-link.active {
+        color: #1e40af !important;
+    }
 }
 
 /* ===== HERO CAROUSEL SECTION ===== */
