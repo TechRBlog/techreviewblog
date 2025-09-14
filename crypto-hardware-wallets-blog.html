@@ -192,6 +192,107 @@
         .product-image-container:hover img {
             transform: scale(1.05);
         }
+
+        /* Blog Card Styling - Compact Design */
+        .related-blog-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .related-blog-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .blog-card-image {
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .blog-card-content {
+            padding: 15px;
+        }
+
+        .blog-card-content h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+
+        .blog-card-content h4 a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card-content h4 a:hover {
+            color: #00d4ff;
+        }
+
+        .blog-card-content p {
+            margin: 0 0 12px 0;
+            font-size: 12px;
+            color: #cccccc;
+            line-height: 1.3;
+        }
+
+        .read-more-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .read-more-link:hover {
+            color: #00ff88;
+        }
+
+        /* Light mode adjustments for blog card */
+        [data-theme="light"] .related-blog-card {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .related-blog-card:hover {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="light"] .blog-card-content h4 a {
+            color: #333333;
+        }
+
+        [data-theme="light"] .blog-card-content h4 a:hover {
+            color: #0066cc;
+        }
+
+        [data-theme="light"] .blog-card-content p {
+            color: #666666;
+        }
+
+        [data-theme="light"] .read-more-link {
+            color: #0066cc;
+        }
+
+        [data-theme="light"] .read-more-link:hover {
+            color: #00aa55;
+        }
     </style>
 </head>
 <body>
@@ -420,6 +521,22 @@
                             <div class="related-item">
                                 <h4>More Crypto Reviews Coming Soon</h4>
                                 <p>Stay tuned for more in-depth hardware reviews and cryptocurrency analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Other Blog Posts</h3>
+                        <div class="related-blog-card">
+                            <div class="blog-card-image">
+                                <a href="rtx-50-series-review.html">
+                                    <img src="assets/rtx50.png" alt="NVIDIA RTX 50 Series GPUs Review">
+                                </a>
+                            </div>
+                            <div class="blog-card-content">
+                                <h4><a href="rtx-50-series-review.html">RTX 50 Series GPU Review</a></h4>
+                                <p>Deep dive into the most popular NVIDIA RTX 50 series GPUs and performance analysis.</p>
+                                <a href="rtx-50-series-review.html" class="read-more-link">Read Article →</a>
                             </div>
                         </div>
                     </div>
