@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Components - TechReview Blog Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Components Page Styles */
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        body:not(.light-mode) {
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1a2e 25%, #16213e 50%, #0f1419 75%, #000000 100%);
+            background-attachment: fixed;
+        }
+
+        .components-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            margin-top: 100px;
+        }
+
+        /* Store Navigation Bar */
+        .store-nav-bar {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+            padding: 1rem 0;
+            margin: 0;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 80px;
+            z-index: 1000;
+        }
+
+        body:not(.light-mode) .store-nav-bar {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(16, 33, 62, 0.95));
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .store-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .store-nav-link {
+            color: #495057;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body:not(.light-mode) .store-nav-link {
+            color: var(--text-color);
+        }
+
+        .store-nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .store-nav-link:hover {
+            color: #00d4ff;
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .store-nav-link:hover:before {
+            left: 100%;
+        }
+
+        .store-nav-link.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 107, 157, 0.2));
+            border-color: rgba(0, 212, 255, 0.6);
+            color: #00d4ff;
+        }
+
+        .store-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 157, 0.1));
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .store-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .store-header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #00d4ff, #ff6b9d, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
+            100% { filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.8)); }
+        }
+
+        .store-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .component-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-filter {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 107, 157, 0.2));
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-filter:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .category-filter:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .category-filter:hover:before {
+            opacity: 1;
+            animation: shimmer 0.8s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .category-filter.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(255, 107, 157, 0.3));
+            border-color: rgba(0, 212, 255, 0.8);
+            color: #00d4ff;
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .products-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .products-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.8), rgba(16, 33, 62, 0.8));
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .product-card:hover:before {
+            left: 100%;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 157, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image svg {
+            width: 80px;
+            height: 80px;
+            color: #00d4ff;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 8px;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-specs {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #00d4ff;
+        }
+
+        .spec-value {
+            color: var(--text-color);
+            text-align: right;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00ff88;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .buy-button {
+            flex: 1;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff6b9d 100%);
+            color: #0a192f;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .wishlist-button {
+            background: transparent;
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            color: #00d4ff;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .wishlist-button:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #ff6b9d, #00ff88);
+            border-radius: 2px;
+        }
+
+        /* Light Mode Styles */
+        body.light-mode {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 25%, #dee2e6 50%, #ced4da 75%, #adb5bd 100%);
+        }
+
+        body.light-mode .store-nav-bar {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .store-nav-link {
+            color: #495057;
+        }
+
+        body.light-mode .store-nav-link:hover {
+            color: #007bff;
+            border-color: rgba(0, 123, 255, 0.5);
+        }
+
+        body.light-mode .store-nav-link.active {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(220, 53, 69, 0.2));
+            border-color: rgba(0, 123, 255, 0.6);
+            color: #007bff;
+        }
+
+        body.light-mode .store-header {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(220, 53, 69, 0.1));
+        }
+
+        body.light-mode .store-header h1 {
+            background: linear-gradient(135deg, #007bff, #dc3545, #28a745);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.light-mode .category-filter {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(220, 53, 69, 0.1));
+            border: 2px solid rgba(0, 123, 255, 0.3);
+            color: #495057;
+        }
+
+        body.light-mode .category-filter:hover {
+            border-color: rgba(0, 123, 255, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .category-filter.active {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(220, 53, 69, 0.2));
+            border-color: rgba(0, 123, 255, 0.8);
+            color: #007bff;
+        }
+
+        body.light-mode .product-card {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border: 2px solid rgba(0, 123, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 123, 255, 0.1);
+        }
+
+        body.light-mode .product-card:hover {
+            border-color: rgba(0, 123, 255, 0.6);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+        }
+
+        body.light-mode .product-image {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(220, 53, 69, 0.08));
+            border: 1px solid rgba(0, 123, 255, 0.2);
+        }
+
+        body.light-mode .product-image svg {
+            color: #007bff;
+        }
+
+        body.light-mode .product-specs {
+            background: rgba(0, 123, 255, 0.05);
+            border: 1px solid rgba(0, 123, 255, 0.2);
+        }
+
+        body.light-mode .spec-label {
+            color: #007bff;
+        }
+
+        body.light-mode .product-price {
+            color: #28a745;
+        }
+
+        body.light-mode .buy-button {
+            background: linear-gradient(135deg, #007bff 0%, #dc3545 100%);
+            color: white;
+        }
+
+        body.light-mode .buy-button:hover {
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .wishlist-button {
+            border: 2px solid rgba(0, 123, 255, 0.5);
+            color: #007bff;
+        }
+
+        body.light-mode .wishlist-button:hover {
+            background: rgba(0, 123, 255, 0.2);
+            border-color: #007bff;
+        }
+
+        body.light-mode .section-title {
+            color: #007bff;
+        }
+
+        /* Cart Functionality Styles */
+        .cart-button {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 107, 157, 0.2));
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .cart-button:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .cart-count {
+            background: rgba(255, 107, 157, 0.8);
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+            display: none;
+        }
+
+        .add-to-cart-button {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.2rem;
+        }
+
+        .add-to-cart-button:hover {
+            background: linear-gradient(135deg, #218838 0%, #17a085 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .cart-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .view-cart-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-cart-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-modal-content {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(16, 33, 62, 0.95));
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .cart-header h2 {
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-cart:hover {
+            color: #ff6b9d;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .no-image {
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-details h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-color);
+        }
+
+        .cart-item-price {
+            color: #00d4ff;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cart-item-controls button {
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--text-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item-controls button:hover {
+            background: rgba(0, 212, 255, 0.3);
+        }
+
+        .quantity {
+            color: var(--text-color);
+            font-weight: bold;
+            min-width: 2rem;
+            text-align: center;
+        }
+
+        .remove-item {
+            background: rgba(255, 107, 157, 0.2) !important;
+            border-color: rgba(255, 107, 157, 0.3) !important;
+        }
+
+        .remove-item:hover {
+            background: rgba(255, 107, 157, 0.3) !important;
+        }
+
+        .cart-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .clear-cart-btn {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .clear-cart-btn:hover {
+            background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #00d4ff 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Light mode store header styles */
+        body.light-mode .store-header {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(220, 53, 69, 0.08));
+        }
+
+        body.light-mode .store-header h1 {
+            background: linear-gradient(135deg, #007bff, #dc3545, #28a745);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Fallback for browsers that don't support background-clip */
+            color: #007bff;
+        }
+
+        body.light-mode .store-header:before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid-light" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,123,255,0.15)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid-light)"/></svg>');
+            opacity: 0.5;
+        }
+
+        body.light-mode .store-subtitle {
+            color: #495057;
+            opacity: 0.8;
+        }
+
+        /* Light mode cart styles */
+        body.light-mode .cart-button {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(220, 53, 69, 0.1));
+            border: 2px solid rgba(0, 123, 255, 0.3);
+            color: #495057;
+        }
+
+        body.light-mode .cart-button:hover {
+            border-color: rgba(0, 123, 255, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.3);
+        }
+
+
+        body.light-mode .cart-modal-content {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .cart-item {
+            border: 1px solid rgba(0, 123, 255, 0.2);
+            background: rgba(0, 123, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .components-container {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+
+            .store-nav-container {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .store-nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .cart-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .store-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .store-subtitle {
+                font-size: 1rem;
+            }
+
+            .component-categories {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .cart-footer {
+                flex-direction: column;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">TechReview Blog</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="blogs.html" class="nav-link">Blogs</a>
+                <a href="store.html" class="nav-link">Store</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                </button>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Store Navigation Bar -->
+    <div class="store-nav-bar">
+        <div class="store-nav-container">
+            <a href="store.html" class="store-nav-link">🏪 Store Home</a>
+            <a href="store-components.html" class="store-nav-link active">🔧 PC Components</a>
+            <a href="store-trending.html" class="store-nav-link">⚡ Trending Tech</a>
+            <a href="store-accessories.html" class="store-nav-link">🎮 Gaming Gear</a>
+            <a href="store-crypto.html" class="store-nav-link">₿ Crypto Hardware</a>
+            <button class="cart-button" onclick="viewCart()">
+                🛒 Cart <span class="cart-count">0</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="components-container">
+        <div class="store-header">
+            <h1>PC Components</h1>
+            <p class="store-subtitle">Build your dream PC with premium components. Expert-selected parts with full compatibility testing and Amazon Prime shipping.</p>
+        </div>
+
+        <div class="component-categories">
+            <button class="category-filter active" data-category="cpus">
+                CPUs & Processors
+            </button>
+            <button class="category-filter" data-category="gpus">
+                Graphics Cards
+            </button>
+            <button class="category-filter" data-category="ram">
+                Memory (RAM)
+            </button>
+            <button class="category-filter" data-category="storage">
+                Storage (SSD/HDD)
+            </button>
+            <button class="category-filter" data-category="motherboards">
+                Motherboards
+            </button>
+            <button class="category-filter" data-category="psu">
+                Power Supplies
+            </button>
+            <button class="category-filter" data-category="cases">
+                PC Cases
+            </button>
+            <button class="category-filter" data-category="cooling">
+                Cooling Solutions
+            </button>
+        </div>
+
+        <!-- CPUs Section -->
+        <div id="cpus" class="products-section active">
+            <h2 class="section-title">CPUs & Processors</h2>
+
+
+            <div class="products-grid" id="cpus-grid">
+
+                <!-- AMD Ryzen 9 9950X -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RYZEN9-9950X">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Ryzen 9 9950X">
+                    <meta itemprop="category" content="CPUs">
+                    <meta itemprop="productID" content="RYZEN9-9950X">
+
+                    <div class="product-image">
+                        <img src="assets/ryzen-9950x.webp" alt="AMD Ryzen 9 9950X" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Flagship</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Ryzen 9 9950X</h3>
+                        <p class="product-description" itemprop="description">Ultimate 16-core, 32-thread processor with Zen 5 architecture. Perfect for content creation, streaming, and heavy multitasking.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.8">
+                            <meta itemprop="reviewCount" content="342">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Cores/Threads:</span>
+                                <span class="spec-value">16C/32T</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">4.3 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Max Boost:</span>
+                                <span class="spec-value">5.7 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">TDP:</span>
+                                <span class="spec-value">170W</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="649.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$649.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/42yt1sB" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMD Ryzen 7 9800X3D -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RYZEN7-9800X3D">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Ryzen 7 9800X3D">
+                    <meta itemprop="category" content="CPUs">
+                    <meta itemprop="productID" content="RYZEN7-9800X3D">
+
+                    <div class="product-image">
+                        <img src="assets/ryzen-7-9800x3d.webp" alt="AMD Ryzen 7 9800X3D" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Gaming King</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Ryzen 7 9800X3D</h3>
+                        <p class="product-description" itemprop="description">Best gaming CPU with 3D V-Cache technology. 8 cores, 16 threads with massive L3 cache for unmatched gaming performance.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.9">
+                            <meta itemprop="reviewCount" content="1243">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Cores/Threads:</span>
+                                <span class="spec-value">8C/16T</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">4.7 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Max Boost:</span>
+                                <span class="spec-value">5.2 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">L3 Cache:</span>
+                                <span class="spec-value">96MB</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="479.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$479.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/4puAVxi" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMD Ryzen 7 7800X3D -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RYZEN7-7800X3D">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Ryzen 7 7800X3D">
+                    <meta itemprop="category" content="CPUs">
+                    <meta itemprop="productID" content="RYZEN7-7800X3D">
+
+                    <div class="product-image">
+                        <img src="assets/ryzen-7-7800x3d.webp" alt="AMD Ryzen 7 7800X3D" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Best Seller</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Ryzen 7 7800X3D</h3>
+                        <p class="product-description" itemprop="description">Top gaming processor with 3D V-Cache. 8 cores, 16 threads delivering exceptional gaming performance at 1440p and 4K.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.7">
+                            <meta itemprop="reviewCount" content="2156">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Cores/Threads:</span>
+                                <span class="spec-value">8C/16T</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">4.2 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Max Boost:</span>
+                                <span class="spec-value">5.0 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">L3 Cache:</span>
+                                <span class="spec-value">96MB</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="399.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$399.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/4gAdDBV" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Intel Core i9-14900K -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="INTEL-I9-14900K">
+                    <meta itemprop="brand" content="Intel">
+                    <meta itemprop="model" content="Core i9-14900K">
+                    <meta itemprop="category" content="CPUs">
+                    <meta itemprop="productID" content="INTEL-I9-14900K">
+
+                    <div class="product-image">
+                        <img src="assets/intel-i9-14900k.webp" alt="Intel Core i9-14900K" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Intel Flagship</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">Intel Core i9-14900K</h3>
+                        <p class="product-description" itemprop="description">Intel's flagship processor with 24 cores, 32 threads. Raptor Lake Refresh architecture for peak gaming and productivity.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.6">
+                            <meta itemprop="reviewCount" content="892">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Cores/Threads:</span>
+                                <span class="spec-value">24C/32T</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">P-Core Clock:</span>
+                                <span class="spec-value">3.2 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Max Turbo:</span>
+                                <span class="spec-value">6.0 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Total Cache:</span>
+                                <span class="spec-value">36MB</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="579.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$579.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/4n69msw" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Intel Core i7-14700K -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="INTEL-I7-14700K">
+                    <meta itemprop="brand" content="Intel">
+                    <meta itemprop="model" content="Core i7-14700K">
+                    <meta itemprop="category" content="CPUs">
+                    <meta itemprop="productID" content="INTEL-I7-14700K">
+
+                    <div class="product-image">
+                        <img src="assets/intel-i7-14700k.webp" alt="Intel Core i7-14700K" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Balanced</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">Intel Core i7-14700K</h3>
+                        <p class="product-description" itemprop="description">High-performance 20-core processor perfect for gaming and content creation. Great balance of performance and price.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.5">
+                            <meta itemprop="reviewCount" content="1567">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Cores/Threads:</span>
+                                <span class="spec-value">20C/28T</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">P-Core Clock:</span>
+                                <span class="spec-value">3.4 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Max Turbo:</span>
+                                <span class="spec-value">5.6 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Total Cache:</span>
+                                <span class="spec-value">33MB</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="409.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$409.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/4plh5V7" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMD Ryzen 5 7600X -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RYZEN5-7600X">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Ryzen 5 7600X">
+                    <meta itemprop="category" content="CPUs">
+                    <meta itemprop="productID" content="RYZEN5-7600X">
+
+                    <div class="product-image">
+                        <img src="assets/ryzen-5-7600x.webp" alt="AMD Ryzen 5 7600X" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Value King</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Ryzen 5 7600X</h3>
+                        <p class="product-description" itemprop="description">Excellent mid-range gaming CPU with 6 cores, 12 threads. Perfect for 1440p gaming builds with great price-to-performance.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.6">
+                            <meta itemprop="reviewCount" content="2341">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Cores/Threads:</span>
+                                <span class="spec-value">6C/12T</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">4.7 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Max Boost:</span>
+                                <span class="spec-value">5.3 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">TDP:</span>
+                                <span class="spec-value">105W</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="199.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$199.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/47Ktsni" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMD Ryzen 7 5800X -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RYZEN7-5800X">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Ryzen 7 5800X">
+                    <meta itemprop="category" content="CPUs">
+                    <meta itemprop="productID" content="RYZEN7-5800X">
+
+                    <div class="product-image">
+                        <img src="assets/ryzen-7-5800x.webp" alt="AMD Ryzen 7 5800X" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Proven</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Ryzen 7 5800X</h3>
+                        <p class="product-description" itemprop="description">Reliable 8-core processor from Zen 3 architecture. Great for both gaming and productivity at an excellent price point.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.4">
+                            <meta itemprop="reviewCount" content="3892">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Cores/Threads:</span>
+                                <span class="spec-value">8C/16T</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">3.8 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Max Boost:</span>
+                                <span class="spec-value">4.7 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">TDP:</span>
+                                <span class="spec-value">105W</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="249.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$249.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/48h0fjR" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMD Ryzen 5 5600X -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RYZEN5-5600X">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Ryzen 5 5600X">
+                    <meta itemprop="category" content="CPUs">
+                    <meta itemprop="productID" content="RYZEN5-5600X">
+
+                    <div class="product-image">
+                        <img src="assets/ryzen-5-5600x.webp" alt="AMD Ryzen 5 5600X" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Budget Champion</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Ryzen 5 5600X</h3>
+                        <p class="product-description" itemprop="description">Outstanding budget gaming CPU with 6 cores, 12 threads. Perfect entry point for high-performance gaming builds.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.7">
+                            <meta itemprop="reviewCount" content="5234">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Cores/Threads:</span>
+                                <span class="spec-value">6C/12T</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">3.7 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Max Boost:</span>
+                                <span class="spec-value">4.6 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">TDP:</span>
+                                <span class="spec-value">65W</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="159.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$159.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/4mlJasy" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- GPUs Section -->
+        <div id="gpus" class="products-section">
+            <h2 class="section-title">Graphics Cards</h2>
+
+            <div class="products-grid" id="gpus-grid">
+
+                <!-- NVIDIA RTX 4090 -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RTX-4090-24GB">
+                    <meta itemprop="brand" content="NVIDIA">
+                    <meta itemprop="model" content="GeForce RTX 4090">
+                    <meta itemprop="category" content="Graphics Cards">
+                    <meta itemprop="productID" content="RTX-4090-24GB">
+
+                    <div class="product-image">
+                        <img src="assets/rtx-4090.webp" alt="NVIDIA GeForce RTX 4090" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Flagship</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">NVIDIA GeForce RTX 4090</h3>
+                        <p class="product-description" itemprop="description">Ultimate gaming GPU with 24GB GDDR6X. Delivers exceptional 4K gaming performance and ray tracing capabilities.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.8">
+                            <meta itemprop="reviewCount" content="1567">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">VRAM:</span>
+                                <span class="spec-value">24GB GDDR6X</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">CUDA Cores:</span>
+                                <span class="spec-value">16,384</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">2.2 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Memory Bandwidth:</span>
+                                <span class="spec-value">1008 GB/s</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="1599.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$1,599.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/3ZRTx90" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NVIDIA RTX 4080 -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RTX-4080-16GB">
+                    <meta itemprop="brand" content="NVIDIA">
+                    <meta itemprop="model" content="GeForce RTX 4080">
+                    <meta itemprop="category" content="Graphics Cards">
+                    <meta itemprop="productID" content="RTX-4080-16GB">
+
+                    <div class="product-image">
+                        <img src="assets/rtx-4080.webp" alt="NVIDIA GeForce RTX 4080" loading="lazy" itemprop="image">
+                        <span class="performance-badge">High-End</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">NVIDIA GeForce RTX 4080</h3>
+                        <p class="product-description" itemprop="description">Powerful 4K gaming GPU with 16GB GDDR6X. Excellent performance for high-resolution gaming and content creation.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.6">
+                            <meta itemprop="reviewCount" content="892">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">VRAM:</span>
+                                <span class="spec-value">16GB GDDR6X</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">CUDA Cores:</span>
+                                <span class="spec-value">9,728</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">2.2 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Memory Bandwidth:</span>
+                                <span class="spec-value">716 GB/s</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="1199.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$1,199.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/3YRTx80" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NVIDIA RTX 4070 Ti SUPER -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RTX-4070TI-SUPER">
+                    <meta itemprop="brand" content="NVIDIA">
+                    <meta itemprop="model" content="GeForce RTX 4070 Ti SUPER">
+                    <meta itemprop="category" content="Graphics Cards">
+                    <meta itemprop="productID" content="RTX-4070TI-SUPER">
+
+                    <div class="product-image">
+                        <img src="assets/rtx-4070ti-super.webp" alt="NVIDIA GeForce RTX 4070 Ti SUPER" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Performance</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">NVIDIA GeForce RTX 4070 Ti SUPER</h3>
+                        <p class="product-description" itemprop="description">Enhanced RTX 4070 Ti with 16GB VRAM. Perfect for 1440p and entry-level 4K gaming with ray tracing.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.7">
+                            <meta itemprop="reviewCount" content="1234">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">VRAM:</span>
+                                <span class="spec-value">16GB GDDR6X</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">CUDA Cores:</span>
+                                <span class="spec-value">8,448</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">2.3 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Memory Bandwidth:</span>
+                                <span class="spec-value">672 GB/s</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="799.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$799.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/4hRTx7S" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NVIDIA RTX 4070 -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RTX-4070-12GB">
+                    <meta itemprop="brand" content="NVIDIA">
+                    <meta itemprop="model" content="GeForce RTX 4070">
+                    <meta itemprop="category" content="Graphics Cards">
+                    <meta itemprop="productID" content="RTX-4070-12GB">
+
+                    <div class="product-image">
+                        <img src="assets/rtx-4070.webp" alt="NVIDIA GeForce RTX 4070" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Popular</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">NVIDIA GeForce RTX 4070</h3>
+                        <p class="product-description" itemprop="description">Excellent 1440p gaming GPU with 12GB VRAM. Great performance per dollar for high-refresh gaming.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.5">
+                            <meta itemprop="reviewCount" content="2156">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">VRAM:</span>
+                                <span class="spec-value">12GB GDDR6X</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">CUDA Cores:</span>
+                                <span class="spec-value">5,888</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">1.9 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Memory Bandwidth:</span>
+                                <span class="spec-value">504 GB/s</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="599.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$599.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/3XRTx70" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMD RX 7900 XTX -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RX-7900XTX-24GB">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Radeon RX 7900 XTX">
+                    <meta itemprop="category" content="Graphics Cards">
+                    <meta itemprop="productID" content="RX-7900XTX-24GB">
+
+                    <div class="product-image">
+                        <img src="assets/rx-7900xtx.webp" alt="AMD Radeon RX 7900 XTX" loading="lazy" itemprop="image">
+                        <span class="performance-badge">AMD Flagship</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Radeon RX 7900 XTX</h3>
+                        <p class="product-description" itemprop="description">AMD's flagship GPU with 24GB GDDR6. Excellent 4K gaming performance with superior rasterization.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.4">
+                            <meta itemprop="reviewCount" content="756">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">VRAM:</span>
+                                <span class="spec-value">24GB GDDR6</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Stream Processors:</span>
+                                <span class="spec-value">6,144</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Game Clock:</span>
+                                <span class="spec-value">2.3 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Memory Bandwidth:</span>
+                                <span class="spec-value">960 GB/s</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="999.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$999.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/3ZRx9XT" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMD RX 7800 XT -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RX-7800XT-16GB">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Radeon RX 7800 XT">
+                    <meta itemprop="category" content="Graphics Cards">
+                    <meta itemprop="productID" content="RX-7800XT-16GB">
+
+                    <div class="product-image">
+                        <img src="assets/rx-7800xt.webp" alt="AMD Radeon RX 7800 XT" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Best Value</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Radeon RX 7800 XT</h3>
+                        <p class="product-description" itemprop="description">Excellent 1440p gaming GPU with 16GB VRAM. Outstanding price-to-performance for high-refresh gaming.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.6">
+                            <meta itemprop="reviewCount" content="1432">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">VRAM:</span>
+                                <span class="spec-value">16GB GDDR6</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Stream Processors:</span>
+                                <span class="spec-value">3,840</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Game Clock:</span>
+                                <span class="spec-value">2.1 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Memory Bandwidth:</span>
+                                <span class="spec-value">624 GB/s</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="499.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$499.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/4hRx8XT" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NVIDIA RTX 4060 Ti -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RTX-4060TI-16GB">
+                    <meta itemprop="brand" content="NVIDIA">
+                    <meta itemprop="model" content="GeForce RTX 4060 Ti">
+                    <meta itemprop="category" content="Graphics Cards">
+                    <meta itemprop="productID" content="RTX-4060TI-16GB">
+
+                    <div class="product-image">
+                        <img src="assets/rtx-4060ti.webp" alt="NVIDIA GeForce RTX 4060 Ti" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Mid-Range</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">NVIDIA GeForce RTX 4060 Ti</h3>
+                        <p class="product-description" itemprop="description">Solid 1440p gaming GPU with 16GB VRAM option. Great for mainstream gaming with DLSS 3 support.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.3">
+                            <meta itemprop="reviewCount" content="1876">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">VRAM:</span>
+                                <span class="spec-value">16GB GDDR6</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">CUDA Cores:</span>
+                                <span class="spec-value">4,352</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Base Clock:</span>
+                                <span class="spec-value">2.3 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Memory Bandwidth:</span>
+                                <span class="spec-value">288 GB/s</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="499.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$499.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/3YRTx6T" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMD RX 7600 XT -->
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="sku" content="RX-7600XT-16GB">
+                    <meta itemprop="brand" content="AMD">
+                    <meta itemprop="model" content="Radeon RX 7600 XT">
+                    <meta itemprop="category" content="Graphics Cards">
+                    <meta itemprop="productID" content="RX-7600XT-16GB">
+
+                    <div class="product-image">
+                        <img src="assets/rx-7600xt.webp" alt="AMD Radeon RX 7600 XT" loading="lazy" itemprop="image">
+                        <span class="performance-badge">Budget King</span>
+                    </div>
+
+                    <div class="product-content">
+                        <h3 class="product-name" itemprop="name">AMD Radeon RX 7600 XT</h3>
+                        <p class="product-description" itemprop="description">Great budget 1440p GPU with 16GB VRAM. Excellent price-to-performance for mainstream gaming.</p>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content="4.4">
+                            <meta itemprop="reviewCount" content="967">
+                            <meta itemprop="bestRating" content="5">
+                            <meta itemprop="worstRating" content="1">
+                        </div>
+
+                        <div class="product-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">VRAM:</span>
+                                <span class="spec-value">16GB GDDR6</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Stream Processors:</span>
+                                <span class="spec-value">2,048</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Game Clock:</span>
+                                <span class="spec-value">2.5 GHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Memory Bandwidth:</span>
+                                <span class="spec-value">432 GB/s</span>
+                            </div>
+                        </div>
+
+                        <div class="product-pricing">
+                            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <meta itemprop="price" content="329.99">
+                                <meta itemprop="priceCurrency" content="USD">
+                                <meta itemprop="availability" content="https://schema.org/InStock">
+                                <meta itemprop="seller" content="Amazon">
+                                <span class="product-price">$329.99</span>
+                                <span class="price-label">Starting at</span>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <a href="https://amzn.to/4gRx6XT" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- RAM Section -->
+        <div id="ram" class="products-section">
+            <h2 class="section-title">Memory (RAM)</h2>
+
+            <!-- RAM Filters -->
+            <div class="filter-controls" id="ram-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="ram-sort">🔄 Sort by:</label>
+                        <select id="ram-sort" class="filter-select" onchange="sortProductsGlobal('ram')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                            <option value="capacity">📊 Capacity (GB)</option>
+                            <option value="speed">⚡ Speed (MHz)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="ram-capacity">📊 Capacity:</label>
+                        <select id="ram-capacity" class="filter-select" onchange="filterProductsGlobal('ram')">
+                            <option value="all">All Capacities</option>
+                            <option value="16gb">16GB</option>
+                            <option value="32gb">32GB</option>
+                            <option value="64gb">64GB+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="ram-speed">⚡ Speed:</label>
+                        <select id="ram-speed" class="filter-select" onchange="filterProductsGlobal('ram')">
+                            <option value="all">All Speeds</option>
+                            <option value="5600">DDR5-5600</option>
+                            <option value="6000">DDR5-6000</option>
+                            <option value="6400">DDR5-6400+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="ram-price">💰 Price Range:</label>
+                        <select id="ram-price" class="filter-select" onchange="filterProductsGlobal('ram')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $150</option>
+                            <option value="mid">$150 - $300</option>
+                            <option value="high">$300+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="ram-grid">
+                <!-- RAM products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Storage Section -->
+        <div id="storage" class="products-section">
+            <h2 class="section-title">Storage Solutions</h2>
+
+            <!-- Storage Filters -->
+            <div class="filter-controls" id="storage-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="storage-sort">🔄 Sort by:</label>
+                        <select id="storage-sort" class="filter-select" onchange="sortProductsGlobal('storage')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                            <option value="capacity">📊 Capacity (GB)</option>
+                            <option value="speed">⚡ Speed</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="storage-type">💾 Type:</label>
+                        <select id="storage-type" class="filter-select" onchange="filterProductsGlobal('storage')">
+                            <option value="all">All Types</option>
+                            <option value="nvme">NVMe SSD</option>
+                            <option value="sata">SATA SSD</option>
+                            <option value="hdd">HDD</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="storage-capacity">📊 Capacity:</label>
+                        <select id="storage-capacity" class="filter-select" onchange="filterProductsGlobal('storage')">
+                            <option value="all">All Capacities</option>
+                            <option value="500gb">500GB</option>
+                            <option value="1tb">1TB</option>
+                            <option value="2tb">2TB+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="storage-price">💰 Price Range:</label>
+                        <select id="storage-price" class="filter-select" onchange="filterProductsGlobal('storage')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $100</option>
+                            <option value="mid">$100 - $300</option>
+                            <option value="high">$300+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="storage-grid">
+                <!-- Storage products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Motherboards Section -->
+        <div id="motherboards" class="products-section">
+            <h2 class="section-title">Motherboards</h2>
+
+            <!-- Motherboard Filters -->
+            <div class="filter-controls" id="motherboards-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="motherboards-sort">🔄 Sort by:</label>
+                        <select id="motherboards-sort" class="filter-select" onchange="sortProductsGlobal('motherboards')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="motherboards-socket">🔌 Socket:</label>
+                        <select id="motherboards-socket" class="filter-select" onchange="filterProductsGlobal('motherboards')">
+                            <option value="all">All Sockets</option>
+                            <option value="am5">AM5 (AMD)</option>
+                            <option value="lga1700">LGA1700 (Intel)</option>
+                            <option value="lga1200">LGA1200 (Intel)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="motherboards-chipset">⚡ Chipset:</label>
+                        <select id="motherboards-chipset" class="filter-select" onchange="filterProductsGlobal('motherboards')">
+                            <option value="all">All Chipsets</option>
+                            <option value="x670">X670/X670E</option>
+                            <option value="b650">B650/B650E</option>
+                            <option value="z790">Z790</option>
+                            <option value="b760">B760</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="motherboards-price">💰 Price Range:</label>
+                        <select id="motherboards-price" class="filter-select" onchange="filterProductsGlobal('motherboards')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $200</option>
+                            <option value="mid">$200 - $400</option>
+                            <option value="high">$400+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="motherboards-grid">
+                <!-- Motherboard products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- PSU Section -->
+        <div id="psu" class="products-section">
+            <h2 class="section-title">Power Supplies</h2>
+
+            <!-- PSU Filters -->
+            <div class="filter-controls" id="psu-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="psu-sort">🔄 Sort by:</label>
+                        <select id="psu-sort" class="filter-select" onchange="sortProductsGlobal('psu')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                            <option value="wattage">⚡ Wattage (High to Low)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="psu-wattage">⚡ Wattage:</label>
+                        <select id="psu-wattage" class="filter-select" onchange="filterProductsGlobal('psu')">
+                            <option value="all">All Wattages</option>
+                            <option value="650w">650W</option>
+                            <option value="750w">750W</option>
+                            <option value="850w">850W+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="psu-efficiency">🏅 Efficiency:</label>
+                        <select id="psu-efficiency" class="filter-select" onchange="filterProductsGlobal('psu')">
+                            <option value="all">All Ratings</option>
+                            <option value="gold">80+ Gold</option>
+                            <option value="platinum">80+ Platinum</option>
+                            <option value="titanium">80+ Titanium</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="psu-price">💰 Price Range:</label>
+                        <select id="psu-price" class="filter-select" onchange="filterProductsGlobal('psu')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $150</option>
+                            <option value="mid">$150 - $300</option>
+                            <option value="high">$300+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="psu-grid">
+                <!-- PSU products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Cases Section -->
+        <div id="cases" class="products-section">
+            <h2 class="section-title">PC Cases</h2>
+
+            <!-- Case Filters -->
+            <div class="filter-controls" id="cases-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="cases-sort">🔄 Sort by:</label>
+                        <select id="cases-sort" class="filter-select" onchange="sortProductsGlobal('cases')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cases-size">📌 Size:</label>
+                        <select id="cases-size" class="filter-select" onchange="filterProductsGlobal('cases')">
+                            <option value="all">All Sizes</option>
+                            <option value="mini-itx">Mini ITX</option>
+                            <option value="micro-atx">Micro ATX</option>
+                            <option value="mid-tower">Mid Tower</option>
+                            <option value="full-tower">Full Tower</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cases-style">🎨 Style:</label>
+                        <select id="cases-style" class="filter-select" onchange="filterProductsGlobal('cases')">
+                            <option value="all">All Styles</option>
+                            <option value="rgb">RGB Lighting</option>
+                            <option value="tempered">Tempered Glass</option>
+                            <option value="minimal">Minimal/Clean</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cases-price">💰 Price Range:</label>
+                        <select id="cases-price" class="filter-select" onchange="filterProductsGlobal('cases')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $100</option>
+                            <option value="mid">$100 - $200</option>
+                            <option value="high">$200+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="cases-grid">
+                <!-- Case products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Cooling Section -->
+        <div id="cooling" class="products-section">
+            <h2 class="section-title">Cooling Solutions</h2>
+
+            <!-- Cooling Filters -->
+            <div class="filter-controls" id="cooling-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="cooling-sort">🔄 Sort by:</label>
+                        <select id="cooling-sort" class="filter-select" onchange="sortProductsGlobal('cooling')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cooling-type">🌡️ Type:</label>
+                        <select id="cooling-type" class="filter-select" onchange="filterProductsGlobal('cooling')">
+                            <option value="all">All Types</option>
+                            <option value="air">Air Coolers</option>
+                            <option value="aio">AIO Liquid</option>
+                            <option value="custom">Custom Loop</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cooling-performance">⚡ Performance:</label>
+                        <select id="cooling-performance" class="filter-select" onchange="filterProductsGlobal('cooling')">
+                            <option value="all">All Performance</option>
+                            <option value="basic">Basic Cooling</option>
+                            <option value="performance">High Performance</option>
+                            <option value="extreme">Extreme OC</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cooling-price">💰 Price Range:</label>
+                        <select id="cooling-price" class="filter-select" onchange="filterProductsGlobal('cooling')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $50</option>
+                            <option value="mid">$50 - $150</option>
+                            <option value="high">$150+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="cooling-grid">
+                <!-- Cooling products will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="store-components.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize cart count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
