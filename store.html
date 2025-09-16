@@ -1194,10 +1194,15 @@
         }
 
         .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            justify-content: center;
             gap: 3rem;
             margin-top: 3rem;
+        }
+
+        .category-card {
+            max-width: 350px;
+            width: 100%;
         }
 
         .category-card {
@@ -1545,7 +1550,7 @@
             }
 
             .categories-grid {
-                grid-template-columns: 1fr;
+                justify-content: center;
                 gap: 1rem;
             }
 
@@ -1674,12 +1679,6 @@
         <div class="store-nav-container">
             <a href="store.html" class="store-nav-link active">🏪 Store Home</a>
             <a href="store-components.html" class="store-nav-link">🔧 PC Components</a>
-            <a href="store-trending.html" class="store-nav-link">⚡ Trending Tech</a>
-            <a href="store-accessories.html" class="store-nav-link">🎮 Gaming Gear</a>
-            <a href="store-crypto.html" class="store-nav-link">₿ Crypto Hardware</a>
-            <button class="cart-button" onclick="viewCart()">
-                🛒 Cart <span class="cart-count">0</span>
-            </button>
         </div>
     </div>
 
@@ -1701,10 +1700,13 @@
             <div class="categories-header">
                 <h2>Shop by Category</h2>
                 <p>Find exactly what you're looking for</p>
+                <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1)); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px; padding: 12px 20px; margin: 20px auto; max-width: 600px; text-align: center;">
+                    <p style="margin: 0; color: #ff6f00; font-weight: 600; font-size: 0.9rem;">🚧 Store Work in Progress - More items will be added as time goes on</p>
+                </div>
             </div>
 
             <div class="categories-grid">
-                <div class="category-card" onclick="navigateToPage('components')">
+                <div class="category-card" onclick="window.location.href='store-components.html'">
                     <div class="category-image">
                         <img src="assets/pccomponents.jpg" alt="PC Components" loading="lazy">
                         <div class="category-overlay">
@@ -1714,49 +1716,7 @@
                     <div class="category-info">
                         <h3>PC Components</h3>
                         <p>CPUs, GPUs, Motherboards & More</p>
-                        <div class="category-price-range">From $29.99</div>
-                    </div>
-                </div>
-
-                <div class="category-card" onclick="navigateToPage('trending')">
-                    <div class="category-image">
-                        <img src="assets/latesttech.jpg" alt="Trending Tech" loading="lazy">
-                        <div class="category-overlay">
-                            <span class="product-count hot-badge">🔥 Hot Deals</span>
-                        </div>
-                    </div>
-                    <div class="category-info">
-                        <h3>Latest Tech</h3>
-                        <p>New Releases & Best Sellers</p>
-                        <div class="category-price-range">Up to 40% Off</div>
-                    </div>
-                </div>
-
-                <div class="category-card" onclick="navigateToPage('accessories')">
-                    <div class="category-image">
-                        <img src="assets/gaminggear.jpg" alt="Gaming Accessories" loading="lazy">
-                        <div class="category-overlay">
-                            <span class="product-count">Browse All</span>
-                        </div>
-                    </div>
-                    <div class="category-info">
-                        <h3>Gaming Gear</h3>
-                        <p>Keyboards, Mice, Headsets</p>
-                        <div class="category-price-range">From $19.99</div>
-                    </div>
-                </div>
-
-                <div class="category-card" onclick="navigateToPage('crypto')">
-                    <div class="category-image">
-                        <img src="assets/cryptohardware.jpg" alt="Crypto Hardware" loading="lazy">
-                        <div class="category-overlay">
-                            <span class="product-count">🔒 Secure</span>
-                        </div>
-                    </div>
-                    <div class="category-info">
-                        <h3>Crypto Hardware</h3>
-                        <p>Hardware Wallets & Security</p>
-                        <div class="category-price-range">From $79.99</div>
+                        <div class="category-price-range">From $159.99</div>
                     </div>
                 </div>
             </div>
