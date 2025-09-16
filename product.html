@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming PC Details | TechReview Store</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional gaming PC with premium components. Expert-selected, tested compatibility, professional support. View full specifications and add to cart.">
+    <meta name="keywords" content="gaming pc details, custom gaming pc, professional pc build, gaming computer specs, techreview store">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Product Page Styles */
+        .product-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 100px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 30px;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .product-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        /* Product Images */
+        .product-images {
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-thumbnails {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            border-color: #00d4ff;
+            transform: scale(1.05);
+        }
+
+        /* Product Info */
+        .product-info {
+            padding: 20px 0;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .product-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .performance-rating {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(196, 69, 105, 0.1));
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .price-main {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin-bottom: 10px;
+        }
+
+        .price-subtitle {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .price-features {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .price-feature {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            margin-bottom: 40px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff9900, #ff6600);
+            border: none;
+            color: white;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(255, 153, 0, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 153, 0, 0.4);
+        }
+
+        .support-info {
+            text-align: center;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Product Details Tabs */
+        .product-details {
+            margin-top: 50px;
+        }
+
+        .details-tabs {
+            display: flex;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            margin-bottom: 30px;
+            gap: 0;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            opacity: 0.6;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            opacity: 1;
+            color: #00d4ff;
+            border-bottom-color: #00d4ff;
+        }
+
+        .tab-button:hover {
+            opacity: 1;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Components Table */
+        .components-table {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.3), rgba(16, 33, 62, 0.3));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .component-row {
+            display: grid;
+            grid-template-columns: 120px 1fr 120px;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .component-row:hover {
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .component-row:last-child {
+            border-bottom: none;
+        }
+
+        .component-type {
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .component-name {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .component-price {
+            text-align: right;
+            font-weight: 700;
+            color: #ff6b9d;
+        }
+
+        /* Light Mode Styles */
+        body.light-mode .main-image,
+        body.light-mode .thumbnail {
+            background: linear-gradient(135deg, #e9ecef, #dee2e6);
+            border-color: rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .thumbnail:hover,
+        body.light-mode .thumbnail.active {
+            border-color: #007bff;
+        }
+
+        body.light-mode .product-title {
+            color: #007bff;
+        }
+
+        body.light-mode .pricing-section {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(183, 28, 28, 0.1));
+            border-color: rgba(220, 53, 69, 0.3);
+        }
+
+        body.light-mode .price-main {
+            color: #dc3545;
+        }
+
+        body.light-mode .price-feature {
+            background: rgba(0, 123, 255, 0.1);
+            border-color: rgba(0, 123, 255, 0.3);
+            color: #007bff;
+        }
+
+        body.light-mode .components-table {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.8), rgba(233, 236, 239, 0.8));
+            border-color: rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .component-row {
+            border-color: rgba(0, 123, 255, 0.2);
+        }
+
+        body.light-mode .component-row:hover {
+            background: rgba(0, 123, 255, 0.05);
+        }
+
+        body.light-mode .component-type {
+            color: #007bff;
+        }
+
+        body.light-mode .component-price {
+            color: #dc3545;
+        }
+
+        body.light-mode .tab-button.active {
+            color: #007bff;
+            border-bottom-color: #007bff;
+        }
+
+        body.light-mode .details-tabs {
+            border-color: rgba(0, 123, 255, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .product-container {
+                padding: 15px;
+                margin-top: 80px;
+            }
+
+            .product-main {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-title {
+                font-size: 2rem;
+            }
+
+            .price-main {
+                font-size: 2.5rem;
+            }
+
+            .details-tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            .component-row {
+                grid-template-columns: 100px 1fr 100px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">TechReviewBlog</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="blogs.html" class="nav-link">Blogs</a>
+                <a href="store-components.html" class="nav-link active">Store</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                </button>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Container -->
+    <div class="product-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> > <a href="store-components.html">Store</a> > <span id="productBreadcrumb">Gaming PC</span>
+        </div>
+
+        <!-- Product Main Section -->
+        <div class="product-main">
+            <!-- Product Images -->
+            <div class="product-images">
+                <div class="main-image">
+                    <img id="mainProductImage" src="" alt="Gaming PC">
+                </div>
+                <div class="image-thumbnails">
+                    <!-- Thumbnails will be loaded by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <h1 class="product-title" id="productTitle">Gaming PC</h1>
+                <p class="product-subtitle" id="productDescription">Loading...</p>
+
+                <div class="performance-rating" id="performanceRating">Performance</div>
+
+                <div class="pricing-section">
+                    <div class="price-main" id="productPrice">$0.00</div>
+                    <div class="price-subtitle">All Components Included • Expert Assembly Available</div>
+                    <div class="price-features">
+                        <div class="price-feature">✓ Expert Selected</div>
+                        <div class="price-feature">✓ Tested Compatibility</div>
+                        <div class="price-feature">✓ Professional Support</div>
+                        <div class="price-feature">✓ 2-Year Warranty</div>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <button class="add-to-cart-btn" id="addToCartBtn" onclick="addCurrentPCToCart()">
+                        🛒 Add All Components to Amazon Cart
+                    </button>
+                    <div class="support-info">
+                        All components ship from Amazon • Prime eligible • Expert configuration guide included
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-details">
+            <div class="details-tabs">
+                <button class="tab-button active" onclick="showTab('specifications')">Specifications</button>
+                <button class="tab-button" onclick="showTab('components')">Components</button>
+                <button class="tab-button" onclick="showTab('performance')">Performance</button>
+            </div>
+
+            <div id="specifications" class="tab-content active">
+                <div class="components-table" id="specificationsTable">
+                    <!-- Specifications will be loaded by JavaScript -->
+                </div>
+            </div>
+
+            <div id="components" class="tab-content">
+                <div class="components-table" id="componentsTable">
+                    <!-- Components will be loaded by JavaScript -->
+                </div>
+            </div>
+
+            <div id="performance" class="tab-content">
+                <div class="components-table">
+                    <div class="component-row">
+                        <div class="component-type">Gaming</div>
+                        <div class="component-name" id="gamingPerformance">Loading...</div>
+                        <div class="component-price">Tested</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-type">Resolution</div>
+                        <div class="component-name" id="resolutionSupport">Loading...</div>
+                        <div class="component-price">Optimized</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-type">Streaming</div>
+                        <div class="component-name">Hardware encoding support, OBS ready, NVENC/VCE</div>
+                        <div class="component-price">Ready</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-type">Amazon Benefits</div>
+                        <div class="component-name">Prime shipping, easy returns, customer support</div>
+                        <div class="component-price">Included</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-type">Build Guide</div>
+                        <div class="component-name">Step-by-step assembly guide and compatibility verification</div>
+                        <div class="component-price">Free</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="store.js"></script>
+    <script src="product.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

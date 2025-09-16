@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming PCs | 28 Custom Built Rigs | TechReview Store</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="28 custom gaming PCs from $899-$4699. AMD + NVIDIA builds, Intel + RTX 50 series, complete component lists with Amazon affiliate links. Budget to ultimate 4K gaming rigs.">
+    <meta name="keywords" content="prebuilt gaming pc, custom gaming pc 2025, gaming computer, rtx 5090 pc, amd gaming pc, intel gaming pc, gaming pc store">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Prebuilt PCs Page Styles */
+        body {
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1a2e 25%, #16213e 50%, #0f1419 75%, #000000 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Store Navigation Bar */
+        .store-nav-bar {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+            padding: 1rem 0;
+            margin: 0;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 80px;
+            z-index: 1000;
+        }
+
+        body:not(.light-mode) .store-nav-bar {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(16, 33, 62, 0.95));
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .store-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .store-nav-link {
+            color: #495057;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body:not(.light-mode) .store-nav-link {
+            color: var(--text-color);
+        }
+
+        .store-nav-link:hover {
+            color: #00d4ff;
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .store-nav-link.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 107, 157, 0.2));
+            border-color: rgba(0, 212, 255, 0.6);
+            color: #00d4ff;
+        }
+
+        .prebuilts-container {
+            width: 100%;
+            padding: 0;
+            margin-top: 100px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .prebuilts-header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 157, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prebuilts-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 10 0 L 10 10 M 0 10 L 20 10" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="0.5"/><circle cx="10" cy="10" r="1" fill="rgba(0,212,255,0.2)"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .prebuilts-title {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #00d4ff, #ff6b9d, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5)); }
+            100% { filter: drop-shadow(0 0 40px rgba(255, 107, 157, 0.8)); }
+        }
+
+        .prebuilts-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Back to Store Button */
+        .back-to-store {
+            position: fixed;
+            top: 120px;
+            left: 20px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 107, 157, 0.2));
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            color: #00d4ff;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-store:hover {
+            transform: translateX(-5px);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(255, 107, 157, 0.3));
+        }
+
+        .back-to-store svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 40px 20px;
+            background: rgba(10, 25, 47, 0.3);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .filter-label {
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-button {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--text-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .filter-button.active {
+            background: linear-gradient(135deg, #00d4ff, #ff6b9d);
+            color: #0a192f;
+            border-color: transparent;
+        }
+
+        .filter-button:hover {
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        /* PC Grid */
+        .pc-grid-section {
+            padding: 60px 20px;
+            min-height: 80vh;
+        }
+
+        .pc-grid-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .pc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .pc-grid-card {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.8), rgba(16, 33, 62, 0.8));
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .pc-grid-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .pc-grid-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .pc-grid-card:hover:before {
+            left: 100%;
+        }
+
+        .pc-grid-image {
+            position: relative;
+            height: 220px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .pc-grid-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .pc-grid-card:hover .pc-grid-image img {
+            transform: scale(1.05);
+        }
+
+        .performance-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: #0a192f;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pc-grid-content {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pc-grid-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .pc-grid-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .pc-specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 12px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #00d4ff;
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .spec-value {
+            font-size: 0.75rem;
+            color: var(--text-color);
+            opacity: 0.9;
+            text-align: right;
+        }
+
+        .pc-grid-pricing {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(196, 69, 105, 0.1));
+            border-radius: 12px;
+            border: 1px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .pc-grid-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff6b9d;
+        }
+
+        .price-savings {
+            font-size: 0.8rem;
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .pc-grid-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-build-button {
+            flex: 1;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .view-build-button:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .add-to-cart-button {
+            flex: 1;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+        }
+
+        /* Light Mode Adjustments */
+        body.light-mode .prebuilts-header {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(220, 53, 69, 0.08));
+        }
+
+        body.light-mode .prebuilts-title {
+            background: linear-gradient(135deg, #007bff, #dc3545, #28a745);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.light-mode .pc-grid-card {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .pc-grid-card:hover {
+            border-color: rgba(0, 123, 255, 0.6);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+        }
+
+        body.light-mode .filter-section {
+            background: rgba(248, 249, 250, 0.8);
+            border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+        }
+
+        body.light-mode .filter-group {
+            background: rgba(0, 123, 255, 0.1);
+            border: 1px solid rgba(0, 123, 255, 0.2);
+        }
+
+        body.light-mode .filter-label {
+            color: #007bff;
+        }
+
+        body.light-mode .filter-button {
+            background: rgba(0, 123, 255, 0.1);
+            border: 1px solid rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .filter-button.active {
+            background: linear-gradient(135deg, #007bff, #dc3545);
+        }
+
+        body.light-mode .spec-item {
+            background: rgba(0, 123, 255, 0.05);
+            border-left-color: #007bff;
+        }
+
+        body.light-mode .spec-label {
+            color: #007bff;
+        }
+
+        body.light-mode .pc-grid-pricing {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(183, 28, 28, 0.1));
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        body.light-mode .pc-grid-price {
+            color: #dc3545;
+        }
+
+        body.light-mode .view-build-button {
+            background: rgba(0, 123, 255, 0.1);
+            border: 1px solid rgba(0, 123, 255, 0.3);
+            color: #007bff;
+        }
+
+        body.light-mode .view-build-button:hover {
+            background: rgba(0, 123, 255, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .prebuilts-container {
+                margin-top: 80px;
+            }
+
+            .prebuilts-title {
+                font-size: 2.5rem;
+            }
+
+            .prebuilts-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .pc-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .pc-grid-card {
+                margin: 0 10px;
+            }
+
+            .back-to-store {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 20px;
+                display: inline-flex;
+                width: fit-content;
+            }
+
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                justify-content: center;
+            }
+
+            .pc-specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pc-grid-pricing {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .pc-grid-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">TechReviewBlog</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="blogs.html" class="nav-link">Blogs</a>
+                <a href="store-components.html" class="nav-link active">Store</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Store Navigation Bar -->
+    <div class="store-nav-bar">
+        <div class="store-nav-container">
+            <a href="store-components.html" class="store-nav-link">🏪 Store Home</a>
+            <a href="store-components.html" class="store-nav-link">🔧 PC Components</a>
+            <a href="store-prebuilts.html" class="store-nav-link active">🖥️ Prebuilt PCs</a>
+            <a href="store-trending.html" class="store-nav-link">⚡ Trending Tech</a>
+            <a href="store-accessories.html" class="store-nav-link">🎮 Gaming Gear</a>
+            <a href="store-crypto.html" class="store-nav-link">₿ Crypto Hardware</a>
+        </div>
+    </div>
+
+    <!-- Back to Store Button -->
+    <a href="store-components.html" class="back-to-store">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to Store
+    </a>
+
+    <!-- Prebuilts Container -->
+    <div class="prebuilts-container">
+        <!-- Header -->
+        <div class="prebuilts-header">
+            <h1 class="prebuilts-title">Gaming PCs</h1>
+            <p class="prebuilts-subtitle">
+                28 expertly crafted gaming systems from budget 1080p to ultimate 4K. Every build includes complete component lists with Amazon affiliate links for maximum earning potential.
+            </p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <span class="filter-label">Performance:</span>
+                    <button class="filter-button active" data-filter="all">All Builds</button>
+                    <button class="filter-button" data-filter="1080p Gaming">1080p</button>
+                    <button class="filter-button" data-filter="1440p Gaming">1440p</button>
+                    <button class="filter-button" data-filter="4K Gaming">4K</button>
+                    <button class="filter-button" data-filter="Ultimate">Ultimate</button>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">Price Range:</span>
+                    <button class="filter-button" data-price="budget">$899-$1499</button>
+                    <button class="filter-button" data-price="mid">$1500-$2499</button>
+                    <button class="filter-button" data-price="high">$2500-$3999</button>
+                    <button class="filter-button" data-price="ultimate">$4000+</button>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">CPU Brand:</span>
+                    <button class="filter-button" data-cpu="amd">AMD</button>
+                    <button class="filter-button" data-cpu="intel">Intel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC Grid -->
+        <div class="pc-grid-section">
+            <div class="pc-grid-container">
+                <div class="pc-grid" id="pcGrid">
+                    <!-- PC cards will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="store.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Initialize prebuilts page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPCGrid();
+            initializeFilters();
+        });
+
+        // Render all PCs in grid format
+        function renderPCGrid() {
+            const pcGrid = document.getElementById('pcGrid');
+            if (!pcGrid) return;
+
+            const allPCs = Object.values(customPCs);
+            const pcCards = allPCs.map(pc => createPCGridCard(pc)).join('');
+            pcGrid.innerHTML = pcCards;
+        }
+
+        // Create PC grid card
+        function createPCGridCard(pc) {
+            const topSpecs = Object.entries(pc.specs).slice(0, 4);
+            const specsHtml = topSpecs.map(([label, value]) => `
+                <div class="spec-item">
+                    <span class="spec-label">${label}</span>
+                    <span class="spec-value">${value}</span>
+                </div>
+            `).join('');
+
+            return `
+                <div class="pc-grid-card" data-pc-id="${pc.id}" data-performance="${pc.performance}" data-price="${pc.price}">
+                    <div class="pc-grid-image">
+                        <img src="${pc.image}" alt="${pc.name}">
+                        <div class="performance-badge">${pc.performance}</div>
+                    </div>
+                    <div class="pc-grid-content">
+                        <h3 class="pc-grid-name">${pc.name}</h3>
+                        <p class="pc-grid-description">${pc.description}</p>
+
+                        <div class="pc-specs-grid">
+                            ${specsHtml}
+                        </div>
+
+                        <div class="pc-grid-pricing">
+                            <div class="pc-grid-price">$${pc.price.toFixed(2)}</div>
+                            <div class="price-savings">All Components Included</div>
+                        </div>
+
+                        <div class="pc-grid-actions">
+                            <button class="view-build-button" onclick="viewProduct('${pc.id}')">
+                                View Details
+                            </button>
+                            <button class="add-to-cart-button" onclick="addPCToAmazonCart('${pc.id}')">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize filter functionality
+        function initializeFilters() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from siblings
+                    const siblings = this.parentElement.querySelectorAll('.filter-button');
+                    siblings.forEach(sibling => sibling.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Apply filter
+                    applyFilters();
+                });
+            });
+        }
+
+        // Apply active filters
+        function applyFilters() {
+            const pcCards = document.querySelectorAll('.pc-grid-card');
+            const activeFilters = {
+                performance: document.querySelector('[data-filter].active')?.dataset.filter,
+                price: document.querySelector('[data-price].active')?.dataset.price,
+                cpu: document.querySelector('[data-cpu].active')?.dataset.cpu
+            };
+
+            pcCards.forEach(card => {
+                let shouldShow = true;
+                const cardPerformance = card.dataset.performance;
+                const cardPrice = parseFloat(card.dataset.price);
+                const cardName = card.querySelector('.pc-grid-name').textContent.toLowerCase();
+
+                // Performance filter
+                if (activeFilters.performance && activeFilters.performance !== 'all') {
+                    if (!cardPerformance.includes(activeFilters.performance)) {
+                        shouldShow = false;
+                    }
+                }
+
+                // Price filter
+                if (activeFilters.price) {
+                    switch (activeFilters.price) {
+                        case 'budget':
+                            if (cardPrice < 899 || cardPrice > 1499) shouldShow = false;
+                            break;
+                        case 'mid':
+                            if (cardPrice < 1500 || cardPrice > 2499) shouldShow = false;
+                            break;
+                        case 'high':
+                            if (cardPrice < 2500 || cardPrice > 3999) shouldShow = false;
+                            break;
+                        case 'ultimate':
+                            if (cardPrice < 4000) shouldShow = false;
+                            break;
+                    }
+                }
+
+                // CPU filter
+                if (activeFilters.cpu) {
+                    if (activeFilters.cpu === 'amd' && !cardName.includes('amd') && !cardName.includes('ryzen')) {
+                        shouldShow = false;
+                    } else if (activeFilters.cpu === 'intel' && !cardName.includes('intel')) {
+                        shouldShow = false;
+                    }
+                }
+
+                // Show/hide card
+                card.style.display = shouldShow ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Tech | Latest GPUs, CPUs & Components | TechReview Store</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Latest trending tech products 2025. RTX 50 series GPUs, AMD 9000 series CPUs, DDR5 memory, next-gen components with affiliate links. Hot deals on Amazon Prime eligible products.">
+    <meta name="keywords" content="trending tech 2025, rtx 5090, rtx 5080, amd 9800x3d, latest gpu, newest cpu, tech deals, amazon tech products">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Trending Page Styles */
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        body:not(.light-mode) {
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1a2e 25%, #16213e 50%, #0f1419 75%, #000000 100%);
+            background-attachment: fixed;
+        }
+
+        /* Store Navigation Bar */
+        .store-nav-bar {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+            padding: 1rem 0;
+            margin: 0;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 80px;
+            z-index: 1000;
+        }
+
+        body:not(.light-mode) .store-nav-bar {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(16, 33, 62, 0.95));
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .store-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .store-nav-link {
+            color: #495057;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body:not(.light-mode) .store-nav-link {
+            color: var(--text-color);
+        }
+
+        .store-nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        body:not(.light-mode) .store-nav-link:before {
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+        }
+
+        .store-nav-link:hover {
+            color: #007bff;
+            border-color: rgba(0, 123, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        body:not(.light-mode) .store-nav-link:hover {
+            color: #00d4ff;
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .store-nav-link:hover:before {
+            left: 100%;
+        }
+
+        .store-nav-link.active {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(220, 53, 69, 0.2));
+            border-color: rgba(0, 123, 255, 0.6);
+            color: #007bff;
+        }
+
+        body:not(.light-mode) .store-nav-link.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 107, 157, 0.2));
+            border-color: rgba(0, 212, 255, 0.6);
+            color: #00d4ff;
+        }
+
+        .trending-container {
+            width: 100%;
+            padding: 0;
+            margin-top: 100px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .trending-header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(0, 212, 255, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trending-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="lightning" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M7 2L3 8h4l-1 6 4-6H6l1-6z" fill="rgba(255,107,157,0.1)" stroke="rgba(0,212,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23lightning)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .trending-title {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #ff6b9d, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            animation: pulseGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.5)); }
+            100% { filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.8)); }
+        }
+
+        .trending-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Back to Store Button */
+        .back-to-store {
+            position: fixed;
+            top: 120px;
+            left: 20px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(0, 212, 255, 0.2));
+            border: 1px solid rgba(255, 107, 157, 0.4);
+            color: #ff6b9d;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-store:hover {
+            transform: translateX(-5px);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.3), rgba(0, 212, 255, 0.3));
+        }
+
+        .back-to-store svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Category Sections */
+        .category-section {
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b9d, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .category-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #ff6b9d, #00ff88);
+            border-radius: 2px;
+        }
+
+        .category-description {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .trending-product-card {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.8), rgba(16, 33, 62, 0.8));
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .trending-product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 107, 157, 0.6);
+            box-shadow: 0 25px 70px rgba(255, 107, 157, 0.2);
+        }
+
+        .trending-product-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .trending-product-card:hover:before {
+            left: 100%;
+        }
+
+        .trending-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 3;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .product-image {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .trending-product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-content {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-features {
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background: rgba(255, 107, 157, 0.1);
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            color: #ff6b9d;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .product-pricing {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(196, 69, 105, 0.1));
+            border-radius: 12px;
+            border: 1px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ff6b9d;
+        }
+
+        .price-discount {
+            font-size: 0.8rem;
+            color: #00ff88;
+            font-weight: 600;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-product-button {
+            flex: 1;
+            background: rgba(255, 107, 157, 0.1);
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            color: #ff6b9d;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .view-product-button:hover {
+            background: rgba(255, 107, 157, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .quick-buy-button {
+            flex: 1;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .quick-buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+        }
+
+        /* Hot Deals Banner */
+        .hot-deals-banner {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(196, 69, 105, 0.2));
+            border: 2px solid rgba(255, 107, 157, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hot-deals-banner:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 157, 0.1), transparent);
+            animation: bannerShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes bannerShimmer {
+            0%, 100% { transform: translateX(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .banner-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-text {
+            color: var(--text-color);
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Light Mode Adjustments */
+        body.light-mode .trending-header {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.08), rgba(0, 123, 255, 0.08));
+        }
+
+        body.light-mode .trending-title {
+            background: linear-gradient(135deg, #dc3545, #007bff, #28a745);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.light-mode .trending-product-card {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border: 2px solid rgba(220, 53, 69, 0.3);
+        }
+
+        body.light-mode .trending-product-card:hover {
+            border-color: rgba(220, 53, 69, 0.6);
+            box-shadow: 0 25px 70px rgba(220, 53, 69, 0.2);
+        }
+
+        body.light-mode .category-title {
+            background: linear-gradient(135deg, #dc3545, #007bff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.light-mode .feature-tag {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            color: #dc3545;
+        }
+
+        body.light-mode .product-pricing {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(183, 28, 28, 0.1));
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        body.light-mode .product-price {
+            color: #dc3545;
+        }
+
+        body.light-mode .view-product-button {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            color: #dc3545;
+        }
+
+        body.light-mode .view-product-button:hover {
+            background: rgba(220, 53, 69, 0.2);
+        }
+
+        body.light-mode .hot-deals-banner {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.2), rgba(183, 28, 28, 0.2));
+            border: 2px solid rgba(220, 53, 69, 0.4);
+        }
+
+        body.light-mode .banner-title {
+            color: #dc3545;
+        }
+
+        body.light-mode .store-nav-bar {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+        }
+
+        body.light-mode .store-nav-link {
+            color: #495057;
+        }
+
+        body.light-mode .store-nav-link:hover {
+            color: #007bff;
+            border-color: rgba(0, 123, 255, 0.5);
+        }
+
+        body.light-mode .store-nav-link.active {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(220, 53, 69, 0.2));
+            border-color: rgba(0, 123, 255, 0.6);
+            color: #007bff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .trending-container {
+                margin-top: 80px;
+            }
+
+            .trending-title {
+                font-size: 2.5rem;
+            }
+
+            .trending-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .back-to-store {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 20px;
+                display: inline-flex;
+                width: fit-content;
+            }
+
+            .product-pricing {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .category-title {
+                font-size: 2rem;
+            }
+
+            .banner-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">TechReviewBlog</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="blogs.html" class="nav-link">Blogs</a>
+                <a href="store-components.html" class="nav-link active">Store</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Store Navigation Bar -->
+    <div class="store-nav-bar">
+        <div class="store-nav-container">
+            <a href="store-components.html" class="store-nav-link">🏪 Store Home</a>
+            <a href="store-components.html" class="store-nav-link">🔧 PC Components</a>
+            <a href="store-trending.html" class="store-nav-link active">⚡ Trending Tech</a>
+            <a href="store-accessories.html" class="store-nav-link">🎮 Gaming Gear</a>
+            <a href="store-crypto.html" class="store-nav-link">₿ Crypto Hardware</a>
+        </div>
+    </div>
+
+    <!-- Back to Store Button -->
+    <a href="store-components.html" class="back-to-store">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to Store
+    </a>
+
+    <!-- Trending Container -->
+    <div class="trending-container">
+        <!-- Header -->
+        <div class="trending-header">
+            <h1 class="trending-title">Trending Tech</h1>
+            <p class="trending-subtitle">
+                Latest and hottest tech products of 2025. From cutting-edge GPUs to next-gen CPUs, discover what's trending in the tech world with exclusive Amazon deals.
+            </p>
+        </div>
+
+        <!-- Hot Deals Banner -->
+        <div class="hot-deals-banner">
+            <h2 class="banner-title">🔥 Hot Deals Alert!</h2>
+            <p class="banner-text">Limited time offers on the latest tech. Don't miss out on these trending products!</p>
+        </div>
+
+        <!-- Latest GPUs Section -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">Latest GPUs</h2>
+                <p class="category-description">
+                    Next-generation graphics cards that are setting new standards for gaming and content creation
+                </p>
+            </div>
+
+            <div class="product-grid" id="gpuGrid">
+                <!-- GPU products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Trending CPUs Section -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">Trending CPUs</h2>
+                <p class="category-description">
+                    The most popular processors that enthusiasts and professionals are choosing
+                </p>
+            </div>
+
+            <div class="product-grid" id="cpuGrid">
+                <!-- CPU products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Memory & Storage Section -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">Memory & Storage</h2>
+                <p class="category-description">
+                    High-speed DDR5 memory and cutting-edge NVMe SSDs for ultimate performance
+                </p>
+            </div>
+
+            <div class="product-grid" id="memoryGrid">
+                <!-- Memory & Storage products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Crypto Hardware Section -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">Crypto Hardware</h2>
+                <p class="category-description">
+                    Secure hardware wallets and cryptocurrency tools from trusted brands
+                </p>
+            </div>
+
+            <div class="product-grid" id="cryptoGrid">
+                <!-- Crypto products will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="store.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Trending Products Data
+        const trendingProducts = {
+            gpus: [
+                {
+                    id: 'rtx-5090-fe',
+                    name: 'RTX 5090 Founders Edition',
+                    description: 'Flagship GPU with 32GB GDDR7 VRAM. Ultimate 4K gaming with ray tracing and DLSS 4. The most powerful gaming graphics card ever created.',
+                    price: 1999.99,
+                    image: 'assets/5090.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'B0RTX5090FE',
+                    features: ['32GB GDDR7', '4K Gaming', 'DLSS 4', 'Ray Tracing'],
+                    discount: 'Launch Price'
+                },
+                {
+                    id: 'rtx-5080-gaming',
+                    name: 'RTX 5080 Gaming OC',
+                    description: 'High-performance 1440p/4K gaming GPU with 16GB GDDR7. Perfect balance of price and performance for enthusiast gamers.',
+                    price: 1199.99,
+                    image: 'assets/5080.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'B0RTX5080GC',
+                    features: ['16GB GDDR7', '1440p/4K', 'DLSS 4', 'OC Edition'],
+                    discount: 'Best Value'
+                },
+                {
+                    id: 'rx-9070-xt',
+                    name: 'AMD RX 9070 XT',
+                    description: 'Latest RDNA 4 architecture with 16GB GDDR6. Excellent 1440p gaming with advanced FSR 4 upscaling technology.',
+                    price: 799.99,
+                    image: 'assets/rx9070xt.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'B0RX9070XT',
+                    features: ['16GB GDDR6', 'RDNA 4', 'FSR 4', '1440p Gaming'],
+                    discount: 'AMD Value'
+                }
+            ],
+            cpus: [
+                {
+                    id: 'ryzen-9800x3d',
+                    name: 'AMD Ryzen 9 9800X3D',
+                    description: 'Next-gen gaming CPU with 3D V-Cache technology. 8 cores, 16 threads of pure gaming performance with improved architecture.',
+                    price: 549.99,
+                    image: 'assets/9800x3d.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'B09800X3D',
+                    features: ['8C/16T', '3D V-Cache', 'Zen 5', 'Gaming'],
+                    discount: 'Gaming King'
+                },
+                {
+                    id: 'intel-15900k',
+                    name: 'Intel Core i9-15900K',
+                    description: 'Latest Intel flagship with improved P and E cores. 24 cores, 32 threads for ultimate multitasking and content creation.',
+                    price: 649.99,
+                    image: 'assets/15900k.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'B015900K',
+                    features: ['24C/32T', 'P+E Cores', '6.0GHz', 'LGA1851'],
+                    discount: 'Flagship'
+                },
+                {
+                    id: 'ryzen-9950x',
+                    name: 'AMD Ryzen 9 9950X',
+                    description: 'Flagship 16-core processor with Zen 5 architecture. Unmatched performance for workstations and high-end gaming.',
+                    price: 649.99,
+                    image: 'assets/9950x.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'B09950X16',
+                    features: ['16C/32T', 'Zen 5', '5.7GHz', 'AM5'],
+                    discount: 'Workstation'
+                }
+            ],
+            memory: [
+                {
+                    id: 'ddr5-6400-64gb',
+                    name: 'DDR5-6400 64GB Kit',
+                    description: 'High-speed 64GB DDR5 memory kit optimized for gaming and content creation. Perfect for memory-intensive workloads.',
+                    price: 599.99,
+                    image: 'assets/ddr5-64gb.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'BDDR56464',
+                    features: ['64GB Capacity', '6400MHz', 'CL32', 'RGB'],
+                    discount: 'Creator Kit'
+                },
+                {
+                    id: 'nvme-4tb-gen5',
+                    name: 'NVMe 4TB PCIe 5.0',
+                    description: 'Cutting-edge PCIe 5.0 NVMe SSD with 4TB capacity. Lightning-fast read/write speeds for next-gen gaming and workflows.',
+                    price: 399.99,
+                    image: 'assets/nvme-4tb.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'BNVME4TB5',
+                    features: ['4TB Storage', 'PCIe 5.0', '12GB/s Read', 'Heatsink'],
+                    discount: 'Massive Storage'
+                },
+                {
+                    id: 'ddr5-8000-32gb',
+                    name: 'DDR5-8000 32GB Kit',
+                    description: 'Extreme overclocking DDR5 memory kit for enthusiasts. Push your system to the absolute limits with 8000MHz speeds.',
+                    price: 799.99,
+                    image: 'assets/ddr5-8000.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'BDDR58032',
+                    features: ['32GB Kit', '8000MHz', 'OC Ready', 'Extreme'],
+                    discount: 'OC Special'
+                }
+            ],
+            crypto: [
+                {
+                    id: 'ledger-nano-x-plus',
+                    name: 'Ledger Nano X Plus',
+                    description: 'Next-generation hardware wallet with enhanced security features. Supports 5000+ cryptocurrencies with Bluetooth connectivity.',
+                    price: 149.99,
+                    image: 'assets/ledger-x-plus.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'BLEDGERXP',
+                    features: ['5000+ Coins', 'Bluetooth', 'Secure Chip', 'Mobile App'],
+                    discount: 'Secure Choice'
+                },
+                {
+                    id: 'trezor-safe-5',
+                    name: 'Trezor Safe 5',
+                    description: 'Open-source hardware wallet with touchscreen interface. Ultimate security for serious cryptocurrency investors.',
+                    price: 199.99,
+                    image: 'assets/trezor-safe5.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'BTREZORS5',
+                    features: ['Touchscreen', 'Open Source', 'Multi-Coin', 'PIN Protection'],
+                    discount: 'Pro Security'
+                },
+                {
+                    id: 'crypto-price-display',
+                    name: 'Crypto Price Display Pro',
+                    description: 'Professional cryptocurrency price ticker with real-time updates. Monitor your portfolio and market trends on your desk.',
+                    price: 299.99,
+                    image: 'assets/crypto-display-pro.webp',
+                    amazonUrl: 'https://amzn.to/your-affiliate-link',
+                    asin: 'BCRYPTOPRO',
+                    features: ['Real-Time', 'Multi-Coin', 'WiFi Enabled', 'Portfolio Tracking'],
+                    discount: 'Trader Essential'
+                }
+            ]
+        };
+
+        // Initialize trending page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTrendingProducts();
+        });
+
+        // Render all trending product categories
+        function renderTrendingProducts() {
+            renderProductCategory('gpuGrid', trendingProducts.gpus);
+            renderProductCategory('cpuGrid', trendingProducts.cpus);
+            renderProductCategory('memoryGrid', trendingProducts.memory);
+            renderProductCategory('cryptoGrid', trendingProducts.crypto);
+        }
+
+        // Render products for a specific category
+        function renderProductCategory(gridId, products) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+
+            const productCards = products.map(product => createTrendingProductCard(product)).join('');
+            grid.innerHTML = productCards;
+        }
+
+        // Create trending product card
+        function createTrendingProductCard(product) {
+            const featuresHtml = product.features.map(feature => `
+                <span class="feature-tag">${feature}</span>
+            `).join('');
+
+            return `
+                <div class="trending-product-card" data-product-id="${product.id}">
+                    <div class="trending-badge">Hot</div>
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+
+                        <div class="product-features">
+                            ${featuresHtml}
+                        </div>
+
+                        <div class="product-pricing">
+                            <div class="product-price">$${product.price.toFixed(2)}</div>
+                            <div class="price-discount">${product.discount}</div>
+                        </div>
+
+                        <div class="product-actions">
+                            <button class="view-product-button" onclick="viewProductDetails('${product.id}', 'trending')">
+                                View Details
+                            </button>
+                            <button class="quick-buy-button" onclick="addSingleProductToCart('${product.asin}', '${product.name}', ${product.price})">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
