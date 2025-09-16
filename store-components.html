@@ -332,7 +332,8 @@
 
         .product-buttons {
             display: flex;
-            gap: 1rem;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .buy-button {
@@ -535,21 +536,55 @@
         }
 
         .add-to-cart-button {
+            flex: 1;
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
             border: none;
-            padding: 0.6rem 1rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            margin: 0.2rem;
         }
 
         .add-to-cart-button:hover {
             background: linear-gradient(135deg, #218838 0%, #17a085 100%);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .review-button {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.8) 0%, rgba(255, 140, 0, 0.8) 100%);
+            color: #0a192f;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .review-button:hover {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 1) 0%, rgba(255, 140, 0, 1) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.4);
+        }
+
+        body.light-mode .review-button {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.9) 0%, rgba(255, 140, 0, 0.9) 100%);
+            color: white;
+        }
+
+        body.light-mode .review-button:hover {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 1) 0%, rgba(255, 140, 0, 1) 100%);
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.4);
         }
 
         .cart-notification {
@@ -745,6 +780,41 @@
             background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
             transform: translateY(-1px);
             box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        /* Image Zoom Modal */
+        .image-zoom-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            cursor: zoom-out;
+        }
+
+        .image-zoom-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+            border: 3px solid rgba(0, 212, 255, 0.5);
+            cursor: default;
+        }
+
+        .product-image img {
+            cursor: zoom-in;
+            transition: all 0.3s ease;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.05);
         }
 
         .checkout-btn {
@@ -983,6 +1053,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/amd-ryzen-9-9950x-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/42yt1sB" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1045,6 +1118,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/amd-ryzen-7-9800x3d-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/4puAVxi" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1107,6 +1183,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/amd-ryzen-7-7800x3d-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/4gAdDBV" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1169,6 +1248,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/intel-core-i9-14900k-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/4n69msw" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1231,6 +1313,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/intel-core-i7-14700k-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/4plh5V7" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1293,6 +1378,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/amd-ryzen-5-7600x-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/47Ktsni" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1355,6 +1443,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/amd-ryzen-7-5800x-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/48h0fjR" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1417,6 +1508,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/amd-ryzen-5-5600x-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/4mlJasy" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1488,6 +1582,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/msi-rtx-5090-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/3ZRTx90" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1550,6 +1647,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/gigabyte-rtx-5080-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/3YRTx80" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1612,6 +1712,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/gigabyte-rtx-5070-ti-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/4hRTx7S" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1674,6 +1777,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/gigabyte-rtx-5070-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/3XRTx70" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1736,6 +1842,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/asus-rtx-5070-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/3ZRx9XT" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1798,6 +1907,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/gigabyte-rtx-5060-ti-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/4hRx8XT" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1860,6 +1972,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/powercolor-rx-9070-xt-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/3YRTx6T" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1922,6 +2037,9 @@
                         </div>
 
                         <div class="product-actions">
+                            <a href="reviews/xfx-rx-7600-review.html" class="review-button">
+                                📝 Read TechReview Opinion
+                            </a>
                             <a href="https://amzn.to/4gRx6XT" class="buy-button" rel="nofollow" target="_blank" itemprop="url">
                                 Buy on Amazon
                             </a>
@@ -1940,6 +2058,20 @@
         // Initialize cart count on page load
         document.addEventListener('DOMContentLoaded', function() {
             updateCartCount();
+
+            // Initialize theme toggle
+            if (typeof initThemeToggle === 'function') {
+                initThemeToggle();
+            }
+
+            // Add click event to all product images for zoom
+            const productImages = document.querySelectorAll('.product-image img');
+            productImages.forEach(img => {
+                img.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    zoomImage(this.src, this.alt);
+                });
+            });
 
             // Category filtering functionality
             const categoryFilters = document.querySelectorAll('.category-filter');
@@ -1968,6 +2100,19 @@
                 });
             });
         });
+
+        // Image zoom functionality
+        function zoomImage(src, alt) {
+            const modal = document.createElement('div');
+            modal.className = 'image-zoom-modal';
+            modal.innerHTML = `<img src="${src}" alt="${alt}" class="image-zoom-content">`;
+
+            modal.addEventListener('click', function() {
+                modal.remove();
+            });
+
+            document.body.appendChild(modal);
+        }
     </script>
 </body>
 </html>

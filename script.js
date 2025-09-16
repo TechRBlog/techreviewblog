@@ -334,9 +334,9 @@ function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
     if (!themeToggle) return;
 
-    // Check for saved theme preference or default to dark mode
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
     // Apply the saved theme
     if (currentTheme === 'light') {
         document.body.classList.add('light-mode');
@@ -1294,3 +1294,179 @@ function initLiveCryptoPrices() {
 
     console.log('Live crypto prices initialized with individual update intervals');
 }
+
+// Cart Management Functions - Global cart functionality
+let cart = JSON.parse(localStorage.getItem('techReviewCart')) || [];
+
+function addToCart(productName, price, amazonUrl, image) {
+    const existingItem = cart.find(item => item.name === productName);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            name: productName,
+            price: price,
+            amazonUrl: amazonUrl,
+            image: image,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem('techReviewCart', JSON.stringify(cart));
+    updateCartCount();
+    showCartNotification(productName);
+}
+
+function removeFromCart(productName) {
+    cart = cart.filter(item => item.name !== productName);
+    localStorage.setItem('techReviewCart', JSON.stringify(cart));
+    updateCartCount();
+    renderCartItems();
+}
+
+function updateCartQuantity(productName, quantity) {
+    const item = cart.find(item => item.name === productName);
+    if (item) {
+        if (quantity <= 0) {
+            removeFromCart(productName);
+        } else {
+            item.quantity = quantity;
+            localStorage.setItem('techReviewCart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+    }
+}
+
+function updateCartCount() {
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const cartCountElements = document.querySelectorAll('.cart-count');
+    cartCountElements.forEach(el => {
+        el.textContent = cartCount;
+        el.style.display = cartCount > 0 ? 'inline' : 'none';
+    });
+}
+
+function showCartNotification(productName) {
+    // Create a simple notification
+    const notification = document.createElement('div');
+    notification.className = 'cart-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            ✅ ${productName} added to cart!
+            <button onclick="viewCart()" class="view-cart-btn">View Cart</button>
+        </div>
+    `;
+
+    document.body.appendChild(notification);
+
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+function viewCart() {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+
+    // Create cart modal
+    const cartModal = document.createElement('div');
+    cartModal.className = 'cart-modal';
+    cartModal.innerHTML = `
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button class="close-cart" onclick="closeCart()">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be rendered here -->
+            </div>
+            <div class="cart-footer">
+                <button class="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+                <button class="checkout-btn" onclick="checkoutToAmazon()">🛒 Open Items in Amazon</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(cartModal);
+    renderCartItems();
+}
+
+function renderCartItems() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    if (!cartItemsContainer) return;
+
+    cartItemsContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <div class="cart-item-image">
+                ${item.image ? `<img src="${item.image}" alt="${item.name}" loading="lazy">` : '<div class="no-image">📦</div>'}
+            </div>
+            <div class="cart-item-details">
+                <h4>${item.name}</h4>
+                <p class="cart-item-price">${item.price}</p>
+            </div>
+            <div class="cart-item-controls">
+                <button onclick="updateCartQuantity('${item.name.replace(/'/g, "\\'")}', ${item.quantity - 1})">-</button>
+                <span class="quantity">${item.quantity}</span>
+                <button onclick="updateCartQuantity('${item.name.replace(/'/g, "\\'")}', ${item.quantity + 1})">+</button>
+                <button class="remove-item" onclick="removeFromCart('${item.name.replace(/'/g, "\\'")}')">🗑️</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function closeCart() {
+    const cartModal = document.querySelector('.cart-modal');
+    if (cartModal) cartModal.remove();
+}
+
+function clearCart() {
+    if (confirm('Are you sure you want to clear your cart?')) {
+        cart = [];
+        localStorage.setItem('techReviewCart', JSON.stringify(cart));
+        updateCartCount();
+        closeCart();
+    }
+}
+
+function checkoutToAmazon() {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+
+    // Refresh cart from localStorage to make sure we have latest data
+    cart = JSON.parse(localStorage.getItem('techReviewCart')) || [];
+
+    if (cart.length === 0) {
+        alert('Your cart is empty after refresh!');
+        return;
+    }
+
+    // Open all affiliate links in separate Amazon tabs
+    const confirmMessage = `This will open ${cart.length} Amazon tabs with your selected items. Continue?`;
+
+    if (confirm(confirmMessage)) {
+        cart.forEach((item, index) => {
+            setTimeout(() => {
+                const newTab = window.open(item.amazonUrl, '_blank');
+                if (!newTab) {
+                    alert(`Please allow pop-ups for this site to open all tabs. Tab ${index + 1} was blocked.`);
+                }
+            }, index * 1500); // 1.5 second delay between each tab
+        });
+
+        setTimeout(() => {
+            alert(`Opened ${cart.length} Amazon tabs with your selected items. Check if any were blocked by your browser's pop-up blocker.`);
+        }, cart.length * 1500 + 1000);
+    }
+}
+
+// Initialize cart count on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+});
