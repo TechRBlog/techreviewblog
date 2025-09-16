@@ -501,6 +501,160 @@
             color: #007bff;
         }
 
+        /* Product Card Styles */
+        .product-card {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.8), rgba(16, 33, 62, 0.8));
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .product-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .product-card:hover:before {
+            left: 100%;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 200px);
+            min-height: 300px;
+        }
+
+        .product-specs {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0.8rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #00d4ff;
+        }
+
+        .product-pricing {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(220, 53, 69, 0.1));
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .product-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .performance-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #ff6b9d, #00ff88);
+            color: #0a192f;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        /* Light Mode Product Cards */
+        body.light-mode .product-card {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
+            border: 2px solid rgba(0, 123, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 123, 255, 0.1);
+        }
+
+        body.light-mode .product-card:hover {
+            border-color: rgba(0, 123, 255, 0.6);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+        }
+
+        body.light-mode .product-card:before {
+            background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+        }
+
+        body.light-mode .spec-row {
+            background: rgba(0, 123, 255, 0.08);
+            border-left-color: #007bff;
+        }
+
+        body.light-mode .spec-label {
+            color: #007bff;
+        }
+
+        body.light-mode .product-pricing {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(183, 28, 28, 0.1));
+            border-color: rgba(220, 53, 69, 0.3);
+        }
+
+        body.light-mode .product-price {
+            color: #dc3545;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Products Section */
+        .products-section {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .products-section.active {
+            display: block;
+        }
+
 
         .add-to-cart-button {
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
@@ -912,7 +1066,7 @@
                     <meta itemprop="productID" content="RYZEN9-9950X">
 
                     <div class="product-image" onclick="window.open('https://amzn.to/42yt1sB', '_blank')" style="cursor: pointer;">
-                        <img src="assets/ryzen-9950x.webp" alt="AMD Ryzen 9 9950X" loading="lazy" itemprop="image">
+                        <img src="assets/AMD Ryzen™ 9 9950X.jpg" alt="AMD Ryzen 9 9950X" loading="lazy" itemprop="image">
                         <span class="performance-badge">Flagship</span>
                     </div>
 
@@ -974,7 +1128,7 @@
                     <meta itemprop="productID" content="RYZEN7-9800X3D">
 
                     <div class="product-image">
-                        <img src="assets/ryzen-7-9800x3d.webp" alt="AMD Ryzen 7 9800X3D" loading="lazy" itemprop="image">
+                        <img src="assets/AMD RYZEN 7 9800X3D.jpg" alt="AMD Ryzen 7 9800X3D" loading="lazy" itemprop="image">
                         <span class="performance-badge">Gaming King</span>
                     </div>
 
@@ -1036,7 +1190,7 @@
                     <meta itemprop="productID" content="RYZEN7-7800X3D">
 
                     <div class="product-image">
-                        <img src="assets/ryzen-7-7800x3d.webp" alt="AMD Ryzen 7 7800X3D" loading="lazy" itemprop="image">
+                        <img src="assets/AMD Ryzen 7 7800X3D 8-Core.jpg" alt="AMD Ryzen 7 7800X3D" loading="lazy" itemprop="image">
                         <span class="performance-badge">Best Seller</span>
                     </div>
 
@@ -1098,7 +1252,7 @@
                     <meta itemprop="productID" content="INTEL-I9-14900K">
 
                     <div class="product-image">
-                        <img src="assets/intel-i9-14900k.webp" alt="Intel Core i9-14900K" loading="lazy" itemprop="image">
+                        <img src="assets/Intel® Core™ i9-14900K.jpg" alt="Intel Core i9-14900K" loading="lazy" itemprop="image">
                         <span class="performance-badge">Intel Flagship</span>
                     </div>
 
@@ -1160,7 +1314,7 @@
                     <meta itemprop="productID" content="INTEL-I7-14700K">
 
                     <div class="product-image">
-                        <img src="assets/intel-i7-14700k.webp" alt="Intel Core i7-14700K" loading="lazy" itemprop="image">
+                        <img src="assets/ntel® Core™ i7-14700K.jpg" alt="Intel Core i7-14700K" loading="lazy" itemprop="image">
                         <span class="performance-badge">Balanced</span>
                     </div>
 
@@ -1222,7 +1376,7 @@
                     <meta itemprop="productID" content="RYZEN5-7600X">
 
                     <div class="product-image">
-                        <img src="assets/ryzen-5-7600x.webp" alt="AMD Ryzen 5 7600X" loading="lazy" itemprop="image">
+                        <img src="assets/AMD Ryzen 5 7600X 6-Core.jpg" alt="AMD Ryzen 5 7600X" loading="lazy" itemprop="image">
                         <span class="performance-badge">Value King</span>
                     </div>
 
@@ -1284,7 +1438,7 @@
                     <meta itemprop="productID" content="RYZEN7-5800X">
 
                     <div class="product-image">
-                        <img src="assets/ryzen-7-5800x.webp" alt="AMD Ryzen 7 5800X" loading="lazy" itemprop="image">
+                        <img src="assets/AMD Ryzen 7 5800X 8-core.jpg" alt="AMD Ryzen 7 5800X" loading="lazy" itemprop="image">
                         <span class="performance-badge">Proven</span>
                     </div>
 
@@ -1346,7 +1500,7 @@
                     <meta itemprop="productID" content="RYZEN5-5600X">
 
                     <div class="product-image">
-                        <img src="assets/ryzen-5-5600x.webp" alt="AMD Ryzen 5 5600X" loading="lazy" itemprop="image">
+                        <img src="assets/AMD Ryzen 5 5600X.jpg" alt="AMD Ryzen 5 5600X" loading="lazy" itemprop="image">
                         <span class="performance-badge">Budget Champion</span>
                     </div>
 
@@ -1417,7 +1571,7 @@
                     <meta itemprop="productID" content="RTX-4090-24GB">
 
                     <div class="product-image">
-                        <img src="assets/rtx-4090.webp" alt="NVIDIA GeForce RTX 4090" loading="lazy" itemprop="image">
+                        <img src="assets/5090.webp" alt="NVIDIA GeForce RTX 4090" loading="lazy" itemprop="image">
                         <span class="performance-badge">Flagship</span>
                     </div>
 
@@ -1479,7 +1633,7 @@
                     <meta itemprop="productID" content="RTX-4080-16GB">
 
                     <div class="product-image">
-                        <img src="assets/rtx-4080.webp" alt="NVIDIA GeForce RTX 4080" loading="lazy" itemprop="image">
+                        <img src="assets/5080.webp" alt="NVIDIA GeForce RTX 4080" loading="lazy" itemprop="image">
                         <span class="performance-badge">High-End</span>
                     </div>
 
@@ -1541,7 +1695,7 @@
                     <meta itemprop="productID" content="RTX-4070TI-SUPER">
 
                     <div class="product-image">
-                        <img src="assets/rtx-4070ti-super.webp" alt="NVIDIA GeForce RTX 4070 Ti SUPER" loading="lazy" itemprop="image">
+                        <img src="assets/5070ti.jpg" alt="NVIDIA GeForce RTX 4070 Ti SUPER" loading="lazy" itemprop="image">
                         <span class="performance-badge">Performance</span>
                     </div>
 
@@ -1603,7 +1757,7 @@
                     <meta itemprop="productID" content="RTX-4070-12GB">
 
                     <div class="product-image">
-                        <img src="assets/rtx-4070.webp" alt="NVIDIA GeForce RTX 4070" loading="lazy" itemprop="image">
+                        <img src="assets/5070.webp" alt="NVIDIA GeForce RTX 4070" loading="lazy" itemprop="image">
                         <span class="performance-badge">Popular</span>
                     </div>
 
@@ -1665,7 +1819,7 @@
                     <meta itemprop="productID" content="RX-7900XTX-24GB">
 
                     <div class="product-image">
-                        <img src="assets/rx-7900xtx.webp" alt="AMD Radeon RX 7900 XTX" loading="lazy" itemprop="image">
+                        <img src="assets/AMD Radeon RX 7900 XTX.jpg" alt="AMD Radeon RX 7900 XTX" loading="lazy" itemprop="image">
                         <span class="performance-badge">AMD Flagship</span>
                     </div>
 
@@ -1727,7 +1881,7 @@
                     <meta itemprop="productID" content="RX-7800XT-16GB">
 
                     <div class="product-image">
-                        <img src="assets/rx-7800xt.webp" alt="AMD Radeon RX 7800 XT" loading="lazy" itemprop="image">
+                        <img src="assets/XFX Speedster SWFT210 Radeon RX 7700XT Gaming Graphics Card.jpg" alt="AMD Radeon RX 7800 XT" loading="lazy" itemprop="image">
                         <span class="performance-badge">Best Value</span>
                     </div>
 
@@ -1789,7 +1943,7 @@
                     <meta itemprop="productID" content="RTX-4060TI-16GB">
 
                     <div class="product-image">
-                        <img src="assets/rtx-4060ti.webp" alt="NVIDIA GeForce RTX 4060 Ti" loading="lazy" itemprop="image">
+                        <img src="assets/5060ti.webp" alt="NVIDIA GeForce RTX 4060 Ti" loading="lazy" itemprop="image">
                         <span class="performance-badge">Mid-Range</span>
                     </div>
 
@@ -1851,7 +2005,7 @@
                     <meta itemprop="productID" content="RX-7600XT-16GB">
 
                     <div class="product-image">
-                        <img src="assets/rx-7600xt.webp" alt="AMD Radeon RX 7600 XT" loading="lazy" itemprop="image">
+                        <img src="assets/XFX Speedster QICK308 Radeon RX 7600 Black Gaming Graphics Card.jpg" alt="AMD Radeon RX 7600 XT" loading="lazy" itemprop="image">
                         <span class="performance-badge">Budget King</span>
                     </div>
 
@@ -1910,5 +2064,35 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Category filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const productSections = document.querySelectorAll('.products-section');
+
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+
+                    // Remove active class from all filters
+                    categoryFilters.forEach(f => f.classList.remove('active'));
+
+                    // Add active class to clicked filter
+                    this.classList.add('active');
+
+                    // Hide all sections
+                    productSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    // Show selected section
+                    const targetSection = document.getElementById(category);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
