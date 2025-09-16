@@ -501,160 +501,38 @@
             color: #007bff;
         }
 
-        /* Product Card Styles */
-        .product-card {
-            background: linear-gradient(135deg, rgba(10, 25, 47, 0.8), rgba(16, 33, 62, 0.8));
+        /* Cart Functionality Styles */
+        .cart-button {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 107, 157, 0.2));
             border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
             position: relative;
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+            overflow: hidden;
             backdrop-filter: blur(10px);
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
+        .cart-button:hover {
+            transform: translateY(-2px);
             border-color: rgba(0, 212, 255, 0.6);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
         }
 
-        .product-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .product-card:hover:before {
-            left: 100%;
-        }
-
-        .product-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            height: calc(100% - 200px);
-            min-height: 300px;
-        }
-
-        .product-specs {
-            margin-bottom: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0.8rem;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 8px;
-            border-left: 3px solid #00d4ff;
-        }
-
-        .product-pricing {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(220, 53, 69, 0.1));
-            border: 1px solid rgba(255, 107, 157, 0.3);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .product-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ff6b9d;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .price-label {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-
-        .product-actions {
-            margin-top: auto;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .performance-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: linear-gradient(135deg, #ff6b9d, #00ff88);
-            color: #0a192f;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
+        .cart-count {
+            background: rgba(255, 107, 157, 0.8);
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
             font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            z-index: 2;
-        }
-
-        /* Light Mode Product Cards */
-        body.light-mode .product-card {
-            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(233, 236, 239, 0.95));
-            border: 2px solid rgba(0, 123, 255, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 123, 255, 0.1);
-        }
-
-        body.light-mode .product-card:hover {
-            border-color: rgba(0, 123, 255, 0.6);
-            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
-        }
-
-        body.light-mode .product-card:before {
-            background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
-        }
-
-        body.light-mode .spec-row {
-            background: rgba(0, 123, 255, 0.08);
-            border-left-color: #007bff;
-        }
-
-        body.light-mode .spec-label {
-            color: #007bff;
-        }
-
-        body.light-mode .product-pricing {
-            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(183, 28, 28, 0.1));
-            border-color: rgba(220, 53, 69, 0.3);
-        }
-
-        body.light-mode .product-price {
-            color: #dc3545;
-        }
-
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        /* Products Section */
-        .products-section {
+            font-weight: bold;
+            margin-left: 0.5rem;
             display: none;
-            padding: 2rem 0;
         }
-
-        .products-section.active {
-            display: block;
-        }
-
 
         .add-to-cart-button {
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
@@ -1032,6 +910,12 @@
         <div class="store-nav-container">
             <a href="store.html" class="store-nav-link">🏪 Store Home</a>
             <a href="store-components.html" class="store-nav-link active">🔧 PC Components</a>
+            <a href="store-trending.html" class="store-nav-link">⚡ Trending Tech</a>
+            <a href="store-accessories.html" class="store-nav-link">🎮 Gaming Gear</a>
+            <a href="store-crypto.html" class="store-nav-link">₿ Crypto Hardware</a>
+            <button class="cart-button" onclick="viewCart()">
+                🛒 Cart <span class="cart-count">0</span>
+            </button>
         </div>
     </div>
 
@@ -1047,6 +931,24 @@
             </button>
             <button class="category-filter" data-category="gpus">
                 Graphics Cards
+            </button>
+            <button class="category-filter" data-category="ram">
+                Memory (RAM)
+            </button>
+            <button class="category-filter" data-category="storage">
+                Storage (SSD/HDD)
+            </button>
+            <button class="category-filter" data-category="motherboards">
+                Motherboards
+            </button>
+            <button class="category-filter" data-category="psu">
+                Power Supplies
+            </button>
+            <button class="category-filter" data-category="cases">
+                PC Cases
+            </button>
+            <button class="category-filter" data-category="cooling">
+                Cooling Solutions
             </button>
         </div>
 
@@ -1065,8 +967,8 @@
                     <meta itemprop="category" content="CPUs">
                     <meta itemprop="productID" content="RYZEN9-9950X">
 
-                    <div class="product-image" onclick="window.open('https://amzn.to/42yt1sB', '_blank')" style="cursor: pointer;">
-                        <img src="assets/AMD Ryzen™ 9 9950X.jpg" alt="AMD Ryzen 9 9950X" loading="lazy" itemprop="image">
+                    <div class="product-image">
+                        <img src="assets/ryzen-9950x.webp" alt="AMD Ryzen 9 9950X" loading="lazy" itemprop="image">
                         <span class="performance-badge">Flagship</span>
                     </div>
 
@@ -1128,7 +1030,7 @@
                     <meta itemprop="productID" content="RYZEN7-9800X3D">
 
                     <div class="product-image">
-                        <img src="assets/AMD RYZEN 7 9800X3D.jpg" alt="AMD Ryzen 7 9800X3D" loading="lazy" itemprop="image">
+                        <img src="assets/ryzen-7-9800x3d.webp" alt="AMD Ryzen 7 9800X3D" loading="lazy" itemprop="image">
                         <span class="performance-badge">Gaming King</span>
                     </div>
 
@@ -1190,7 +1092,7 @@
                     <meta itemprop="productID" content="RYZEN7-7800X3D">
 
                     <div class="product-image">
-                        <img src="assets/AMD Ryzen 7 7800X3D 8-Core.jpg" alt="AMD Ryzen 7 7800X3D" loading="lazy" itemprop="image">
+                        <img src="assets/ryzen-7-7800x3d.webp" alt="AMD Ryzen 7 7800X3D" loading="lazy" itemprop="image">
                         <span class="performance-badge">Best Seller</span>
                     </div>
 
@@ -1252,7 +1154,7 @@
                     <meta itemprop="productID" content="INTEL-I9-14900K">
 
                     <div class="product-image">
-                        <img src="assets/Intel® Core™ i9-14900K.jpg" alt="Intel Core i9-14900K" loading="lazy" itemprop="image">
+                        <img src="assets/intel-i9-14900k.webp" alt="Intel Core i9-14900K" loading="lazy" itemprop="image">
                         <span class="performance-badge">Intel Flagship</span>
                     </div>
 
@@ -1314,7 +1216,7 @@
                     <meta itemprop="productID" content="INTEL-I7-14700K">
 
                     <div class="product-image">
-                        <img src="assets/ntel® Core™ i7-14700K.jpg" alt="Intel Core i7-14700K" loading="lazy" itemprop="image">
+                        <img src="assets/intel-i7-14700k.webp" alt="Intel Core i7-14700K" loading="lazy" itemprop="image">
                         <span class="performance-badge">Balanced</span>
                     </div>
 
@@ -1376,7 +1278,7 @@
                     <meta itemprop="productID" content="RYZEN5-7600X">
 
                     <div class="product-image">
-                        <img src="assets/AMD Ryzen 5 7600X 6-Core.jpg" alt="AMD Ryzen 5 7600X" loading="lazy" itemprop="image">
+                        <img src="assets/ryzen-5-7600x.webp" alt="AMD Ryzen 5 7600X" loading="lazy" itemprop="image">
                         <span class="performance-badge">Value King</span>
                     </div>
 
@@ -1438,7 +1340,7 @@
                     <meta itemprop="productID" content="RYZEN7-5800X">
 
                     <div class="product-image">
-                        <img src="assets/AMD Ryzen 7 5800X 8-core.jpg" alt="AMD Ryzen 7 5800X" loading="lazy" itemprop="image">
+                        <img src="assets/ryzen-7-5800x.webp" alt="AMD Ryzen 7 5800X" loading="lazy" itemprop="image">
                         <span class="performance-badge">Proven</span>
                     </div>
 
@@ -1500,7 +1402,7 @@
                     <meta itemprop="productID" content="RYZEN5-5600X">
 
                     <div class="product-image">
-                        <img src="assets/AMD Ryzen 5 5600X.jpg" alt="AMD Ryzen 5 5600X" loading="lazy" itemprop="image">
+                        <img src="assets/ryzen-5-5600x.webp" alt="AMD Ryzen 5 5600X" loading="lazy" itemprop="image">
                         <span class="performance-badge">Budget Champion</span>
                     </div>
 
@@ -1571,7 +1473,7 @@
                     <meta itemprop="productID" content="RTX-4090-24GB">
 
                     <div class="product-image">
-                        <img src="assets/5090.webp" alt="NVIDIA GeForce RTX 4090" loading="lazy" itemprop="image">
+                        <img src="assets/rtx-4090.webp" alt="NVIDIA GeForce RTX 4090" loading="lazy" itemprop="image">
                         <span class="performance-badge">Flagship</span>
                     </div>
 
@@ -1633,7 +1535,7 @@
                     <meta itemprop="productID" content="RTX-4080-16GB">
 
                     <div class="product-image">
-                        <img src="assets/5080.webp" alt="NVIDIA GeForce RTX 4080" loading="lazy" itemprop="image">
+                        <img src="assets/rtx-4080.webp" alt="NVIDIA GeForce RTX 4080" loading="lazy" itemprop="image">
                         <span class="performance-badge">High-End</span>
                     </div>
 
@@ -1695,7 +1597,7 @@
                     <meta itemprop="productID" content="RTX-4070TI-SUPER">
 
                     <div class="product-image">
-                        <img src="assets/5070ti.jpg" alt="NVIDIA GeForce RTX 4070 Ti SUPER" loading="lazy" itemprop="image">
+                        <img src="assets/rtx-4070ti-super.webp" alt="NVIDIA GeForce RTX 4070 Ti SUPER" loading="lazy" itemprop="image">
                         <span class="performance-badge">Performance</span>
                     </div>
 
@@ -1757,7 +1659,7 @@
                     <meta itemprop="productID" content="RTX-4070-12GB">
 
                     <div class="product-image">
-                        <img src="assets/5070.webp" alt="NVIDIA GeForce RTX 4070" loading="lazy" itemprop="image">
+                        <img src="assets/rtx-4070.webp" alt="NVIDIA GeForce RTX 4070" loading="lazy" itemprop="image">
                         <span class="performance-badge">Popular</span>
                     </div>
 
@@ -1819,7 +1721,7 @@
                     <meta itemprop="productID" content="RX-7900XTX-24GB">
 
                     <div class="product-image">
-                        <img src="assets/AMD Radeon RX 7900 XTX.jpg" alt="AMD Radeon RX 7900 XTX" loading="lazy" itemprop="image">
+                        <img src="assets/rx-7900xtx.webp" alt="AMD Radeon RX 7900 XTX" loading="lazy" itemprop="image">
                         <span class="performance-badge">AMD Flagship</span>
                     </div>
 
@@ -1881,7 +1783,7 @@
                     <meta itemprop="productID" content="RX-7800XT-16GB">
 
                     <div class="product-image">
-                        <img src="assets/XFX Speedster SWFT210 Radeon RX 7700XT Gaming Graphics Card.jpg" alt="AMD Radeon RX 7800 XT" loading="lazy" itemprop="image">
+                        <img src="assets/rx-7800xt.webp" alt="AMD Radeon RX 7800 XT" loading="lazy" itemprop="image">
                         <span class="performance-badge">Best Value</span>
                     </div>
 
@@ -1943,7 +1845,7 @@
                     <meta itemprop="productID" content="RTX-4060TI-16GB">
 
                     <div class="product-image">
-                        <img src="assets/5060ti.webp" alt="NVIDIA GeForce RTX 4060 Ti" loading="lazy" itemprop="image">
+                        <img src="assets/rtx-4060ti.webp" alt="NVIDIA GeForce RTX 4060 Ti" loading="lazy" itemprop="image">
                         <span class="performance-badge">Mid-Range</span>
                     </div>
 
@@ -2005,7 +1907,7 @@
                     <meta itemprop="productID" content="RX-7600XT-16GB">
 
                     <div class="product-image">
-                        <img src="assets/XFX Speedster QICK308 Radeon RX 7600 Black Gaming Graphics Card.jpg" alt="AMD Radeon RX 7600 XT" loading="lazy" itemprop="image">
+                        <img src="assets/rx-7600xt.webp" alt="AMD Radeon RX 7600 XT" loading="lazy" itemprop="image">
                         <span class="performance-badge">Budget King</span>
                     </div>
 
@@ -2061,37 +1963,338 @@
             </div>
         </div>
 
+        <!-- RAM Section -->
+        <div id="ram" class="products-section">
+            <h2 class="section-title">Memory (RAM)</h2>
+
+            <!-- RAM Filters -->
+            <div class="filter-controls" id="ram-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="ram-sort">🔄 Sort by:</label>
+                        <select id="ram-sort" class="filter-select" onchange="sortProductsGlobal('ram')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                            <option value="capacity">📊 Capacity (GB)</option>
+                            <option value="speed">⚡ Speed (MHz)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="ram-capacity">📊 Capacity:</label>
+                        <select id="ram-capacity" class="filter-select" onchange="filterProductsGlobal('ram')">
+                            <option value="all">All Capacities</option>
+                            <option value="16gb">16GB</option>
+                            <option value="32gb">32GB</option>
+                            <option value="64gb">64GB+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="ram-speed">⚡ Speed:</label>
+                        <select id="ram-speed" class="filter-select" onchange="filterProductsGlobal('ram')">
+                            <option value="all">All Speeds</option>
+                            <option value="5600">DDR5-5600</option>
+                            <option value="6000">DDR5-6000</option>
+                            <option value="6400">DDR5-6400+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="ram-price">💰 Price Range:</label>
+                        <select id="ram-price" class="filter-select" onchange="filterProductsGlobal('ram')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $150</option>
+                            <option value="mid">$150 - $300</option>
+                            <option value="high">$300+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="ram-grid">
+                <!-- RAM products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Storage Section -->
+        <div id="storage" class="products-section">
+            <h2 class="section-title">Storage Solutions</h2>
+
+            <!-- Storage Filters -->
+            <div class="filter-controls" id="storage-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="storage-sort">🔄 Sort by:</label>
+                        <select id="storage-sort" class="filter-select" onchange="sortProductsGlobal('storage')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                            <option value="capacity">📊 Capacity (GB)</option>
+                            <option value="speed">⚡ Speed</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="storage-type">💾 Type:</label>
+                        <select id="storage-type" class="filter-select" onchange="filterProductsGlobal('storage')">
+                            <option value="all">All Types</option>
+                            <option value="nvme">NVMe SSD</option>
+                            <option value="sata">SATA SSD</option>
+                            <option value="hdd">HDD</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="storage-capacity">📊 Capacity:</label>
+                        <select id="storage-capacity" class="filter-select" onchange="filterProductsGlobal('storage')">
+                            <option value="all">All Capacities</option>
+                            <option value="500gb">500GB</option>
+                            <option value="1tb">1TB</option>
+                            <option value="2tb">2TB+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="storage-price">💰 Price Range:</label>
+                        <select id="storage-price" class="filter-select" onchange="filterProductsGlobal('storage')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $100</option>
+                            <option value="mid">$100 - $300</option>
+                            <option value="high">$300+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="storage-grid">
+                <!-- Storage products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Motherboards Section -->
+        <div id="motherboards" class="products-section">
+            <h2 class="section-title">Motherboards</h2>
+
+            <!-- Motherboard Filters -->
+            <div class="filter-controls" id="motherboards-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="motherboards-sort">🔄 Sort by:</label>
+                        <select id="motherboards-sort" class="filter-select" onchange="sortProductsGlobal('motherboards')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="motherboards-socket">🔌 Socket:</label>
+                        <select id="motherboards-socket" class="filter-select" onchange="filterProductsGlobal('motherboards')">
+                            <option value="all">All Sockets</option>
+                            <option value="am5">AM5 (AMD)</option>
+                            <option value="lga1700">LGA1700 (Intel)</option>
+                            <option value="lga1200">LGA1200 (Intel)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="motherboards-chipset">⚡ Chipset:</label>
+                        <select id="motherboards-chipset" class="filter-select" onchange="filterProductsGlobal('motherboards')">
+                            <option value="all">All Chipsets</option>
+                            <option value="x670">X670/X670E</option>
+                            <option value="b650">B650/B650E</option>
+                            <option value="z790">Z790</option>
+                            <option value="b760">B760</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="motherboards-price">💰 Price Range:</label>
+                        <select id="motherboards-price" class="filter-select" onchange="filterProductsGlobal('motherboards')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $200</option>
+                            <option value="mid">$200 - $400</option>
+                            <option value="high">$400+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="motherboards-grid">
+                <!-- Motherboard products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- PSU Section -->
+        <div id="psu" class="products-section">
+            <h2 class="section-title">Power Supplies</h2>
+
+            <!-- PSU Filters -->
+            <div class="filter-controls" id="psu-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="psu-sort">🔄 Sort by:</label>
+                        <select id="psu-sort" class="filter-select" onchange="sortProductsGlobal('psu')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                            <option value="wattage">⚡ Wattage (High to Low)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="psu-wattage">⚡ Wattage:</label>
+                        <select id="psu-wattage" class="filter-select" onchange="filterProductsGlobal('psu')">
+                            <option value="all">All Wattages</option>
+                            <option value="650w">650W</option>
+                            <option value="750w">750W</option>
+                            <option value="850w">850W+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="psu-efficiency">🏅 Efficiency:</label>
+                        <select id="psu-efficiency" class="filter-select" onchange="filterProductsGlobal('psu')">
+                            <option value="all">All Ratings</option>
+                            <option value="gold">80+ Gold</option>
+                            <option value="platinum">80+ Platinum</option>
+                            <option value="titanium">80+ Titanium</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="psu-price">💰 Price Range:</label>
+                        <select id="psu-price" class="filter-select" onchange="filterProductsGlobal('psu')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $150</option>
+                            <option value="mid">$150 - $300</option>
+                            <option value="high">$300+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="psu-grid">
+                <!-- PSU products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Cases Section -->
+        <div id="cases" class="products-section">
+            <h2 class="section-title">PC Cases</h2>
+
+            <!-- Case Filters -->
+            <div class="filter-controls" id="cases-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="cases-sort">🔄 Sort by:</label>
+                        <select id="cases-sort" class="filter-select" onchange="sortProductsGlobal('cases')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cases-size">📌 Size:</label>
+                        <select id="cases-size" class="filter-select" onchange="filterProductsGlobal('cases')">
+                            <option value="all">All Sizes</option>
+                            <option value="mini-itx">Mini ITX</option>
+                            <option value="micro-atx">Micro ATX</option>
+                            <option value="mid-tower">Mid Tower</option>
+                            <option value="full-tower">Full Tower</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cases-style">🎨 Style:</label>
+                        <select id="cases-style" class="filter-select" onchange="filterProductsGlobal('cases')">
+                            <option value="all">All Styles</option>
+                            <option value="rgb">RGB Lighting</option>
+                            <option value="tempered">Tempered Glass</option>
+                            <option value="minimal">Minimal/Clean</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cases-price">💰 Price Range:</label>
+                        <select id="cases-price" class="filter-select" onchange="filterProductsGlobal('cases')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $100</option>
+                            <option value="mid">$100 - $200</option>
+                            <option value="high">$200+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="cases-grid">
+                <!-- Case products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Cooling Section -->
+        <div id="cooling" class="products-section">
+            <h2 class="section-title">Cooling Solutions</h2>
+
+            <!-- Cooling Filters -->
+            <div class="filter-controls" id="cooling-filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="cooling-sort">🔄 Sort by:</label>
+                        <select id="cooling-sort" class="filter-select" onchange="sortProductsGlobal('cooling')">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">💰 Price (Low to High)</option>
+                            <option value="price-high">💰 Price (High to Low)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cooling-type">🌡️ Type:</label>
+                        <select id="cooling-type" class="filter-select" onchange="filterProductsGlobal('cooling')">
+                            <option value="all">All Types</option>
+                            <option value="air">Air Coolers</option>
+                            <option value="aio">AIO Liquid</option>
+                            <option value="custom">Custom Loop</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cooling-performance">⚡ Performance:</label>
+                        <select id="cooling-performance" class="filter-select" onchange="filterProductsGlobal('cooling')">
+                            <option value="all">All Performance</option>
+                            <option value="basic">Basic Cooling</option>
+                            <option value="performance">High Performance</option>
+                            <option value="extreme">Extreme OC</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="cooling-price">💰 Price Range:</label>
+                        <select id="cooling-price" class="filter-select" onchange="filterProductsGlobal('cooling')">
+                            <option value="all">All Prices</option>
+                            <option value="budget">Under $50</option>
+                            <option value="mid">$50 - $150</option>
+                            <option value="high">$150+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="cooling-grid">
+                <!-- Cooling products will be loaded here -->
+            </div>
+        </div>
     </div>
 
+    <script src="store-components.js"></script>
     <script src="script.js"></script>
     <script>
-        // Category filtering functionality
+        // Initialize cart count on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const categoryFilters = document.querySelectorAll('.category-filter');
-            const productSections = document.querySelectorAll('.products-section');
-
-            categoryFilters.forEach(filter => {
-                filter.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-
-                    // Remove active class from all filters
-                    categoryFilters.forEach(f => f.classList.remove('active'));
-
-                    // Add active class to clicked filter
-                    this.classList.add('active');
-
-                    // Hide all sections
-                    productSections.forEach(section => {
-                        section.classList.remove('active');
-                    });
-
-                    // Show selected section
-                    const targetSection = document.getElementById(category);
-                    if (targetSection) {
-                        targetSection.classList.add('active');
-                    }
-                });
-            });
+            updateCartCount();
         });
     </script>
 </body>
