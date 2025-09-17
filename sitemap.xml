@@ -45,18 +45,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://techreviewblog.com/best-gpus-gaming-2025.html</loc>
-    <lastmod>2025-09-17T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://techreviewblog.com/ryzen-7800x3d-vs-intel-14900k.html</loc>
-    <lastmod>2025-09-17T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <!-- Store Pages -->
   <url>
