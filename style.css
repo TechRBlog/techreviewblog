@@ -1974,7 +1974,7 @@ body.light-mode .blog-image img {
 
 .blog-image img {
     width: 100%;
-    height: 250px;
+    height: 180px;
     object-fit: cover;
     transition: transform 0.4s ease;
 }
@@ -1984,7 +1984,7 @@ body.light-mode .blog-image img {
 }
 
 .blog-content {
-    padding: 25px;
+    padding: 20px;
 }
 
 .blog-meta {
@@ -2009,17 +2009,22 @@ body.light-mode .blog-image img {
 }
 
 .blog-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: #ffffff;
     line-height: 1.3;
 }
 
 .blog-excerpt {
     color: #cccccc;
-    margin-bottom: 20px;
-    line-height: 1.6;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .read-more-link {
