@@ -3476,10 +3476,9 @@ body.light-mode .nav-link::after {
     padding: 40px 25px;
     border-radius: 15px;
     height: fit-content;
-    position: sticky;
-    top: 80px;
+    position: static;
     align-self: flex-start;
-    z-index: 10;
+    z-index: 1;
 }
 
 .sidebar-section {
