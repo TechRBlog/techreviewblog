@@ -1007,7 +1007,7 @@ body.light-mode .blog-image img {
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 0.5rem;
     font-weight: 300;
     text-align: center;
@@ -1060,7 +1060,7 @@ body.light-mode .blog-image img {
 
 .page-subtitle {
     font-size: 1.2rem;
-    color: #cccccc;
+    color: #e2e8f0;
     font-weight: 300;
 }
 
@@ -1597,7 +1597,7 @@ body.light-mode .blog-image img {
 
 .blogs-subtitle {
     font-size: 1.2rem;
-    color: #cccccc;
+    color: #e2e8f0;
     font-weight: 300;
     max-width: 600px;
     margin: 0 auto;
@@ -1696,7 +1696,7 @@ body.light-mode .blog-image img {
 }
 
 .read-time {
-    color: #888888;
+    color: #cbd5e1;
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -1777,7 +1777,7 @@ body.light-mode .blog-image img {
 }
 
 .card-summary {
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 20px;
     line-height: 1.6;
 }
@@ -1817,7 +1817,7 @@ body.light-mode .blog-image img {
 
 .sidebar-subtitle {
     font-size: 0.9rem;
-    color: #888888;
+    color: #cbd5e1;
     margin-bottom: 25px;
     font-weight: 500;
 }
@@ -1856,7 +1856,7 @@ body.light-mode .blog-image img {
 
 .release-description {
     font-size: 0.9rem;
-    color: #cccccc;
+    color: #e2e8f0;
     line-height: 1.4;
     margin-bottom: 8px;
 }
@@ -1942,7 +1942,7 @@ body.light-mode .blog-image img {
 }
 
 .post-date {
-    color: #888888;
+    color: #cbd5e1;
     font-size: 0.9rem;
 }
 
@@ -2004,7 +2004,7 @@ body.light-mode .blog-image img {
 }
 
 .blog-date {
-    color: #888888;
+    color: #cbd5e1;
     font-size: 0.9rem;
 }
 
@@ -2017,7 +2017,7 @@ body.light-mode .blog-image img {
 }
 
 .blog-excerpt {
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 15px;
     line-height: 1.5;
     font-size: 0.95rem;
@@ -2074,7 +2074,7 @@ body.light-mode .blog-image img {
 
 .about-intro {
     font-size: 1.1rem;
-    color: #cccccc;
+    color: #e2e8f0;
     line-height: 1.6;
 }
 
@@ -2100,7 +2100,7 @@ body.light-mode .blog-image img {
 }
 
 .about-section p {
-    color: #cccccc;
+    color: #e2e8f0;
     line-height: 1.7;
     margin-bottom: 15px;
 }
@@ -2111,7 +2111,7 @@ body.light-mode .blog-image img {
 }
 
 .about-list li {
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 10px;
     line-height: 1.6;
 }
@@ -2137,7 +2137,7 @@ body.light-mode .blog-image img {
 }
 
 .spec-label {
-    color: #888888;
+    color: #cbd5e1;
     font-weight: 500;
 }
 
@@ -2173,7 +2173,7 @@ body.light-mode .blog-image img {
 }
 
 .form-description {
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 30px;
     font-size: 0.95rem;
 }
@@ -2272,12 +2272,12 @@ body.light-mode .blog-image img {
 }
 
 .method-content p {
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 3px;
 }
 
 .method-content small {
-    color: #888888;
+    color: #cbd5e1;
 }
 
 .response-times,
@@ -2302,7 +2302,7 @@ body.light-mode .blog-image img {
 }
 
 .response-times li {
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 8px;
     padding-left: 20px;
     position: relative;
@@ -2316,7 +2316,7 @@ body.light-mode .blog-image img {
 }
 
 .business-info p {
-    color: #cccccc;
+    color: #e2e8f0;
     line-height: 1.6;
     margin-bottom: 15px;
 }
@@ -2337,7 +2337,7 @@ body.light-mode .blog-image img {
 
 .coming-soon-message p {
     font-size: 1.1rem;
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 40px;
     line-height: 1.6;
 }
@@ -2369,7 +2369,7 @@ body.light-mode .blog-image img {
 }
 
 .feature-item p {
-    color: #cccccc;
+    color: #e2e8f0;
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -2392,7 +2392,7 @@ body.light-mode .blog-image img {
 
 .blog-coming-soon > .coming-soon-content > p {
     font-size: 1.2rem;
-    color: #cccccc;
+    color: #e2e8f0;
     margin-bottom: 40px;
     max-width: 600px;
     margin-left: auto;
@@ -2426,7 +2426,7 @@ body.light-mode .blog-image img {
 }
 
 .preview-item p {
-    color: #cccccc;
+    color: #e2e8f0;
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -2454,7 +2454,7 @@ body.light-mode .blog-image img {
 }
 
 .timeline li {
-    color: #cccccc;
+    color: #e2e8f0;
     padding: 10px 0;
     border-bottom: 1px solid #2a2a2a;
     position: relative;
@@ -2474,7 +2474,7 @@ body.light-mode .blog-image img {
 
 .cta-text {
     font-size: 1.1rem;
-    color: #cccccc;
+    color: #e2e8f0;
     margin-top: 40px;
 }
 
@@ -2781,7 +2781,7 @@ body.light-mode .nav-link::after {
 }
 
 .social-links a {
-    color: #888888;
+    color: #cbd5e1;
     font-size: 1.5rem;
     transition: color 0.3s ease;
 }
@@ -2797,7 +2797,7 @@ body.light-mode .nav-link::after {
 }
 
 .footer-disclaimer p {
-    color: #888888;
+    color: #cbd5e1;
     font-size: 0.9rem;
 }
 
@@ -3138,7 +3138,7 @@ body.light-mode .nav-link::after {
 
 .blog-subtitle {
     font-size: 1.2rem;
-    color: #b0bec5;
+    color: #e2e8f0;
     margin-bottom: 25px;
     line-height: 1.5;
     font-weight: 400;
@@ -3146,7 +3146,7 @@ body.light-mode .nav-link::after {
 }
 
 .blog-header .blog-meta {
-    color: #b0bec5;
+    color: #e2e8f0;
     font-size: 16px;
     margin-bottom: 40px;
 }
@@ -3253,7 +3253,7 @@ body.light-mode .nav-link::after {
 .blog-card-content p {
     margin: 0 0 8px 0;
     font-size: 12px;
-    color: #cccccc;
+    color: #e2e8f0;
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -3462,7 +3462,7 @@ body.light-mode .nav-link::after {
 }
 
 .gpu-card .spec-label {
-    color: #b0bec5;
+    color: #e2e8f0;
 }
 
 .gpu-card .spec-value {
@@ -3537,7 +3537,7 @@ body.light-mode .nav-link::after {
 }
 
 .related-item p {
-    color: #b0bec5;
+    color: #e2e8f0;
     font-size: 14px;
     line-height: 1.5;
 }
@@ -3651,7 +3651,7 @@ body.light-mode .nav-link::after {
 }
 
 .blog-preview-excerpt, .blog-excerpt {
-    color: #b0bec5;
+    color: #e2e8f0;
     font-size: 14px;
     line-height: 1.5;
     margin-bottom: 15px;
@@ -3668,7 +3668,7 @@ body.light-mode .nav-link::after {
 }
 
 .read-time {
-    color: #b0bec5;
+    color: #e2e8f0;
     font-size: 14px;
 }
 
@@ -3973,7 +3973,7 @@ body.light-mode .nav-link::after {
 }
 
 .product-description {
-    color: #8892b0;
+    color: #e2e8f0;
     font-size: 0.75rem;
     line-height: 1.4;
     margin-bottom: 10px;
