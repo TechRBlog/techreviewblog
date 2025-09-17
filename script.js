@@ -460,23 +460,33 @@ function initTechCarousel() {
         const originalCards = getOriginalCards();
         const cardWidth = getCardWidth();
         const screenWidth = window.innerWidth;
-        
-        // Calculate how many complete sets we need to fill screen + buffer
+
+        // Calculate how many complete sets we need to fill screen + generous buffer
         const cardsPerScreen = Math.ceil(screenWidth / cardWidth);
-        const totalSetsNeeded = Math.ceil(cardsPerScreen / originalCards.length) + 3; // Extra buffer
-        
+        const setsNeededForScreen = Math.ceil(cardsPerScreen / originalCards.length);
+        const totalSetsNeeded = Math.max(setsNeededForScreen + 4, 6); // Minimum 6 sets for smooth infinite scroll
+
         // Clear and rebuild track
         track.innerHTML = '';
-        
+
         // Add multiple complete sets for seamless scrolling
         for (let set = 0; set < totalSetsNeeded; set++) {
             for (let i = 0; i < originalCards.length; i++) {
                 const clonedCard = originalCards[i].cloneNode(true);
+                // Add a data attribute to track which set this belongs to
+                clonedCard.setAttribute('data-set', set);
+                clonedCard.setAttribute('data-original-index', i);
                 track.appendChild(clonedCard);
             }
         }
-        
-        return originalCards.length * cardWidth; // Width of one complete set
+
+        const oneSetWidth = originalCards.length * cardWidth;
+
+        // Start from the middle set to allow scrolling in both directions
+        const middleSetOffset = Math.floor(totalSetsNeeded / 2) * oneSetWidth;
+        translateX = -middleSetOffset;
+
+        return oneSetWidth; // Width of one complete set
     };
     
     let oneSetWidth = 0;
@@ -492,19 +502,21 @@ function initTechCarousel() {
                 // For navigation button speed changes, use targetSpeed directly
                 currentSpeed = targetSpeed;
             }
-            
+
             // Move continuously to the left
             translateX -= currentSpeed;
         }
-        
+
         // Seamless loop: when we've scrolled one complete set, jump back invisibly
-        if (translateX <= -oneSetWidth) {
-            translateX += oneSetWidth; // Jump forward by one set width
+        // Use modulo to ensure truly seamless infinite scrolling
+        if (Math.abs(translateX) >= oneSetWidth) {
+            translateX = translateX % oneSetWidth;
+            if (translateX > 0) translateX -= oneSetWidth; // Keep negative direction
         }
-        
+
         // Apply transform
         track.style.transform = `translateX(${translateX}px)`;
-        
+
         // Continue animation
         animationId = requestAnimationFrame(infiniteLoop);
     };
@@ -553,14 +565,17 @@ function initTechCarousel() {
         
         // Move the carousel by the drag amount
         translateX = dragStartTranslateX + deltaX;
-        
-        // Keep within bounds using the same loop logic
-        if (translateX <= -oneSetWidth) {
-            translateX += oneSetWidth;
-            dragStartTranslateX += oneSetWidth; // Adjust start position too
-        } else if (translateX > 0) {
-            translateX -= oneSetWidth;
-            dragStartTranslateX -= oneSetWidth; // Adjust start position too
+
+        // Keep within bounds using the same seamless loop logic
+        if (Math.abs(translateX) >= oneSetWidth) {
+            const adjustment = Math.floor(Math.abs(translateX) / oneSetWidth) * oneSetWidth;
+            if (translateX < 0) {
+                translateX += adjustment;
+                dragStartTranslateX += adjustment;
+            } else {
+                translateX -= adjustment;
+                dragStartTranslateX -= adjustment;
+            }
         }
     };
     
