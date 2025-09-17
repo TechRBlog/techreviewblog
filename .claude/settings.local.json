@@ -12,7 +12,8 @@
       "WebSearch",
       "Bash(sed:*)",
       "Bash(grep:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []
