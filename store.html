@@ -33,7 +33,7 @@
             backdrop-filter: blur(10px);
             position: sticky;
             top: 70px;
-            z-index: 100;
+            z-index: 99;
         }
 
         body:not(.light-mode) .store-nav-bar {
@@ -719,6 +719,17 @@
                 position: sticky;
                 top: 70px;
                 z-index: 99;
+            }
+
+            /* Ensure navigation buttons are clickable */
+            .nav-toggle, .theme-toggle {
+                pointer-events: auto !important;
+                z-index: 1001 !important;
+                position: relative !important;
+            }
+
+            .navbar {
+                z-index: 1000 !important;
             }
 
             /* Store page content adjustments */
@@ -1881,6 +1892,62 @@
 
     <script src="store.js"></script>
     <script src="script.js"></script>
+
+    <!-- Force navigation to work on store page -->
+    <script>
+        // Debug and force navigation functionality
+        window.addEventListener('load', function() {
+            console.log('Store page loaded, checking navigation...');
+
+            // Force theme toggle to work
+            const themeToggle = document.getElementById('themeToggle');
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (themeToggle) {
+                console.log('Theme toggle found, adding click handler');
+                themeToggle.addEventListener('click', function(e) {
+                    console.log('Theme toggle clicked!');
+                    e.preventDefault();
+
+                    const isLightMode = document.body.classList.contains('light-mode');
+                    if (isLightMode) {
+                        document.body.classList.remove('light-mode');
+                        localStorage.setItem('theme', 'dark');
+                        console.log('Switched to dark mode');
+                    } else {
+                        document.body.classList.add('light-mode');
+                        localStorage.setItem('theme', 'light');
+                        console.log('Switched to light mode');
+                    }
+                });
+
+                // Apply saved theme immediately
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                console.log('Applying saved theme:', savedTheme);
+                if (savedTheme === 'light') {
+                    document.body.classList.add('light-mode');
+                } else {
+                    document.body.classList.remove('light-mode');
+                }
+            }
+
+            if (navToggle && navMenu) {
+                console.log('Nav toggle found, adding click handler');
+                navToggle.addEventListener('click', function(e) {
+                    console.log('Nav toggle clicked!');
+                    e.preventDefault();
+
+                    navToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+
+                    // Prevent body scroll when menu is open
+                    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+                    console.log('Menu toggled, active:', navMenu.classList.contains('active'));
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
