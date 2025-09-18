@@ -2661,13 +2661,101 @@ body.light-mode .sidebar-section h3 {
 }
 
 body.light-mode .share-btn {
-    background-color: #f1f5f9;
+    background-color: #f8fafc;
     color: #1e293b;
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 body.light-mode .share-btn:hover {
-    background-color: #1e40af;
-    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode platform-specific colors remain the same */
+body.light-mode .share-btn.facebook:hover {
+    background-color: #1877f2;
+    color: white;
+}
+
+body.light-mode .share-btn.twitter:hover {
+    background-color: #1da1f2;
+    color: white;
+}
+
+body.light-mode .share-btn.reddit:hover {
+    background-color: #ff4500;
+    color: white;
+}
+
+body.light-mode .share-btn.linkedin:hover {
+    background-color: #0077b5;
+    color: white;
+}
+
+body.light-mode .share-btn.whatsapp:hover {
+    background-color: #25d366;
+    color: white;
+}
+
+body.light-mode .share-btn.copy-link:hover {
+    background-color: #0066cc;
+    color: white;
+}
+
+/* Mobile share buttons optimization */
+@media (max-width: 768px) {
+    .share-buttons {
+        gap: 8px;
+    }
+
+    .share-btn {
+        padding: 12px 16px;
+        font-size: 13px;
+        min-height: 44px; /* iOS touch target recommendation */
+        justify-content: flex-start;
+    }
+
+    .share-btn .share-icon {
+        font-size: 14px;
+        margin-right: 8px;
+    }
+
+    .blog-sidebar {
+        margin-top: 30px;
+        padding: 20px 15px;
+    }
+
+    .sidebar-section {
+        margin-bottom: 25px;
+    }
+
+    .sidebar-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .share-buttons {
+        gap: 6px;
+    }
+
+    .share-btn {
+        padding: 10px 14px;
+        font-size: 12px;
+        min-height: 42px;
+    }
+
+    .share-btn .share-icon {
+        font-size: 13px;
+    }
+
+    .blog-sidebar {
+        padding: 15px 10px;
+    }
+
+    .sidebar-section h3 {
+        font-size: 1rem;
+    }
 }
 
 body.light-mode .related-item {
@@ -2906,23 +2994,58 @@ body.light-mode .nav-link::after {
 
 /* Mobile (768px and below) - Updated for mobile device compatibility */
 @media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding-top: 70px; /* Prevent content overlap with fixed nav */
+    }
+
     .nav-toggle {
         display: flex !important;
     }
 
     .hero {
         min-height: 70vh !important;
-        padding: 100px 0 30px !important;
+        padding: 20px 0 30px !important; /* Reduced top padding since body has padding-top */
+    }
+
+    /* Ensure blog headers don't overlap with navigation */
+    .blog-header {
+        padding-top: 20px !important;
+    }
+
+    /* Store pages navigation fix */
+    .professional-store {
+        padding-top: 0 !important;
     }
 
     .hero-title {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
         margin-bottom: 0.6rem;
+        line-height: 1.3 !important;
+        padding: 0 10px;
     }
 
     .hero-subtitle {
-        font-size: 1rem !important;
+        font-size: 0.95rem !important;
         margin-bottom: 0.3rem;
+        padding: 0 15px;
+    }
+
+    /* Store hero specific mobile fixes */
+    .hero-banner {
+        margin: 10px !important;
+        padding: 70px 15px 50px !important;
+        min-height: 280px !important;
+    }
+
+    .hero-banner .hero-title {
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .hero-banner .hero-subtitle {
+        font-size: 0.9rem !important;
+        padding: 0 10px;
     }
 
     .trending-title {
@@ -3042,12 +3165,97 @@ body.light-mode .nav-link::after {
 }
 
 @media screen and (max-width: 480px) {
+    body {
+        padding-top: 70px !important; /* Ensure consistent nav spacing */
+    }
+
     .hero {
-        padding: 120px 0 30px !important;
+        padding: 10px 0 30px !important; /* Much less padding since body handles nav offset */
     }
 
     .hero-title {
-        font-size: 1.8rem !important;
+        font-size: 1.5rem !important;
+        padding: 0 15px !important;
+        line-height: 1.3 !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem !important;
+        padding: 0 20px !important;
+    }
+
+    /* Extra small mobile - store hero fixes */
+    .hero-banner {
+        margin: 5px !important;
+        padding: 60px 10px 40px !important;
+        min-height: 250px !important;
+    }
+
+    .hero-banner .hero-title {
+        font-size: 1.3rem !important;
+        line-height: 1.2 !important;
+        padding: 0 5px !important;
+    }
+
+    .hero-banner .hero-subtitle {
+        font-size: 0.8rem !important;
+        padding: 0 10px !important;
+    }
+
+    /* Mobile nav improvements for very small screens */
+    .nav-logo a {
+        font-size: 1.2rem !important;
+    }
+
+    .cart-button {
+        font-size: 0.75rem !important;
+        padding: 6px 8px !important;
+        min-height: 32px !important;
+    }
+
+    .nav-toggle {
+        min-width: 36px !important;
+        min-height: 36px !important;
+        padding: 6px !important;
+    }
+
+    .nav-toggle span {
+        width: 18px !important;
+    }
+
+    .theme-toggle {
+        min-width: 32px !important;
+        min-height: 32px !important;
+        padding: 5px !important;
+    }
+
+    /* Blog content mobile optimization */
+    .blog-content-section {
+        padding: 10px 0 !important;
+    }
+
+    .blog-content-wrapper {
+        padding: 0 10px !important;
+    }
+
+    .blog-content {
+        padding: 0 !important;
+    }
+
+    .blog-content h2 {
+        font-size: 1.3rem !important;
+        margin: 25px 0 15px 0 !important;
+    }
+
+    .blog-content h3 {
+        font-size: 1.1rem !important;
+        margin: 20px 0 10px 0 !important;
+    }
+
+    .blog-content p {
+        font-size: 0.9rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 15px !important;
     }
 
     .featured-grid {
@@ -3499,24 +3707,86 @@ body.light-mode .nav-link::after {
 .share-buttons {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .share-btn {
-    display: block;
-    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
     background-color: #1a2332;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 8px;
-    text-align: center;
+    border-radius: 10px;
+    text-align: left;
     font-weight: 500;
+    font-size: 14px;
     transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .share-btn:hover {
-    background-color: #00bfff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+    border-color: rgba(0, 212, 255, 0.3);
+}
+
+.share-btn .share-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* Specific platform colors */
+.share-btn.facebook:hover {
+    background-color: #1877f2;
+    color: white;
+}
+
+.share-btn.twitter:hover {
+    background-color: #1da1f2;
+    color: white;
+}
+
+.share-btn.reddit:hover {
+    background-color: #ff4500;
+    color: white;
+}
+
+.share-btn.linkedin:hover {
+    background-color: #0077b5;
+    color: white;
+}
+
+.share-btn.whatsapp:hover {
+    background-color: #25d366;
+    color: white;
+}
+
+.share-btn.copy-link:hover {
+    background-color: #00d4ff;
     color: #0a192f;
+}
+
+/* Copy notification animation */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
 }
 
 .related-articles {
@@ -3844,6 +4114,62 @@ body.light-mode .nav-link::after {
     body.light-mode .nav-menu .nav-link:hover,
     body.light-mode .nav-menu .nav-link.active {
         color: #1e40af !important;
+    }
+
+    /* Fix hamburger positioning and functionality */
+    .nav-toggle {
+        display: flex !important;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 1001;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        position: relative;
+        margin-left: 8px;
+        min-width: 40px;
+        min-height: 40px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-toggle span {
+        width: 22px !important;
+        height: 2px !important;
+        background-color: #ffffff !important;
+        margin: 2px 0 !important;
+        transition: 0.3s !important;
+        border-radius: 1px !important;
+        display: block !important;
+    }
+
+    body.light-mode .nav-toggle span {
+        background-color: #000000 !important;
+    }
+
+    body.light-mode .nav-toggle:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Ensure nav-right is properly positioned */
+    .nav-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        z-index: 1001 !important;
+        position: relative !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Fix nav-container to prevent overflow */
+    .nav-container {
+        max-width: 100% !important;
+        overflow: hidden !important;
+        position: relative !important;
     }
 }
 

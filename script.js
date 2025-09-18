@@ -387,38 +387,232 @@ if (skipLink) {
 
 // Social Media Sharing Functions
 function shareOnTwitter() {
-    const pageTitle = document.title || 'The Best NVIDIA RTX 50 Series GPUs - TechReviewBlog';
-    const pageUrl = window.location.href;
-    const description = 'Discover the top-selling RTX 50 series GPUs and find your perfect gaming upgrade. Performance comparisons, pricing, and buying recommendations included. 🎮';
-    
-    // Create a more engaging tweet with description
-    const shareText = encodeURIComponent(`${pageTitle}\n\n${description}`);
-    const shareUrl = encodeURIComponent(pageUrl);
-    
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
-    window.open(twitterUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+    try {
+        const pageTitle = document.title || 'Tech Reviews & Buying Guides - TechReviewBlog';
+        const pageUrl = window.location.href;
+
+        // Get dynamic description based on page content
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const description = metaDescription ? metaDescription.getAttribute('content') : 'Latest tech reviews, buying guides, and performance comparisons. Find the best GPUs, hardware wallets, and tech deals. 🎮💻';
+
+        // Get relevant hashtags based on page content
+        const hashtags = getRelevantHashtags();
+
+        // Truncate content to fit Twitter's character limit (280 chars, minus URL length ~23 chars)
+        const maxLength = 220;
+        let tweetText = `${pageTitle}\n\n${description}\n\n${hashtags}`;
+
+        if (tweetText.length > maxLength) {
+            const availableDescLength = maxLength - pageTitle.length - hashtags.length - 10;
+            if (availableDescLength > 20) {
+                const truncatedDescription = description.substring(0, availableDescLength) + '...';
+                tweetText = `${pageTitle}\n\n${truncatedDescription}\n\n${hashtags}`;
+            } else {
+                // If too long, just use title and hashtags
+                tweetText = `${pageTitle}\n\n${hashtags}`;
+            }
+        }
+
+        const shareText = encodeURIComponent(tweetText);
+        const shareUrl = encodeURIComponent(pageUrl);
+
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+        const popup = window.open(twitterUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+
+        if (!popup) {
+            alert('Pop-up blocked. Please allow pop-ups for this site and try again.');
+        }
+    } catch (error) {
+        console.error('Twitter sharing error:', error);
+        alert('Error sharing to Twitter. Please try again.');
+    }
     return false;
 }
 
 function shareOnFacebook() {
-    const pageUrl = window.location.href;
-    const shareUrl = encodeURIComponent(pageUrl);
-    
-    // Facebook automatically pulls Open Graph data, so just pass the URL
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-    window.open(facebookUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+    try {
+        const pageUrl = window.location.href;
+        const shareUrl = encodeURIComponent(pageUrl);
+
+        // Enhanced Facebook sharing - Facebook automatically pulls Open Graph data for rich preview
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+
+        // Open in popup window
+        const popup = window.open(facebookUrl, 'facebook-share', 'width=626,height=436,scrollbars=yes,resizable=yes');
+
+        if (!popup) {
+            alert('Pop-up blocked. Please allow pop-ups for this site and try again.');
+        } else if (popup.focus) {
+            popup.focus();
+        }
+    } catch (error) {
+        console.error('Facebook sharing error:', error);
+        alert('Error sharing to Facebook. Please try again.');
+    }
     return false;
 }
 
 function shareOnReddit() {
-    const pageTitle = 'The Best NVIDIA RTX 50 Series GPUs - Complete Review & Buying Guide';
-    const pageUrl = window.location.href;
-    const shareTitle = encodeURIComponent(pageTitle);
-    const shareUrl = encodeURIComponent(pageUrl);
-    
-    const redditUrl = `https://www.reddit.com/submit?title=${shareTitle}&url=${shareUrl}`;
-    window.open(redditUrl, '_blank', 'width=600,height=500,scrollbars=yes,resizable=yes');
+    try {
+        const pageTitle = document.title || 'Tech Reviews & Buying Guides - TechReviewBlog';
+        const pageUrl = window.location.href;
+
+        // Get description for Reddit context
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const description = metaDescription ? metaDescription.getAttribute('content') : '';
+
+        // Create Reddit-friendly title (Reddit has a 300 character title limit)
+        let redditTitle = pageTitle;
+        if (description && pageTitle.length < 250) {
+            const maxDescLength = 280 - pageTitle.length;
+            const descPart = description.substring(0, maxDescLength);
+            redditTitle = `${pageTitle} - ${descPart}${description.length > maxDescLength ? '...' : ''}`;
+        }
+
+        const shareTitle = encodeURIComponent(redditTitle);
+        const shareUrl = encodeURIComponent(pageUrl);
+
+        const redditUrl = `https://www.reddit.com/submit?title=${shareTitle}&url=${shareUrl}`;
+        const popup = window.open(redditUrl, '_blank', 'width=700,height=500,scrollbars=yes,resizable=yes');
+
+        if (!popup) {
+            alert('Pop-up blocked. Please allow pop-ups for this site and try again.');
+        }
+    } catch (error) {
+        console.error('Reddit sharing error:', error);
+        alert('Error sharing to Reddit. Please try again.');
+    }
     return false;
+}
+
+// New function for LinkedIn sharing
+function shareOnLinkedIn() {
+    const pageTitle = document.title || 'Tech Reviews & Buying Guides - TechReviewBlog';
+    const pageUrl = window.location.href;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const description = metaDescription ? metaDescription.getAttribute('content') : 'Latest tech reviews and buying guides';
+
+    const shareUrl = encodeURIComponent(pageUrl);
+
+    // LinkedIn's updated sharing URL format
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+    window.open(linkedinUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+    return false;
+}
+
+// New function for WhatsApp sharing
+function shareOnWhatsApp() {
+    const pageTitle = document.title || 'Tech Reviews & Buying Guides - TechReviewBlog';
+    const pageUrl = window.location.href;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const description = metaDescription ? metaDescription.getAttribute('content') : '';
+
+    const message = `*${pageTitle}*\n\n${description}\n\n${pageUrl}`;
+    const shareText = encodeURIComponent(message);
+
+    const whatsappUrl = `https://wa.me/?text=${shareText}`;
+    window.open(whatsappUrl, '_blank');
+    return false;
+}
+
+// Function to get relevant hashtags based on page content
+function getRelevantHashtags() {
+    const url = window.location.href.toLowerCase();
+    const title = document.title.toLowerCase();
+
+    let hashtags = ['#TechReview', '#TechReviewBlog'];
+
+    // Add specific hashtags based on content
+    if (url.includes('rtx') || title.includes('rtx') || title.includes('gpu')) {
+        hashtags.push('#RTX50Series', '#NVIDIA', '#GPU', '#Gaming', '#4KGaming');
+    }
+
+    if (url.includes('crypto') || title.includes('crypto') || title.includes('wallet')) {
+        hashtags.push('#Crypto', '#Bitcoin', '#Ethereum', '#HardwareWallet', '#CryptoSecurity');
+    }
+
+    if (url.includes('cpu') || title.includes('cpu') || title.includes('processor')) {
+        hashtags.push('#CPU', '#Processor', '#Gaming', '#PCBuild');
+    }
+
+    if (title.includes('best') || title.includes('review')) {
+        hashtags.push('#BestOf2025', '#BuyingGuide');
+    }
+
+    return hashtags.join(' ');
+}
+
+// Function to copy link to clipboard
+function copyLinkToClipboard() {
+    const pageUrl = window.location.href;
+
+    // Check if clipboard API is available
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(pageUrl).then(function() {
+            showCopyNotification('✅ Link copied to clipboard!');
+        }).catch(function(err) {
+            console.log('Clipboard API failed, using fallback:', err);
+            fallbackCopyToClipboard(pageUrl);
+        });
+    } else {
+        // Use fallback for older browsers or non-secure contexts
+        fallbackCopyToClipboard(pageUrl);
+    }
+
+    return false;
+}
+
+// Fallback copy method for older browsers
+function fallbackCopyToClipboard(text) {
+    try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        if (successful) {
+            showCopyNotification('✅ Link copied to clipboard!');
+        } else {
+            showCopyNotification('❌ Copy failed. Please copy manually: ' + text.substring(0, 50) + '...');
+        }
+    } catch (err) {
+        console.error('Fallback copy failed:', err);
+        showCopyNotification('❌ Copy not supported. Please copy manually.');
+    }
+}
+
+// Function to show copy notification
+function showCopyNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'copy-notification';
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #00d4ff, #00ff88);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        z-index: 10000;
+        font-weight: 500;
+        box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        animation: fadeInOut 2s ease-in-out;
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.remove();
+    }, 2000);
 }
 
 // ===== HERO CAROUSEL FUNCTIONALITY =====
