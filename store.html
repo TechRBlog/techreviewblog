@@ -32,7 +32,7 @@
             margin: 0;
             backdrop-filter: blur(10px);
             position: sticky;
-            top: 80px;
+            top: 70px;
             z-index: 100;
         }
 
@@ -682,9 +682,10 @@
             }
 
             .store-nav-bar {
-                position: relative !important;
-                top: 0 !important;
+                position: sticky !important;
+                top: 70px !important;
                 padding: 0.8rem 0 !important;
+                z-index: 99 !important;
             }
 
             .store-nav-container {
@@ -763,11 +764,12 @@
                 padding-top: 70px !important;
             }
 
-            /* Fix store nav bar positioning */
+            /* Fix store nav bar positioning to sit under main nav */
             .store-nav-bar {
-                position: relative !important;
-                top: 0 !important;
+                position: sticky !important;
+                top: 70px !important;
                 margin-top: 0 !important;
+                z-index: 99 !important;
             }
 
             .hero-banner, .professional-store {
@@ -843,6 +845,24 @@
                     min-width: 36px !important;
                     min-height: 36px !important;
                     padding: 8px !important;
+                }
+
+                /* Store nav positioning fix for small mobile */
+                .store-nav-bar {
+                    position: sticky !important;
+                    top: 70px !important;
+                    padding: 0.6rem 0 !important;
+                    margin: 0 !important;
+                }
+
+                .store-nav-container {
+                    padding: 0 0.5rem !important;
+                    gap: 0.5rem !important;
+                }
+
+                .store-nav-link {
+                    padding: 0.5rem 0.8rem !important;
+                    font-size: 0.8rem !important;
                 }
             }
 
