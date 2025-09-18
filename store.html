@@ -708,51 +708,98 @@
                 flex: 0 0 250px;
             }
 
-            /* Ensure mobile nav works on store page */
+            /* Fixed mobile nav for store page */
             .nav-toggle {
                 display: flex !important;
+                flex-direction: column !important;
+                cursor: pointer !important;
+                padding: 8px !important;
                 z-index: 1001 !important;
+                border-radius: 4px !important;
+                transition: background-color 0.3s ease !important;
+                min-width: 40px !important;
+                min-height: 40px !important;
+                justify-content: center !important;
+                align-items: center !important;
+                margin-left: 8px !important;
+            }
+
+            .nav-toggle:hover {
+                background-color: rgba(255, 255, 255, 0.1) !important;
+            }
+
+            .nav-toggle span {
+                width: 22px !important;
+                height: 2px !important;
+                background-color: #ffffff !important;
+                margin: 2px 0 !important;
+                transition: 0.3s !important;
+                border-radius: 1px !important;
+                display: block !important;
             }
 
             .nav-menu {
                 position: fixed !important;
                 top: 70px !important;
-                right: -100% !important;
+                left: -100% !important;
                 width: 100% !important;
                 height: calc(100vh - 70px) !important;
-                background-color: rgba(0, 0, 0, 0.98) !important;
+                background-color: rgba(10, 25, 47, 0.98) !important;
                 backdrop-filter: blur(15px) !important;
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: flex-start !important;
                 align-items: center !important;
-                padding-top: 50px !important;
-                transition: right 0.3s ease !important;
+                padding-top: 40px !important;
+                transition: left 0.3s ease !important;
                 z-index: 999 !important;
+                overflow-y: auto !important;
             }
 
             .nav-menu.active {
-                right: 0 !important;
+                left: 0 !important;
             }
 
-            .nav-menu .nav-link {
-                font-size: 1.2rem !important;
-                margin: 20px 0 !important;
+            .nav-link {
+                margin: 15px 0 !important;
+                font-size: 1.1rem !important;
+                text-align: center !important;
+                width: 90% !important;
+                padding: 18px 20px !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 8px !important;
+                transition: all 0.3s ease !important;
+                display: block !important;
                 color: #ffffff !important;
+            }
+
+            .nav-link:hover {
+                background-color: rgba(0, 212, 255, 0.1) !important;
+                transform: translateX(5px) !important;
             }
 
             /* Light mode mobile nav styles */
             body.light-mode .nav-menu {
                 background-color: rgba(255, 255, 255, 0.98) !important;
+                backdrop-filter: blur(15px) !important;
             }
 
-            body.light-mode .nav-menu .nav-link {
+            body.light-mode .nav-link {
                 color: #1f2937 !important;
+                border-bottom-color: rgba(0, 0, 0, 0.1) !important;
             }
 
-            body.light-mode .nav-menu .nav-link:hover,
-            body.light-mode .nav-menu .nav-link.active {
+            body.light-mode .nav-link:hover {
+                background-color: rgba(0, 123, 255, 0.1) !important;
                 color: #1e40af !important;
+            }
+
+            body.light-mode .nav-toggle span {
+                background-color: #000000 !important;
+            }
+
+            body.light-mode .nav-toggle:hover {
+                background-color: rgba(0, 0, 0, 0.1) !important;
             }
 
             /* Theme toggle styles for light mode */
