@@ -733,13 +733,29 @@
                 z-index: 1001 !important;
             }
 
-            /* Force hamburger visibility and positioning */
+            /* Force hamburger visibility and positioning with click functionality */
             .nav-toggle {
                 display: flex !important;
                 position: relative !important;
                 right: 0 !important;
                 transform: none !important;
                 margin: 0 !important;
+                pointer-events: auto !important;
+                cursor: pointer !important;
+                z-index: 1001 !important;
+            }
+
+            /* Ensure theme toggle button is clickable */
+            .theme-toggle {
+                pointer-events: auto !important;
+                cursor: pointer !important;
+                z-index: 1001 !important;
+                position: relative !important;
+            }
+
+            /* Fix button accessibility */
+            .cart-button, .theme-toggle, .nav-toggle {
+                touch-action: manipulation !important;
             }
 
             /* Ensure body has top padding to prevent overlap */
@@ -773,13 +789,27 @@
 
             /* Store page content adjustments */
             .hero-title {
-                font-size: 2.5rem !important;
+                font-size: 2.2rem !important;
                 margin-bottom: 1rem;
             }
 
             .hero-subtitle {
                 font-size: 1.1rem !important;
                 margin-bottom: 1.5rem;
+            }
+
+            /* Mobile title size fixes */
+            @media (max-width: 768px) {
+                .hero-banner .hero-title {
+                    font-size: 1.6rem !important;
+                    line-height: 1.2 !important;
+                    padding: 0 10px !important;
+                }
+
+                .hero-banner .hero-subtitle {
+                    font-size: 0.9rem !important;
+                    padding: 0 15px !important;
+                }
             }
 
             /* Small screen fixes */
@@ -798,11 +828,21 @@
                 }
 
                 .hero-banner .hero-title {
-                    font-size: 1.8rem !important;
+                    font-size: 1.3rem !important;
+                    line-height: 1.2 !important;
+                    padding: 0 5px !important;
                 }
 
                 .hero-banner .hero-subtitle {
-                    font-size: 0.95rem !important;
+                    font-size: 0.8rem !important;
+                    padding: 0 10px !important;
+                }
+
+                /* Extra hamburger fixes for very small screens */
+                .nav-toggle {
+                    min-width: 36px !important;
+                    min-height: 36px !important;
+                    padding: 8px !important;
                 }
             }
 
@@ -1889,5 +1929,85 @@
 
     <script src="store.js"></script>
     <script src="script.js"></script>
+
+    <!-- Store page specific navigation fix -->
+    <script>
+        // Additional navigation fixes for store page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fix hamburger menu
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (navToggle && navMenu) {
+                // Remove any existing event listeners and add a fresh one
+                navToggle.removeEventListener('click', handleNavToggle);
+                navToggle.addEventListener('click', handleNavToggle);
+
+                function handleNavToggle(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked!'); // Debug log
+
+                    navToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+
+                    // Prevent body scroll when menu is open
+                    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+                }
+
+                // Also handle touch events for mobile
+                navToggle.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    handleNavToggle(e);
+                });
+            }
+
+            // Fix theme toggle button
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                // Remove any existing event listeners
+                themeToggle.removeEventListener('click', handleThemeToggle);
+                themeToggle.addEventListener('click', handleThemeToggle);
+
+                function handleThemeToggle(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Theme toggle clicked!'); // Debug log
+
+                    const isLightMode = document.body.classList.contains('light-mode');
+
+                    if (isLightMode) {
+                        // Switch to dark mode
+                        document.body.classList.remove('light-mode');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        // Switch to light mode
+                        document.body.classList.add('light-mode');
+                        localStorage.setItem('theme', 'light');
+                    }
+
+                    // Add a small animation to the button
+                    themeToggle.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        themeToggle.style.transform = 'scale(1)';
+                    }, 150);
+                }
+
+                // Also handle touch events for mobile
+                themeToggle.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    handleThemeToggle(e);
+                });
+
+                // Apply saved theme on load
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                if (currentTheme === 'light') {
+                    document.body.classList.add('light-mode');
+                } else {
+                    document.body.classList.remove('light-mode');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
