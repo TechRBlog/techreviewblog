@@ -709,41 +709,7 @@
                 flex: 0 0 250px;
             }
 
-            /* Minimal store page adjustments - let main CSS handle navigation */
-            body {
-                padding-top: 70px;
-            }
-
-            /* Store nav positioning */
-            .store-nav-bar {
-                position: sticky;
-                top: 70px;
-                z-index: 99;
-            }
-
-            /* Ensure navigation buttons are clickable */
-            .nav-toggle, .theme-toggle {
-                pointer-events: auto !important;
-                z-index: 1001 !important;
-                position: relative !important;
-            }
-
-            .navbar {
-                z-index: 1000 !important;
-            }
-
-            /* Store page content adjustments */
-            .hero-title {
-                font-size: 2.2rem !important;
-                margin-bottom: 1rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem !important;
-                margin-bottom: 1.5rem;
-            }
-
-            /* Mobile title size fixes */
+            /* Mobile title size fixes only */
             @media (max-width: 768px) {
                 .hero-banner .hero-title {
                     font-size: 1.6rem !important;
@@ -757,21 +723,7 @@
                 }
             }
 
-            /* Small screen fixes */
             @media (max-width: 480px) {
-                .nav-container {
-                    padding: 0 10px !important;
-                }
-
-                .nav-right {
-                    gap: 5px !important;
-                }
-
-                .cart-button {
-                    font-size: 0.8rem !important;
-                    padding: 6px 10px !important;
-                }
-
                 .hero-banner .hero-title {
                     font-size: 1.3rem !important;
                     line-height: 1.2 !important;
@@ -781,31 +733,6 @@
                 .hero-banner .hero-subtitle {
                     font-size: 0.8rem !important;
                     padding: 0 10px !important;
-                }
-
-                /* Extra hamburger fixes for very small screens */
-                .nav-toggle {
-                    min-width: 36px !important;
-                    min-height: 36px !important;
-                    padding: 8px !important;
-                }
-
-                /* Store nav positioning fix for small mobile */
-                .store-nav-bar {
-                    position: sticky;
-                    top: 70px;
-                    padding: 0.6rem 0;
-                    margin: 0;
-                }
-
-                .store-nav-container {
-                    padding: 0 0.5rem;
-                    gap: 0.5rem;
-                }
-
-                .store-nav-link {
-                    padding: 0.5rem 0.8rem;
-                    font-size: 0.8rem;
                 }
             }
 
@@ -1780,7 +1707,7 @@
 </head>
 
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -1890,64 +1817,8 @@
         </div>
     </footer>
 
-    <script src="store.js"></script>
     <script src="script.js"></script>
 
-    <!-- Force navigation to work on store page -->
-    <script>
-        // Debug and force navigation functionality
-        window.addEventListener('load', function() {
-            console.log('Store page loaded, checking navigation...');
-
-            // Force theme toggle to work
-            const themeToggle = document.getElementById('themeToggle');
-            const navToggle = document.querySelector('.nav-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-
-            if (themeToggle) {
-                console.log('Theme toggle found, adding click handler');
-                themeToggle.addEventListener('click', function(e) {
-                    console.log('Theme toggle clicked!');
-                    e.preventDefault();
-
-                    const isLightMode = document.body.classList.contains('light-mode');
-                    if (isLightMode) {
-                        document.body.classList.remove('light-mode');
-                        localStorage.setItem('theme', 'dark');
-                        console.log('Switched to dark mode');
-                    } else {
-                        document.body.classList.add('light-mode');
-                        localStorage.setItem('theme', 'light');
-                        console.log('Switched to light mode');
-                    }
-                });
-
-                // Apply saved theme immediately
-                const savedTheme = localStorage.getItem('theme') || 'light';
-                console.log('Applying saved theme:', savedTheme);
-                if (savedTheme === 'light') {
-                    document.body.classList.add('light-mode');
-                } else {
-                    document.body.classList.remove('light-mode');
-                }
-            }
-
-            if (navToggle && navMenu) {
-                console.log('Nav toggle found, adding click handler');
-                navToggle.addEventListener('click', function(e) {
-                    console.log('Nav toggle clicked!');
-                    e.preventDefault();
-
-                    navToggle.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-
-                    // Prevent body scroll when menu is open
-                    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-                    console.log('Menu toggled, active:', navMenu.classList.contains('active'));
-                });
-            }
-        });
-    </script>
 
 </body>
 </html>
