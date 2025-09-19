@@ -8,8 +8,20 @@ Sitemap: https://techreviewblog.com/sitemap.xml
 Allow: /index.html
 Allow: /blogs.html
 Allow: /rtx-50-series-review.html
+Allow: /crypto-hardware-wallets-blog.html
+Allow: /best-cpus-gaming-2025.html
+Allow: /reviews/amd-ryzen-9-9950x-review.html
 Allow: /about.html
 Allow: /contact.html
+Allow: /store.html
+Allow: /store-components.html
+Allow: /store-prebuilts.html
+Allow: /store-accessories.html
+Allow: /store-crypto.html
+Allow: /store-trending.html
+Allow: /product.html
+Allow: /crypto-hardware-wallets.html
+Allow: /carousel-gpu-content.html
 
 # Allow indexing of assets
 Allow: /assets/
