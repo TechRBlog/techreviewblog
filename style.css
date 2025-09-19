@@ -64,11 +64,26 @@ body {
 }
 
 .nav-logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 1.8rem;
     font-weight: 700;
     color: #00d4ff;
     text-decoration: none;
     transition: color 0.3s ease;
+}
+
+.nav-logo .logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.nav-logo .logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 .nav-logo a:hover {
@@ -3204,6 +3219,15 @@ body.light-mode .nav-link::after {
 
     /* Mobile nav improvements for very small screens */
     .nav-logo a {
+        font-size: 1.2rem !important;
+    }
+
+    .nav-logo .logo-img {
+        height: 32px !important;
+        width: 32px !important;
+    }
+
+    .nav-logo .logo-text {
         font-size: 1.2rem !important;
     }
 

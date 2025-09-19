@@ -17,6 +17,11 @@
     <meta name="rating" content="General">
     <link rel="canonical" href="https://techreviewblog.com/">
 
+    <!-- Logo and Brand Meta Tags for Google -->
+    <link rel="icon" type="image/png" href="assets/TRB.png">
+    <link rel="apple-touch-icon" href="assets/TRB.png">
+    <meta property="og:logo" content="https://techreviewblog.com/assets/TRB.png">
+
     <!-- JSON-LD Structured Data for Better SEO -->
     <script type="application/ld+json">
     {
@@ -28,7 +33,13 @@
         "publisher": {
             "@type": "Organization",
             "name": "TechReviewBlog",
-            "url": "https://techreviewblog.com"
+            "url": "https://techreviewblog.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://techreviewblog.com/assets/TRB.png",
+                "width": 600,
+                "height": 600
+            }
         },
         "potentialAction": {
             "@type": "SearchAction",
@@ -77,7 +88,10 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html">TechReviewBlog</a>
+                <a href="index.html">
+                    <img src="assets/TRB.png" alt="TechReviewBlog Logo" class="logo-img">
+                    <span class="logo-text">TechReviewBlog</span>
+                </a>
             </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link active">Home</a>
