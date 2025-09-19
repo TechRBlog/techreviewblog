@@ -4597,3 +4597,176 @@ body.light-mode .carousel-instructions p {
     border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
+/* Keywords Section - Hidden from view */
+.keywords-section {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    font-size: 0;
+    line-height: 0;
+}
+
+.keywords-section h2,
+.keywords-section .keywords-list {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+}
+
+/* Fix Amazon link visibility in final recommendations */
+.inline-buy-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff9500, #ff6b35) !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.inline-buy-link:hover {
+    background: linear-gradient(135deg, #ff6b35, #ff9500) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
+    text-decoration: none !important;
+}
+
+.inline-buy-link:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* Ensure final recommendations section is styled properly */
+.final-pick {
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border-left: 3px solid #00d4ff;
+}
+
+.final-pick strong {
+    color: #00d4ff;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.final-pick p {
+    margin: 5px 0;
+    color: #e0e0e0;
+}
+
+/* Light mode fixes for Amazon links */
+body.light-mode .inline-buy-link {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .inline-buy-link:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .inline-buy-link:visited {
+    color: #ffffff !important;
+}
+
+/* Buy button large styling for reviews */
+.buy-button-large {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff9500, #ff6b35) !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    border: none;
+    text-align: center;
+    min-width: 250px;
+}
+
+.buy-button-large:hover {
+    background: linear-gradient(135deg, #ff6b35, #ff9500) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 149, 0, 0.4);
+    text-decoration: none !important;
+}
+
+.buy-button-large:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* Light mode support for buy button large */
+body.light-mode .buy-button-large {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .buy-button-large:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .buy-button-large:visited {
+    color: #ffffff !important;
+}
+
+/* Ensure all Amazon and buy links are visible - catch any missed classes */
+a[href*="amzn.to"],
+a[href*="amazon.com"] {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+a[href*="amzn.to"]:visited,
+a[href*="amazon.com"]:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+a[href*="amzn.to"]:hover,
+a[href*="amazon.com"]:hover {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* Light mode support for all Amazon links */
+body.light-mode a[href*="amzn.to"],
+body.light-mode a[href*="amazon.com"] {
+    color: #ffffff !important;
+}
+
+body.light-mode a[href*="amzn.to"]:visited,
+body.light-mode a[href*="amazon.com"]:visited {
+    color: #ffffff !important;
+}
+
+body.light-mode a[href*="amzn.to"]:hover,
+body.light-mode a[href*="amazon.com"]:hover {
+    color: #ffffff !important;
+}
+

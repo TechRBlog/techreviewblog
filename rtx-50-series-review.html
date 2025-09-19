@@ -28,8 +28,7 @@
     <meta property="article:tag" content="Gaming">
     <meta property="article:tag" content="4K Gaming">
     <meta property="article:tag" content="Graphics Cards">
-    <!-- Facebook App ID - Remove this line if you don't have a Facebook app -->
-    <!-- <meta property="fb:app_id" content="your-facebook-app-id"> -->
+    <meta property="fb:app_id" content="966242223397117">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -660,8 +659,15 @@
                     </ul>
 
                     <p>No matter which card you choose, you'll be getting a GPU built on the revolutionary Blackwell architecture, equipped with DLSS 4 and faster GDDR7 memory, guaranteeing a superior gaming experience.</p>
+                    <!-- Keywords Section -->
+                    <section class="keywords-section">
+                        <h2>Keywords</h2>
+                        <p class="keywords-list">
+                            best gpu 2025, nvidia rtx 50 series, rtx 5090, rtx 5080, rtx 5070 ti, rtx 5060 ti, best graphics card 2025, gpu comparison, nvidia gpu review, gaming gpu, 4k gaming gpu, rtx 50 series benchmarks, graphics card review
+                        </p>
+                    </section>
                 </article>
-                
+
                 <aside class="blog-sidebar">
                     <div class="sidebar-section">
                         <h3>Share This Blog</h3>
@@ -732,5 +738,78 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        // Improved Social Media Sharing Functions
+        function shareOnTwitter() {
+            const title = "Best GPU 2025: NVIDIA RTX 50 Series Review | RTX 5090 vs 5080 vs 5070";
+            const url = window.location.href;
+            const text = "🎮 Just read this comprehensive RTX 50 series review! RTX 5090, 5080, 5070 Ti performance comparison with real gaming benchmarks. Find your perfect GPU upgrade!";
+            const hashtags = "GPU,NVIDIA,RTX50Series,Gaming,GraphicsCard,RTX5090,RTX5080,4KGaming,TechReview,PCGaming";
+
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`;
+
+            // Calculate center position
+            const width = 650;
+            const height = 500;
+            const left = (screen.width - width) / 2;
+            const top = (screen.height - height) / 2;
+
+            window.open(twitterUrl, 'twitter_share', `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes`);
+        }
+
+        function shareOnFacebook() {
+            const url = window.location.href;
+
+            // Updated Facebook sharing method for better compatibility
+            const facebookUrl = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(url)}&t=${encodeURIComponent('Best GPU 2025: NVIDIA RTX 50 Series Review')}`;
+
+            // Calculate center position
+            const width = 900;
+            const height = 700;
+            const left = Math.round((screen.width - width) / 2);
+            const top = Math.round((screen.height - height) / 2);
+
+            // Open with better window features
+            const popup = window.open(
+                facebookUrl,
+                'facebook_share',
+                `width=${width},height=${height},left=${left},top=${top},toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,copyhistory=0`
+            );
+
+            // Focus the popup window
+            if (popup) {
+                popup.focus();
+            }
+        }
+
+        function shareOnReddit() {
+            const title = "Best GPU 2025: NVIDIA RTX 50 Series Review with Real Gaming Benchmarks";
+            const url = window.location.href;
+            const redditUrl = `https://reddit.com/submit?title=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+
+            // Calculate center position
+            const width = 800;
+            const height = 700;
+            const left = (screen.width - width) / 2;
+            const top = (screen.height - height) / 2;
+
+            window.open(redditUrl, 'reddit_share', `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes`);
+        }
+
+        function shareOnLinkedIn() {
+            const url = window.location.href;
+            const title = "Best GPU 2025: NVIDIA RTX 50 Series Review";
+            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+
+            // Calculate center position
+            const width = 700;
+            const height = 600;
+            const left = (screen.width - width) / 2;
+            const top = (screen.height - height) / 2;
+
+            window.open(linkedinUrl, 'linkedin_share', `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes`);
+        }
+    </script>
 </body>
 </html>
