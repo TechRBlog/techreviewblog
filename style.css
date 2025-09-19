@@ -81,6 +81,24 @@ body {
     border-radius: 8px;
 }
 
+/* Theme-specific logo visibility */
+.nav-logo .logo-dark {
+    display: block;
+}
+
+.nav-logo .logo-light {
+    display: none;
+}
+
+/* Light mode logo switching */
+body.light-mode .nav-logo .logo-dark {
+    display: none;
+}
+
+body.light-mode .nav-logo .logo-light {
+    display: block;
+}
+
 .nav-logo .logo-text {
     font-size: 1.8rem;
     font-weight: 700;
