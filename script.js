@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initBlogsScrollAnimation();
     // initStickFigureAnimation(); // Disabled - now controlled by visitor counter
     initVisitorCounter();
-    initLiveCryptoPrices();
+    // initLiveCryptoPrices(); // Disabled for performance
 });
 
 // Scroll Animations using Intersection Observer
