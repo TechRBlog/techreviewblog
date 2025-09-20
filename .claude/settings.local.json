@@ -1,20 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:techrblog.github.io)",
-      "Bash(git config:*)",
-      "WebFetch(domain:techreviewblog.com)",
       "Bash(git add:*)",
-      "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(python:*)",
-      "WebFetch(domain:search.google.com)",
-      "WebSearch",
-      "Bash(sed:*)",
-      "Bash(grep:*)",
-      "Bash(git checkout:*)",
-      "Bash(find:*)",
-      "Bash(node:*)"
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
