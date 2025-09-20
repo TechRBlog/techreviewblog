@@ -1120,7 +1120,7 @@ body.light-mode .blog-image img {
 .animation-section {
     padding: 0;
     background: linear-gradient(135deg, #1a2332 0%, #2a3441 100%);
-    overflow: hidden;
+    overflow: visible;
     margin: 0;
     position: relative;
     z-index: 10;
@@ -2931,6 +2931,17 @@ body.light-mode .nav-link::after {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
     }
 }
 
@@ -4810,5 +4821,269 @@ body.light-mode a[href*="amazon.com"]:visited {
 body.light-mode a[href*="amzn.to"]:hover,
 body.light-mode a[href*="amazon.com"]:hover {
     color: #ffffff !important;
+}
+
+/* ===== X TWEETS SECTION ===== */
+.tweets-section {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    max-height: 600px;
+    z-index: 50;
+    pointer-events: auto;
+}
+
+.tweets-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0;
+    background: none;
+}
+
+.x-logo {
+    width: 48px;
+    height: 48px;
+}
+
+.tweets-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    background: linear-gradient(135deg, #00d4ff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tweets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.x-tweet {
+    position: relative;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 20px;
+    padding: 20px 24px;
+    width: 100%;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: auto;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.x-tweet:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.x-tweet.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.tweet-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d4ff, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1d9bf0;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.tweet-user-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.tweet-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tweet-handle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tweet-content {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.tweet-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tweet-time {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.twitter-icon {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Tweet Animation Keyframes */
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) translateX(var(--start-x)) scale(0.7) rotate(0deg);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(80vh) translateX(var(--start-x)) scale(1) rotate(1deg);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(-20vh) translateX(var(--end-x)) scale(1) rotate(-1deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30vh) translateX(var(--end-x)) scale(0.7) rotate(0deg);
+    }
+}
+
+@keyframes floatDiagonal {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) translateX(var(--start-x)) rotate(-3deg) scale(0.7);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(75vh) translateX(var(--start-x)) rotate(2deg) scale(1);
+    }
+    50% {
+        transform: translateY(25vh) translateX(calc(var(--start-x) + var(--mid-x))) rotate(-2deg) scale(1.05);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(-15vh) translateX(var(--end-x)) rotate(1deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-25vh) translateX(var(--end-x)) rotate(0deg) scale(0.7);
+    }
+}
+
+@keyframes popupStatic {
+    0% {
+        opacity: 0;
+        transform: translateY(var(--start-y)) translateX(var(--start-x)) scale(0.8);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(var(--start-y)) translateX(var(--start-x)) scale(1);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(var(--start-y)) translateX(var(--start-x)) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(var(--start-y)) translateX(var(--start-x)) scale(0.8);
+    }
+}
+
+@keyframes gentleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(var(--start-y)) translateX(var(--start-x)) scale(0.8) rotate(0deg);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(var(--start-y)) translateX(var(--start-x)) scale(1) rotate(1deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(calc(var(--start-y) - 10px)) translateX(var(--start-x)) scale(1) rotate(-1deg);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(var(--start-y)) translateX(var(--start-x)) scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(var(--start-y)) translateX(var(--start-x)) scale(0.8) rotate(0deg);
+    }
+}
+
+/* Light mode tweet styles */
+.light-mode .floating-tweet {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(29, 161, 242, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.light-mode .floating-tweet:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .tweet-name {
+    color: #1a202c;
+}
+
+.light-mode .tweet-handle {
+    color: #4a5568;
+}
+
+.light-mode .tweet-content {
+    color: #1a202c;
+}
+
+.light-mode .tweet-footer,
+.light-mode .tweet-time {
+    color: #4a5568;
+}
+
+.light-mode .twitter-icon {
+    color: #1d9bf0;
+}
+
+.light-mode .tweet-avatar {
+    background: linear-gradient(135deg, #1d9bf0, #00d4ff);
+    color: #ffffff;
 }
 
