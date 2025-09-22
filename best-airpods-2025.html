@@ -819,6 +819,26 @@
         .light-mode p[style*="color: #a0aec0"] {
             color: #6b7280 !important;
         }
+
+        /* CSS Variables for text colors */
+        :root {
+            --text-color: #e2e8f0;
+            --text-light: #a0aec0;
+        }
+
+        .light-mode {
+            --text-color: #1a1a1a;
+            --text-light: #666666;
+        }
+
+        /* Sidebar text readability improvements */
+        .sidebar-section h3 {
+            color: var(--text-color) !important;
+        }
+
+        .light-mode .sidebar-section h3 {
+            color: #1a1a1a !important;
+        }
     </style>
 </head>
 
@@ -1242,9 +1262,6 @@
                             <a href="#" onclick="shareOnLinkedIn(); return false;" class="share-btn linkedin">
                                 <span class="share-icon">💼</span> LinkedIn
                             </a>
-                            <a href="#" onclick="shareOnWhatsApp(); return false;" class="share-btn whatsapp">
-                                <span class="share-icon">💬</span> WhatsApp
-                            </a>
                             <a href="#" onclick="copyLinkToClipboard(); return false;" class="share-btn copy-link">
                                 <span class="share-icon">🔗</span> Copy Link
                             </a>
@@ -1253,24 +1270,13 @@
 
                     <div class="sidebar-section">
                         <h3>Related Reviews</h3>
-                        <div class="related-blog-card">
-                            <div class="blog-card-image">
-                                <a href="crypto-hardware-wallets-blog.html">
-                                    <img src="assets/ledgerblogcard.jpg" alt="Crypto Hardware Wallets Guide" loading="lazy">
-                                </a>
-                                <div class="blog-date">September 13, 2025</div>
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-tags">
-                                    <span class="tag">Cryptocurrency</span>
-                                    <span class="tag">Hardware Wallets</span>
-                                    <span class="tag">Security</span>
-                                </div>
-                                <h4 class="blog-title"><a href="crypto-hardware-wallets-blog.html">The Definitive Guide to Self-Custody: Securing Your Digital Assets with Hardware Wallets</a></h4>
-                                <p class="blog-excerpt">Essential guide to crypto security with hardware wallets. Learn about Ledger and Trezor, and why self-custody matters for your digital assets.</p>
-                                <div class="blog-meta">
-                                    <span class="read-time">8 min read</span>
-                                    <a href="crypto-hardware-wallets-blog.html" class="read-more-btn">Read Guide →</a>
+                        <div class="related-articles">
+                            <div class="related-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
+                                <img src="assets/ledgerblogcard.jpg" alt="Crypto Hardware Wallets" style="width: 120px; height: 90px; object-fit: cover; border-radius: 8px; flex-shrink: 0;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 8px 0;"><a href="crypto-hardware-wallets-blog.html" style="color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600;">Crypto Hardware Wallets Guide</a></h4>
+                                    <p style="margin: 0 0 8px 0; color: var(--text-light); font-size: 0.9rem; line-height: 1.4;">Essential guide to crypto security with hardware wallets.</p>
+                                    <a href="crypto-hardware-wallets-blog.html" class="read-more-link" style="color: #007aff; text-decoration: none; font-size: 0.9rem; font-weight: 500;">Read Guide →</a>
                                 </div>
                             </div>
                         </div>
@@ -1278,68 +1284,29 @@
 
                     <div class="sidebar-section">
                         <h3>Other Blog Posts</h3>
-                        <div class="related-blog-card">
-                            <div class="blog-card-image">
-                                <a href="best-laptops-2025.html">
-                                    <img src="assets/laptopcover.jpg" alt="Best Laptops 2025" loading="lazy">
-                                </a>
-                                <div class="blog-date">September 20, 2025</div>
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-tags">
-                                    <span class="tag">Laptops</span>
-                                    <span class="tag">Apple MacBook</span>
-                                    <span class="tag">Dell</span>
-                                </div>
-                                <h4 class="blog-title"><a href="best-laptops-2025.html">Best Laptops 2025: Top 5 Performance Laptops for Work, School & Daily Use</a></h4>
-                                <p class="blog-excerpt">Transform your productivity with our comprehensive review of the best laptops on Amazon. Expert analysis of Apple MacBooks, Dell laptops, and HP models for every budget and use case.</p>
-                                <div class="blog-meta">
-                                    <span class="read-time">15 min read</span>
-                                    <a href="best-laptops-2025.html" class="read-more-btn">Read Article →</a>
+                        <div class="related-articles">
+                            <div class="related-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
+                                <img src="assets/laptopcover.jpg" alt="Best Laptops 2025" style="width: 120px; height: 90px; object-fit: cover; border-radius: 8px; flex-shrink: 0;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 8px 0;"><a href="best-laptops-2025.html" style="color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600;">Best Laptops 2025</a></h4>
+                                    <p style="margin: 0 0 8px 0; color: var(--text-light); font-size: 0.9rem; line-height: 1.4;">Top performance laptops for work, school & daily use.</p>
+                                    <a href="best-laptops-2025.html" class="read-more-link" style="color: #007aff; text-decoration: none; font-size: 0.9rem; font-weight: 500;">Read Article →</a>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="related-blog-card">
-                            <div class="blog-card-image">
-                                <a href="best-standing-desks-2025.html">
-                                    <img src="assets/deskcover.jpg" alt="Best Standing Desks 2025" loading="lazy">
-                                </a>
-                                <div class="blog-date">September 19, 2025</div>
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-tags">
-                                    <span class="tag">Standing Desks</span>
-                                    <span class="tag">Office Furniture</span>
-                                    <span class="tag">Health</span>
-                                </div>
-                                <h4 class="blog-title"><a href="best-standing-desks-2025.html">Best Standing Desks 2025: Top Electric Height Adjustable Desks</a></h4>
-                                <p class="blog-excerpt">Transform your work life with our expert-tested standing desk reviews. Discover the top electric height-adjustable desks that reduce back pain, boost productivity, and improve your health.</p>
-                                <div class="blog-meta">
-                                    <span class="read-time">8 min read</span>
-                                    <a href="best-standing-desks-2025.html" class="read-more-btn">Read Article →</a>
+                            <div class="related-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
+                                <img src="assets/deskcover.jpg" alt="Best Standing Desks 2025" style="width: 120px; height: 90px; object-fit: cover; border-radius: 8px; flex-shrink: 0;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 8px 0;"><a href="best-standing-desks-2025.html" style="color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600;">Best Standing Desks 2025</a></h4>
+                                    <p style="margin: 0 0 8px 0; color: var(--text-light); font-size: 0.9rem; line-height: 1.4;">Electric height adjustable desks for better health.</p>
+                                    <a href="best-standing-desks-2025.html" class="read-more-link" style="color: #007aff; text-decoration: none; font-size: 0.9rem; font-weight: 500;">Read Article →</a>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="related-blog-card">
-                            <div class="blog-card-image">
-                                <a href="best-cpus-gaming-2025.html">
-                                    <img src="assets/AMD RYZEN 7 9800X3D.jpg" alt="Best Gaming CPUs 2025" loading="lazy">
-                                </a>
-                                <div class="blog-date">September 17, 2025</div>
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-tags">
-                                    <span class="tag">Gaming CPUs</span>
-                                    <span class="tag">AMD Ryzen</span>
-                                    <span class="tag">Intel Core</span>
-                                </div>
-                                <h4 class="blog-title"><a href="best-cpus-gaming-2025.html">Best Gaming CPUs 2025: AMD vs Intel Tested</a></h4>
-                                <p class="blog-excerpt">Real benchmarks reveal shocking results: AMD Ryzen 7800X3D vs Intel i9-14900K vs new 9800X3D. Expert testing shows truth about gaming performance per dollar.</p>
-                                <div class="blog-meta">
-                                    <span class="read-time">8 min read</span>
-                                    <a href="best-cpus-gaming-2025.html" class="read-more-btn">Read Article →</a>
+                            <div class="related-item" style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 10px;">
+                                <img src="assets/AMD RYZEN 7 9800X3D.jpg" alt="Best Gaming CPUs 2025" style="width: 120px; height: 90px; object-fit: cover; border-radius: 8px; flex-shrink: 0;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 8px 0;"><a href="best-cpus-gaming-2025.html" style="color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600;">Best Gaming CPUs 2025</a></h4>
+                                    <p style="margin: 0 0 8px 0; color: var(--text-light); font-size: 0.9rem; line-height: 1.4;">AMD vs Intel tested for gaming performance.</p>
+                                    <a href="best-cpus-gaming-2025.html" class="read-more-link" style="color: #007aff; text-decoration: none; font-size: 0.9rem; font-weight: 500;">Read Article →</a>
                                 </div>
                             </div>
                         </div>
